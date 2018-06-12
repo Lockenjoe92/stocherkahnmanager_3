@@ -86,11 +86,11 @@ function footer_container(){
     # Close row
     $HTML .= '</div>';
 
-    # Copyright
-    $HTML .= footer_content_copyright();
-
     # Close container
     $HTML .= '</div>';
+
+    # Copyright
+    $HTML .= footer_content_copyright();
 
     return $HTML;
 }
