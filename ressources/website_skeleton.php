@@ -30,7 +30,7 @@ function site_header($PageTitle){
     $HTML .= '<link href="materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>';
 
     #End header
-    $HTML .= '<!DOCTYPE html>';
+    $HTML .= '</head>';
 
     return $HTML;
 }
