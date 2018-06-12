@@ -26,8 +26,8 @@ function site_header($PageTitle){
     #CSS
     $HTML .= '  <!-- CSS  -->';
     $HTML .= '<link href=https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
-    $HTML .= '<link href="materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>';
-    $HTML .= '<link href="materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>';
+    $HTML .= '<link href="/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>';
+    #$HTML .= '<link href="materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>';
 
     #End header
     $HTML .= '</head>';
