@@ -6,6 +6,6 @@
  * Time: 18:13
  */
 
-echo "Hello World :D!";
+echo "Hello World 2:D!";
 
 ?>
