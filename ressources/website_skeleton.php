@@ -129,7 +129,7 @@ function footer_content_connect(){
     $HTML .= '<li><a class="white-text" href="#!">Link 2</a></li>';
     $HTML .= '<li><a class="white-text" href="#!">Link 3</a></li>';
     $HTML .= '<li><a class="white-text" href="#!">Link 4</a></li>';
-    $HTML .= '/<ul>';
+    $HTML .= '</ul>';
 
     # Close column
     $HTML .= '</div>';
