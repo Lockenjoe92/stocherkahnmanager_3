@@ -27,7 +27,7 @@ function site_header($PageTitle){
     $HTML .= '  <!-- CSS  -->';
     $HTML .= '<link href=https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
     $HTML .= '<link href="/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>';
-    #$HTML .= '<link href="materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>';
+    $HTML .= '<link href="/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>';
 
     #End header
     $HTML .= '</head>';
@@ -80,7 +80,7 @@ function site_skripts(){
     $HTML = '  <!--  Scripts-->';
     $HTML .= '<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>';
     $HTML .= '<script src="/materialize/js/materialize.js"></script>';
-    #$HTML .= '<script src="/materialize/js/init.js"></script>';
+    $HTML .= '<script src="/materialize/js/init.js"></script>';
 
     return $HTML;
 }
@@ -187,7 +187,7 @@ function site_navbar(){
 
 function navbar_links_big(){
 
-    $HTML = '<a id="logo-container" href="#" class="brand-logo">Logo</a>';
+    $HTML = '<a id="logo-container" href="#" class="brand-logo">menu</a>';
     $HTML .= '<ul class="right hide-on-med-and-down">';
     $HTML .= '<li><a href="#">Navbar Link</a></li>';
     $HTML .= '</ul>';
