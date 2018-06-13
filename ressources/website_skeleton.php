@@ -187,7 +187,7 @@ function site_navbar(){
 
 function navbar_links_big(){
 
-    $HTML = '<a id="logo-container" href="#" class="brand-logo">menu</a>';
+    $HTML = '<a id="logo-container" href="#" class="brand-logo">Stocherkahn Medizin</a>';
     $HTML .= '<ul class="right hide-on-med-and-down">';
     $HTML .= '<li><a href="#">Navbar Link</a></li>';
     $HTML .= '</ul>';
