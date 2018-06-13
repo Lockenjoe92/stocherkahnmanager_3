@@ -9,9 +9,11 @@
 # Include all ressources
 include_once "./ressources/ressourcen.php";
 
+# Generate Content
+$HTML = startseite_inhalt_home();
 
 # Output site
 echo site_header('Stocherkahn Medizin Tübingen e.V.');
-echo site_body('<p>Hello World!</p>');
+echo site_body($HTML);
 
 ?>
