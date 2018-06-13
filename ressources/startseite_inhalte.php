@@ -19,7 +19,7 @@ function startseite_inhalt_home(){
         <br><br>';
     $Section1ContentContainer = container_builder($Section1Content);
     $Section1 = section_builder($Section1ContentContainer, '', 'no-pad-bot');
-    $Parallax1Content = '';
+    $Parallax1Content = '<img src="/media/background1.jpg" alt="Unsplashed background img 1">';
     $Parallax1 = parallax_content_builder($Parallax1Content);
 
     $HTML = parallax_container(($Section1.$Parallax1));
