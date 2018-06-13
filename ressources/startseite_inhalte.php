@@ -23,7 +23,7 @@ function startseite_inhalt_home(){
 
       </div>
     </div>';
-    $Parallax1Content = '<img src="background1.jpg" alt="Unsplashed background img 1">';
+    $Parallax1Content = '<img src="/media/background1.jpg" alt="Unsplashed background img 1">';
     $Parallax1 = parallax_content_builder($Parallax1Content);
     $HTML = parallax_container(($ParallaxText1Content.$Parallax1));
 
