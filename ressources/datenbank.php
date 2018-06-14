@@ -10,7 +10,7 @@ function connect_db(){
 
     $host = 'localhost';
     $user = 'stochern';
-    $pswd = '787l~Uth';
+    $pswd = 'o9X1ha#6';
     $name = 'stocherkahnmanager_3-0';
 
     $sql = new mysqli($host,$user,$pswd,$name);
