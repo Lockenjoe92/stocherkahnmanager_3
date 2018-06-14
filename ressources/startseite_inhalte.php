@@ -19,6 +19,7 @@ function startseite_inhalt_home(){
 
     #Iteriere über die Seiteninhalte
     if($Anzahl == 0){
+        echo $Anzahl;
         $HTML .= 'Bitte Seiteninhalt hinzuf&uuml;gen!';
     } elseif($Anzahl > 0) {
         $i = 1;
