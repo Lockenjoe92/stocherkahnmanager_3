@@ -16,10 +16,10 @@ function startseite_inhalt_home(){
     $HTML .= $Anfrage;
     $Abfrage = mysqli_query($link, $Anfrage);
     $Anzahl = mysqli_num_rows($Abfrage);
+    echo $Abfrage->num_rows;
 
     #Iteriere über die Seiteninhalte
     if($Anzahl == 0){
-        $HTML .= strval($Anzahl);
         $HTML .= 'Bitte Seiteninhalt hinzuf&uuml;gen!';
     } elseif($Anzahl > 0) {
         $i = 1;
