@@ -14,6 +14,12 @@ function connect_db(){
     $name = 'stocherkahnmanager_3-0';
 
     $link = mysqli_connect($host, $user, $pswd, $name);
+
+    if ($link->connect_errno) {
+        echo("Connect failed: %s\n", $link->connect_error);
+        exit();
+    }
+
     return $link;
 
 }
