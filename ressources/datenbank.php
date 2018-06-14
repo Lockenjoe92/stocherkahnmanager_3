@@ -13,13 +13,15 @@ function connect_db(){
     $pswd = '7**22dZ9uj';
     $name = 'stocherkahnmanager_3-0';
 
-    $link = mysqli_connect($host, $user, $pswd, $name);
+    $sql = new mysqli($host,$user,$pswd,$name);
 
-    if ($link->connect_errno) {
-        echo "Connect failed: ".$link->connect_error."";
+    /* check for an error code */
+    if ( mysqli_connect_errno() ) {
+        /* oh no! there was an error code, what's the problem?! */
+        echo 'There was an error with your connection: '.mysqli_connect_error();
     }
 
-    return $link;
+    return $sql;
 
 }
 
