@@ -8,6 +8,7 @@
 
 include_once "./ressources/ressourcen.php";
 
+echo "debugging";
 connect_db();
 
 ?>
