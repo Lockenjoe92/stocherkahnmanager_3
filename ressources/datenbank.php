@@ -10,7 +10,7 @@ function connect_db(){
 
     $host = '10.35.249.162:3306';
     $user = 'stochertool';
-    $pswd = '7*X81otp';
+    $pswd = '7**22dZ9uj';
     $name = 'stocherkahnmanager_3-0';
 
     $link = mysqli_connect($host, $user, $pswd, $name);
