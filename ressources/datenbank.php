@@ -9,8 +9,8 @@
 function connect_db(){
 
     $host = '10.35.249.162';
-    $user = 'stochertool';
-    $pswd = '7**22dZ9uj';
+    $user = 'stochern';
+    $pswd = '787l~Uth';
     $name = 'stocherkahnmanager_3-0';
 
     $sql = new mysqli($host,$user,$pswd,$name);
