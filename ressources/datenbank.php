@@ -17,7 +17,6 @@ function connect_db(){
 
     if ($link->connect_errno) {
         echo("Connect failed: %s\n", $link->connect_error);
-        exit();
     }
 
     return $link;
