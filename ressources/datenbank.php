@@ -8,7 +8,7 @@
 
 function connect_db(){
 
-    $host = '10.35.249.162';
+    $host = '10.35.249.163';
     $user = 'stochern';
     $pswd = '787l~Uth';
     $name = 'stocherkahnmanager_3-0';
