@@ -16,7 +16,7 @@ function connect_db(){
     $link = mysqli_connect($host, $user, $pswd, $name);
 
     if ($link->connect_errno) {
-        echo("Connect failed: %s\n", $link->connect_error);
+        echo("Connect failed: ".$link->connect_error."");
     }
 
     return $link;
