@@ -13,13 +13,13 @@ function startseite_inhalt_home(){
 
     #Lade alle Websiteteile
     $Anfrage = "SELECT * FROM homepage_bausteine WHERE ort = 'index_home' AND storno_user = '0' ORDER BY rang ASC";
-    echo $Anfrage;
+    $HTML .= $Anfrage;
     $Abfrage = mysqli_query($link, $Anfrage);
     $Anzahl = mysqli_num_rows($Abfrage);
 
     #Iteriere über die Seiteninhalte
     if($Anzahl == 0){
-        echo $Anzahl;
+        $HTML .= $Anzahl;
         $HTML .= 'Bitte Seiteninhalt hinzuf&uuml;gen!';
     } elseif($Anzahl > 0) {
         $i = 1;
