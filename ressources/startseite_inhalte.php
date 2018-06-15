@@ -64,10 +64,10 @@ function parallax_mit_text_generieren($BausteinID){
         $Ergebnis = mysqli_fetch_assoc($Abfrage);
 
         # Content generieren
-        $Ueberschrift = '<br><br><h1 class="header center teal-text text-lighten-2">' . htmlentities($Ergebnis['ueberschrift'],'', "UTF-8") . '</h1>';
+        $Ueberschrift = '<br><br><h1 class="header center teal-text text-lighten-2">' . htmlentities($Ergebnis['ueberschrift'],ENT_QUOTES | ENT_IGNORE, "UTF-8") . '</h1>';
 
         if ($Ergebnis['zweite_ueberschrift'] != '') {
-            $Ueberschrift2 = '<div class="row center"><h5 class="header col s12 light">' . htmlentities($Ergebnis['zweite_ueberschrift'], '', "UTF-8") . '</h5></div>';
+            $Ueberschrift2 = '<div class="row center"><h5 class="header col s12 light">' . htmlentities($Ergebnis['zweite_ueberschrift'], ENT_QUOTES | ENT_IGNORE, "UTF-8") . '</h5></div>';
         } else {
             $Ueberschrift2 = '';
         }
