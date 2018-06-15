@@ -11,3 +11,5 @@ include_once "startseite_inhalte.php";
 include_once "bausteine.php";
 include_once "datenbank.php";
 include_once "einstellungen.php";
+include_once "timestamp.php";
+include_once "user.php";

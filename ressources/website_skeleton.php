@@ -6,7 +6,12 @@
  * Time: 20:27
  */
 
-function site_header($PageTitle){
+function site_header($PageTitle, $LoginCheckActive=Null){
+
+    #Redirect wenn Login erforderlich und login nicht erfolgt
+    if($LoginCheckActive == True){
+        return null;
+    }
 
     #Initialize HTML
     $HTML = '<!DOCTYPE html>';

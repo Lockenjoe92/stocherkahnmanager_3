@@ -127,3 +127,59 @@ function row_container_generieren($BausteinID){
     return $Content;
 
 }
+
+function startseitenelement_anlegen($Ort, $Typ, $Name){
+
+    $link = connect_db();
+    $errorcount = 0;
+    $errorstr = '';
+
+    #DAU-Check
+    if($Ort = ''){
+        $errorcount++;
+        $errorstr .= 'Kein Ort f&uuml;r das Object angegeben!<br>';
+    } elseif ($Typ = ''){
+        $errorcount++;
+        $errorstr .= 'Kein Typ f&uuml;r das Object angegeben!<br>';
+    } elseif ($Name = ''){
+        $errorcount++;
+        $errorstr .= 'Kein Name f&uuml;r das Object angegeben!<br>';
+    }
+    # Check ob Objekt mit gleichem Namen schon existiert
+    if($errorcount == 0){
+        $Anfrage = 'SELECT id FROM homepage_bausteine WHERE name = "'.$Name.'" AND ort = "'.$Ort.'" AND storno_user = "0"';
+        $Abfrage = mysqli_query($link, $Anfrage);
+        $Anzahl = mysqli_num_rows($Abfrage);
+        if($Anzahl>0){
+            $errorcount++;
+            $errorstr .= 'Ein Object mit dem gleichen Namen existiert bereits auf dieser Seite!<br>';
+        }
+    }
+
+    #Catch Errors
+    if($errorcount>0){
+        $Antwort['erfolg'] = false;
+        $Antwort['meldung'] = $errorstr;
+    } else {
+
+        #Anzahl Objekte vorher bestimmen
+        $Anfrage2 = "SELECT id FROM homepage_bausteine WHERE ort = '".$Ort."' AND storno_user = '0'";
+        $Abfrage2 = mysqli_query($link, $Anfrage2);
+        $AnzahlBisherigerObjekte = mysqli_num_rows($Abfrage2);
+
+        #Eintragen
+        $Rang = $AnzahlBisherigerObjekte + 1;
+        $Anfrage3 = "INSERT INTO homepage_bausteine (ort, typ, rang, name, angelegt_am, angelegt_von, storno_user, storno_time) VALUES ('".$Ort."', '".$Typ."', '".$Rang."', '".$Name."', '".timestamp()."', '".lade_user_id()."', '0', '0000-00-00 00:00:00')";
+        $Abfrage3 = mysqli_query($link, $Anfrage3);
+
+        #Überprüfen ob es geklappt hat
+        if($Abfrage3){
+            $Antwort['erfolg'] = true;
+        } else {
+            $Antwort['erfolg'] = false;
+            $Antwort['meldung'] = 'Fehler beim Eintragen des Bausteins:/';
+        }
+    }
+
+    return $Antwort;
+}
