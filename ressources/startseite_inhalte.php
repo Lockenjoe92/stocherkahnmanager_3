@@ -138,10 +138,12 @@ function startseitenelement_anlegen($Ort, $Typ, $Name){
     if(empty($Ort)){
         $errorcount++;
         $errorstr .= 'Kein Ort f&uuml;r das Object angegeben!<br>';
-    } elseif (empty($Typ)){
+    }
+    if (empty($Typ)){
         $errorcount++;
         $errorstr .= 'Kein Typ f&uuml;r das Object angegeben!<br>';
-    } elseif (empty($Name)){
+    }
+    if (empty($Name)){
         $errorcount++;
         $errorstr .= 'Kein Name f&uuml;r das Object angegeben!<br>';
     }
