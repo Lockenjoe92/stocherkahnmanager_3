@@ -135,13 +135,13 @@ function startseitenelement_anlegen($Ort, $Typ, $Name){
     $errorstr = '';
 
     #DAU-Check
-    if(!isset($Ort)){
+    if(empty($Ort)){
         $errorcount++;
         $errorstr .= 'Kein Ort f&uuml;r das Object angegeben!<br>';
-    } elseif (!isset($Typ)){
+    } elseif (empty($Typ)){
         $errorcount++;
         $errorstr .= 'Kein Typ f&uuml;r das Object angegeben!<br>';
-    } elseif (!isset($Name)){
+    } elseif (empty($Name)){
         $errorcount++;
         $errorstr .= 'Kein Name f&uuml;r das Object angegeben!<br>';
     }
