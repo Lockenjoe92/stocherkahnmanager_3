@@ -10,3 +10,4 @@ include_once "website_skeleton.php";              //Enthält alle funktionen, di
 include_once "startseite_inhalte.php";
 include_once "bausteine.php";
 include_once "datenbank.php";
+include_once "einstellungen.php";

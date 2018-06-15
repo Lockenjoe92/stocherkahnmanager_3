@@ -8,10 +8,10 @@
 
 function connect_db(){
 
-    $host = '10.35.249.162';
-    $user = 'stochertool';
-    $pswd = '$2T1uky8';
-    $name = 'stocherkahnmanager_3-0';
+    $host = lade_xml_einstellung('db_host', 'local');
+    $user = lade_xml_einstellung('db_user', 'local');
+    $pswd = lade_xml_einstellung('db_pswd', 'local');
+    $name = lade_xml_einstellung('db_dbname', 'local');
 
     $sql = new mysqli($host,$user,$pswd,$name);
 
