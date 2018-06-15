@@ -64,16 +64,16 @@ function parallax_mit_text_generieren($BausteinID){
         $Ergebnis = mysqli_fetch_assoc($Abfrage);
 
         # Content generieren
-        $Ueberschrift = '<br><br><h1 class="header center teal-text text-lighten-2">' . html_entity_decode($Ergebnis['ueberschrift']) . '</h1>';
+        $Ueberschrift = '<br><br><h1 class="header center teal-text text-lighten-2">' . htmlspecialchars($Ergebnis['ueberschrift']) . '</h1>';
 
         if ($Ergebnis['zweite_ueberschrift'] != '') {
-            $Ueberschrift2 = '<div class="row center"><h5 class="header col s12 light">' . html_entity_decode($Ergebnis['zweite_ueberschrift']) . '</h5></div>';
+            $Ueberschrift2 = '<div class="row center"><h5 class="header col s12 light">' . htmlspecialchars($Ergebnis['zweite_ueberschrift']) . '</h5></div>';
         } else {
             $Ueberschrift2 = '';
         }
 
         if ($Ergebnis['html_content'] != '') {
-            $HTML = '<div class="row center">' . html_entity_decode($Ergebnis['html_content']) . '</div><br><br>';
+            $HTML = '<div class="row center">' . htmlspecialchars($Ergebnis['html_content']) . '</div><br><br>';
         } else {
             $HTML = '';
         }
@@ -114,7 +114,7 @@ function row_container_generieren($BausteinID){
 
             # Daten laden
             $Ergebnis = mysqli_fetch_assoc($Abfrage);
-            $RowContent .= '<div class="col s12 m'.$BreiteRowTeile.'"><div class="icon-block"><h2 class="center brown-text"><i class="material-icons">'.$Ergebnis['icon'].'</i></h2><h5 class="center">'.html_entity_decode($Ergebnis['ueberschrift']).'</h5>'.html_entity_decode($Ergebnis['html_content']).'</div></div>';
+            $RowContent .= '<div class="col s12 m'.$BreiteRowTeile.'"><div class="icon-block"><h2 class="center brown-text"><i class="material-icons">'.$Ergebnis['icon'].'</i></h2><h5 class="center">'.htmlspecialchars($Ergebnis['ueberschrift']).'</h5>'.htmlspecialchars($Ergebnis['html_content']).'</div></div>';
             $a++;
         }
         $RowContent .= '</div>';
