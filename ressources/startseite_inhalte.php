@@ -38,7 +38,7 @@ function generiere_startseite_content($Baustein){
 
     #Unterscheidung je nach Typ:
     if($Baustein['typ'] == 'parallax_mit_text'){
-        $HTML .= parralax_mit_text_generieren($Baustein['id']);
+        $HTML .= parallax_mit_text_generieren($Baustein['id']);
     } elseif($Baustein['typ'] == 'row_container'){
         $HTML .= row_container_generieren($Baustein['id']);
     }
@@ -46,7 +46,7 @@ function generiere_startseite_content($Baustein){
     return $HTML;
 }
 
-function parralax_mit_text_generieren($BausteinID){
+function parallax_mit_text_generieren($BausteinID){
 
     $link = connect_db();
 
