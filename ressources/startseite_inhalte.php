@@ -150,7 +150,6 @@ function startseitenelement_anlegen($Ort, $Typ, $Name){
     # Check ob Objekt mit gleichem Namen schon existiert
     if($errorcount == 0){
         $Anfrage = 'SELECT id FROM homepage_bausteine WHERE name = "'.$Name.'" AND ort = "'.$Ort.'" AND storno_user = "0"';
-        echo $Anfrage;
         $Abfrage = mysqli_query($link, $Anfrage);
         $Anzahl = mysqli_num_rows($Abfrage);
         if($Anzahl>0){
@@ -185,4 +184,73 @@ function startseitenelement_anlegen($Ort, $Typ, $Name){
     }
 
     return $Antwort;
+}
+
+function startseiteninhalt_einfuegen($IDbaustein, $titel, $titel2, $html, $uri_bild, $icon){
+
+    $link = connect_db();
+    $errorcount = 0;
+    $errorstr = '';
+
+    #DAU-Check
+    if(empty($IDbaustein)){
+        $errorcount++;
+        $errorstr .= 'Kein Seitenelement angegeben!<br>';
+    }
+
+    # Check ob noch Platz für weiteres Objekt ist
+    if($errorcount == 0){
+
+        #Lade Informationen zum Baustein
+        $Baustein = lade_seitenelement($IDbaustein);
+
+        #Lade bisherige Inhalte
+        $Anfrage = 'SELECT id FROM homepage_content WHERE id_baustein = "'.$IDbaustein.'" AND storno_user = "0"';
+        $Abfrage = mysqli_query($link, $Anfrage);
+        $Anzahl = mysqli_num_rows($Abfrage);
+
+        if($Baustein['typ'] == 'row_container'){
+            if($Anzahl>=lade_xml_einstellung('max_items_row_container', 'global')){
+                $errorcount++;
+                $errorstr .= 'Du kannst in diesem Element keine weiteren Inhalte hinzuf&uuml;gen!<br>';
+            }
+        }
+
+        if($Baustein['typ'] == 'parallax_mit_text'){
+            if($Anzahl>=1){
+                $errorcount++;
+                $errorstr .= 'Du kannst diesem Element keine weiteren Inhalte hinzuf&uuml;gen!<br>';
+            }
+        }
+
+        if($Baustein['typ'] == 'parallax_ohne_text'){
+            if($Anzahl>=1){
+                $errorcount++;
+                $errorstr .= 'Du kannst diesem Element keine weiteren Inhalte hinzuf&uuml;gen!<br>';
+            }
+        }
+
+    }
+
+    #Catch Errors
+    if($errorcount>0){
+        $Antwort['erfolg'] = false;
+        $Antwort['meldung'] = $errorstr;
+    } else {
+        #Eintragen
+        $Rang = $Anzahl + 1;
+        $Anfrage2 = "INSERT INTO homepage_content (id_baustein, rang, ueberschrift, zweite_ueberschrift, html_content, uri_bild, icon, angelegt_am, angelegt_von, storno_user, storno_time) VALUES ('".$IDbaustein."', '".$Rang."', '".utf8_encode($titel)."', '".utf8_encode($titel2)."', '".utf8_encode($html)."', '".$uri_bild."', '".$icon."', '".timestamp()."', '".lade_user_id()."', '0', '0000-00-00 00:00:00')";
+        $Abfrage2 = mysqli_query($link, $Anfrage2);
+
+        #Überprüfen ob es geklappt hat
+        if($Abfrage2){
+            $Antwort['erfolg'] = true;
+        } else {
+            $Antwort['erfolg'] = false;
+            $Antwort['meldung'] = 'Fehler beim Eintragen des Inhalts:/';
+        }
+    }
+
+    return $Antwort;
+
 }
