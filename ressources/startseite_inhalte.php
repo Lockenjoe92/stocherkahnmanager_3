@@ -239,7 +239,7 @@ function startseiteninhalt_einfuegen($IDbaustein, $titel, $titel2, $html, $uri_b
     } else {
         #Eintragen
         $Rang = $Anzahl + 1;
-        $Anfrage2 = "INSERT INTO homepage_content (id_baustein, rang, ueberschrift, zweite_ueberschrift, html_content, uri_bild, icon, angelegt_am, angelegt_von, storno_user, storno_time) VALUES ('".$IDbaustein."', '".$Rang."', '".utf8_encode($titel)."', '".utf8_encode($titel2)."', '".utf8_encode($html)."', '".$uri_bild."', '".$icon."', '".timestamp()."', '".lade_user_id()."', '0', '0000-00-00 00:00:00')";
+        $Anfrage2 = "INSERT INTO homepage_content (id_baustein, rang, ueberschrift, zweite_ueberschrift, html_content, uri_bild, icon, angelegt_am, angelegt_von, storno_user, storno_time) VALUES ('".$IDbaustein."', '".$Rang."', '".htmlentities($titel)."', '".htmlentities($titel2)."', '".htmlentities($html)."', '".$uri_bild."', '".$icon."', '".timestamp()."', '".lade_user_id()."', '0', '0000-00-00 00:00:00')";
         $Abfrage2 = mysqli_query($link, $Anfrage2);
 
         #Überprüfen ob es geklappt hat
