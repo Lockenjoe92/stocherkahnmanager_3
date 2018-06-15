@@ -13,10 +13,8 @@ function startseite_inhalt_home(){
 
     #Lade alle Websiteteile
     $Anfrage = "SELECT * FROM homepage_bausteine WHERE ort = 'index_home' AND storno_user = '0' ORDER BY rang ASC";
-    $HTML .= $Anfrage;
     $Abfrage = mysqli_query($link, $Anfrage);
     $Anzahl = mysqli_num_rows($Abfrage);
-    echo $Abfrage->num_rows;
 
     #Iteriere über die Seiteninhalte
     if($Anzahl == 0){
