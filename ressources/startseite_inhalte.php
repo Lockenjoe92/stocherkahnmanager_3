@@ -67,13 +67,13 @@ function parallax_mit_text_generieren($BausteinID){
         $Ueberschrift = '<br><br><h1 class="header center teal-text text-lighten-2">' . htmlentities($Ergebnis['ueberschrift'],'', "UTF-8") . '</h1>';
 
         if ($Ergebnis['zweite_ueberschrift'] != '') {
-            $Ueberschrift2 = '<div class="row center"><h5 class="header col s12 light">' . htmlentities($Ergebnis['zweite_ueberschrift'], '', "UTF-8"); . '</h5></div>';
+            $Ueberschrift2 = '<div class="row center"><h5 class="header col s12 light">' . htmlentities($Ergebnis['zweite_ueberschrift'], '', "UTF-8") . '</h5></div>';
         } else {
             $Ueberschrift2 = '';
         }
 
         if ($Ergebnis['html_content'] != '') {
-            $HTML = '<div class="row center">' . htmlentities($Ergebnis['html_content'], '', "UTF-8") . '</div><br><br>';
+            $HTML = '<div class="row center">' . htmlentities($Ergebnis['html_content']) . '</div><br><br>';
         } else {
             $HTML = '';
         }
