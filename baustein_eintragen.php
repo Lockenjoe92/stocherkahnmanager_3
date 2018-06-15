@@ -30,7 +30,11 @@ echo "<input name='action' type='submit'>";
 echo "</form>";
 
 function website_baustein_eintragen_parser($Post){
-    $Action = startseitenelement_anlegen($Post['ort'], $Post['typ'], $Post['name']);
+    if(isset($Post['action'])){
+        $Action = startseitenelement_anlegen($Post['ort'], $Post['typ'], $Post['name']);
+    } else {
+        $Action['erfolg'] = null;
+    }
     return $Action;
 }
 
