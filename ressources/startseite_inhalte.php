@@ -135,19 +135,20 @@ function startseitenelement_anlegen($Ort, $Typ, $Name){
     $errorstr = '';
 
     #DAU-Check
-    if($Ort = ''){
+    if(!isset($Ort)){
         $errorcount++;
         $errorstr .= 'Kein Ort f&uuml;r das Object angegeben!<br>';
-    } elseif ($Typ = ''){
+    } elseif (!isset($Typ)){
         $errorcount++;
         $errorstr .= 'Kein Typ f&uuml;r das Object angegeben!<br>';
-    } elseif ($Name = ''){
+    } elseif (!isset($Name)){
         $errorcount++;
         $errorstr .= 'Kein Name f&uuml;r das Object angegeben!<br>';
     }
     # Check ob Objekt mit gleichem Namen schon existiert
     if($errorcount == 0){
         $Anfrage = 'SELECT id FROM homepage_bausteine WHERE name = "'.$Name.'" AND ort = "'.$Ort.'" AND storno_user = "0"';
+        echo $Anfrage;
         $Abfrage = mysqli_query($link, $Anfrage);
         $Anzahl = mysqli_num_rows($Abfrage);
         if($Anzahl>0){
