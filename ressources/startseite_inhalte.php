@@ -73,7 +73,7 @@ function parallax_mit_text_generieren($BausteinID){
         }
 
         if ($Ergebnis['html_content'] != '') {
-            $HTML = '<div class="row center">' . htmlentities($Ergebnis['html_content']) . '</div><br><br>';
+            $HTML = '<div class="row center">' . htmlentities($Ergebnis['html_content'], ENT_QUOTES | ENT_IGNORE, "UTF-8") . '</div><br><br>';
         } else {
             $HTML = '';
         }
@@ -114,7 +114,7 @@ function row_container_generieren($BausteinID){
 
             # Daten laden
             $Ergebnis = mysqli_fetch_assoc($Abfrage);
-            $RowContent .= '<div class="col s12 m'.$BreiteRowTeile.'"><div class="icon-block"><h2 class="center brown-text"><i class="material-icons">'.$Ergebnis['icon'].'</i></h2><h5 class="center">'.htmlspecialchars($Ergebnis['ueberschrift']).'</h5>'.htmlspecialchars($Ergebnis['html_content']).'</div></div>';
+            $RowContent .= '<div class="col s12 m'.$BreiteRowTeile.'"><div class="icon-block"><h2 class="center brown-text"><i class="material-icons">'.$Ergebnis['icon'].'</i></h2><h5 class="center">'.htmlentities($Ergebnis['ueberschrift'], ENT_QUOTES | ENT_IGNORE, "UTF-8").'</h5>'.htmlentities($Ergebnis['html_content'], ENT_QUOTES | ENT_IGNORE, "UTF-8").'</div></div>';
             $a++;
         }
         $RowContent .= '</div>';
