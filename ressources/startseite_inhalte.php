@@ -254,3 +254,15 @@ function startseiteninhalt_einfuegen($IDbaustein, $titel, $titel2, $html, $uri_b
     return $Antwort;
 
 }
+
+function lade_seitenelement($ID){
+
+    $link = connect_db();
+
+    $Anfrage = "SELECT * FROM homepage_bausteine WHERE id = '".$ID."'";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Ergebnis = mysqli_fetch_assoc($Abfrage);
+
+    return $Ergebnis;
+
+}

@@ -46,6 +46,7 @@ function website_baustein_eintragen_parser($Post){
     if(isset($Post['action_baustein'])){
         $Action = startseitenelement_anlegen($Post['ort'], $Post['typ'], $Post['name']);
     } elseif(isset($Post['action_inhalt'])) {
+        echo "Inhalt";
         $Action = startseiteninhalt_einfuegen($Post['id_baustein'], $Post['titel'], $Post['titel2'], $Post['html'], $Post['uri_bild'], $Post['icon']);
     } else {
         $Action['erfolg'] = null;
