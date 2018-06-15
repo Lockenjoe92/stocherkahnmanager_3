@@ -114,7 +114,6 @@ function row_container_generieren($BausteinID){
 
             # Daten laden
             $Ergebnis = mysqli_fetch_assoc($Abfrage);
-            echo htmlentities($Ergebnis['html_content']);
             $RowContent .= '<div class="col s12 m'.$BreiteRowTeile.'"><div class="icon-block"><h2 class="center brown-text"><i class="material-icons">'.$Ergebnis['icon'].'</i></h2><h5 class="center">'.htmlentities($Ergebnis['ueberschrift'], ENT_QUOTES | ENT_IGNORE, "UTF-8").'</h5>'.htmlentities($Ergebnis['html_content'], ENT_QUOTES | ENT_IGNORE, "UTF-8").'</div></div>';
             $a++;
         }
