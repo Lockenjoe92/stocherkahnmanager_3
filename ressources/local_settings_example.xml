@@ -7,4 +7,7 @@
     <db_pswd>pswd</db_pswd>
     <db_dbname>database</db_dbname>
 
+    <!--- GENERAL -->
+    <site_name>Stocherkahn Medizin Tübingen e.V.</site_name>
+
 </local_settings>
