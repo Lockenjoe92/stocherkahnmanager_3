@@ -11,9 +11,10 @@ include_once "./ressources/ressourcen.php";
 
 # Generate Content
 $HTML = startseite_inhalt_home();
+$Header = "Home - " . lade_xml_einstellung('site_name', 'local');
 
 # Output site
-echo site_header('Stocherkahn Medizin Tübingen e.V.');
+echo site_header($Header);
 echo site_body($HTML);
 
 ?>
