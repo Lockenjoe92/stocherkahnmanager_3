@@ -196,7 +196,7 @@ function navbar_links_big(){
     $HTML .= '<ul class="right hide-on-med-and-down">';
     $HTML .= '<li><a href="#">Kahnverleih</a></li>';
     $HTML .= '<li><a href="#">Verein</a></li>';
-    $HTML .= '<li><a href="#">Login</a></li>';
+    $HTML .= '<li><a href="./login.php">Login</a></li>';
     $HTML .= '</ul>';
 
     return $HTML;
@@ -207,7 +207,7 @@ function navbar_links_mobile(){
     $HTML = '<ul id="nav-mobile" class="sidenav">';
     $HTML .= '<li><a href="#">Kahnverleih</a></li>';
     $HTML .= '<li><a href="#">Verein</a></li>';
-    $HTML .= '<li><a href="#">Login</a></li>';
+    $HTML .= '<li><a href="./login.php">Login</a></li>';
     $HTML .= '</ul>';
     $HTML .= '<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>';
 
