@@ -16,6 +16,5 @@ $HTML = "Test";
 # Output site
 echo site_header($Header);
 echo site_body($HTML);
-echo site_footer();
 
 ?>
