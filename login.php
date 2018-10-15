@@ -11,7 +11,7 @@ include_once "./ressources/ressourcen.php";
 
 #Generate Content
 $Header = "Login - " . lade_xml_einstellung('site_name', 'local');
-$HTML = "Test";
+$HTML = login_formular();
 
 # Output site
 echo site_header($Header);
