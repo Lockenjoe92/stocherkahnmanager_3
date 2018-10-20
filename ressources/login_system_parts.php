@@ -31,6 +31,7 @@ function login_formular($Parser){
     $HTML .= "</div>";
 
     if(isset($Parser['meldung'])){
+        echo "yeah";
         $HTML .= $Parser['meldung'];
     }
 
