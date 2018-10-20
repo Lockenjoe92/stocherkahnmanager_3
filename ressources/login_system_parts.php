@@ -69,9 +69,18 @@ function login_parser(){
         } else {
 
             $link = connect_db();
-            $stmt = $link->prepare("SELECT id, secret FROM users WHERE mail = '?'");
-            $stmt->bind_param("mail",$_POST['pass']);
-            $stmt->execute();
+            if (!($stmt = $link->prepare("SELECT id, secret FROM users WHERE mail = '?'"))) {
+                echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+            }
+
+            if (!$stmt->bind_param("mail",$_POST['pass'])) {
+                echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+            }
+
+            if (!$stmt->execute()) {
+                echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            }
+
             $res = $stmt->get_result();
             $num_user = mysqli_num_rows($res);
 
