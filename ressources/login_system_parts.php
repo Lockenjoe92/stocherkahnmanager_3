@@ -46,12 +46,12 @@ function login_parser(){
         $DAUcounter = 0;
         $DAUerror = "";
 
-        if(!isset($_POST['mail'])){
+        if(empty($_POST['mail'])){
             $DAUcounter ++;
             $DAUerror .= "Du musst eine eMail-Adresse eingeben!<br>";
         }
 
-        if(!isset($_POST['mail'])){
+        if(empty($_POST['mail'])){
             $DAUcounter ++;
             $DAUerror .= "Du musst dein Passwort eingeben!<br>";
         }
