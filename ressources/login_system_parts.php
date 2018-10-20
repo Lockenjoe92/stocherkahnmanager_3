@@ -65,8 +65,33 @@ function login_parser(){
             $Antwort['meldung'] = $DAUerror;
             $Antwort['mail'] = $_POST['mail'];
             return $Antwort;
+
         } else {
-            return $Antwort['meldung'] = "all clear!!";
+
+            $link = connect_db();
+            $stmt = $link->prepare("SELECT id, secret FROM users WHERE mail = '?'");
+            $stmt->bind_param("mail",$_POST['pass']);
+            $stmt->execute();
+            $res = $stmt->get_result();
+            $num_user = mysqli_num_rows($res);
+
+            if ($num_user != 1){
+                $Antwort['meldung'] = "Userkonto existiert nicht!";
+            } else {
+
+                $Vals = $res->fetch_assoc();
+                $StoredSecret = $Vals['secret'];
+
+                if (password_verify($_POST['pass'], $StoredSecret)){
+                    $Antwort['meldung'] = "Einloggen erfolgreich!!";
+                } else {
+                    $Antwort['meldung'] = "Passwort ung&uuml;ltig!";
+                }
+
+            }
+
+
+            return $Antwort;
         }
 
     } else {
