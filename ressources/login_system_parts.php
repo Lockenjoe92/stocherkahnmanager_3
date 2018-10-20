@@ -59,6 +59,8 @@ function login_parser(){
             $Antwort['meldung'] = $DAUerror;
             $Antwort['mail'] = $_POST['mail'];
             return $Antwort;
+        } else {
+            return $Antwort['meldung'] = "all clear!!";
         }
 
     } else {
