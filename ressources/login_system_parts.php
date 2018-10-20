@@ -33,4 +33,13 @@ function login_formular(){
     return $HTML;
 }
 
+function login_parser(){
+
+    if(isset($_POST['submit'])){
+        echo "Button clicked";
+    }
+
+    return null;
+}
+
 ?>
