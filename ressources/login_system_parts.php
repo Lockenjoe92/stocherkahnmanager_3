@@ -48,6 +48,12 @@ function login_parser(){
         if(empty($_POST['mail'])){
             $DAUcounter ++;
             $DAUerror .= "Du musst eine eMail-Adresse eingeben!<br>";
+        } else {
+
+             if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+                 $DAUcounter ++;
+                 $DAUerror .= "Du musst eine echte eMail-Adresse eingeben!<br>";
+             }
         }
 
         if(empty($_POST['pass'])){
@@ -58,10 +64,8 @@ function login_parser(){
         if ($DAUcounter > 0){
             $Antwort['meldung'] = $DAUerror;
             $Antwort['mail'] = $_POST['mail'];
-            echo "nay";
             return $Antwort;
         } else {
-            echo "yo";
             return $Antwort['meldung'] = "all clear!!";
         }
 
