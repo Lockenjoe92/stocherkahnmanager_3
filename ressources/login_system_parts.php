@@ -1,6 +1,6 @@
 <?php
 
-function login_formular(){
+function login_formular($Parser){
 
     $HTML = "<div class='container'>";
     $HTML .= "<div class='row center'>";
@@ -8,7 +8,7 @@ function login_formular(){
 
     $HTML .= "<div class='row'>";
     $HTML .= "<div class='input-field col s6'>";
-    $HTML .= "<input id='login_mail' type='email' name='mail'>";
+    $HTML .= "<input id='login_mail' type='email' name='mail' value='".$Parser['mail']."'>";
     $HTML .= "<label for='login_mail'>Mail</label>";
     $HTML .= "</div>";
     $HTML .= "</div>";
@@ -30,17 +30,40 @@ function login_formular(){
     $HTML .= "</div>";
     $HTML .= "</div>";
 
+    if(isset($Parser['meldung'])){
+        $HTML .= $Parser['meldung'];
+    }
+
     return $HTML;
 }
 
 function login_parser(){
 
     if(isset($_POST['submit'])){
-        echo $_POST['mail'];
-        echo $_POST['pass'];
-    }
 
-    return null;
+        ## DAU CHECKS BEFORE LOGIN ATTEMPT ##
+        $DAUcounter = 0;
+        $DAUerror = "";
+
+        if(!isset($_POST['mail'])){
+            $DAUcounter ++;
+            $DAUerror .= "Du musst eine eMail-Adresse eingeben!<br>";
+        }
+
+        if(!isset($_POST['mail'])){
+            $DAUcounter ++;
+            $DAUerror .= "Du musst dein Passwort eingeben!<br>";
+        }
+
+        if ($DAUcounter > 0){
+            $Antwort['meldung'] = $DAUerror;
+            $Antwort['mail'] = $_POST['mail'];
+            return $Antwort;
+        }
+
+    } else {
+        return null;
+    }
 }
 
 ?>
