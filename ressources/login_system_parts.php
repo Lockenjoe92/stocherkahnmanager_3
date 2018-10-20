@@ -2,7 +2,8 @@
 
 function login_formular(){
 
-    $HTML = "<div class='row center'>";
+    $HTML = "<div class='container'>";
+    $HTML .= "<div class='row center'>";
     $HTML .= "<form action='#' method='post' class='col s12'>";
 
     $HTML .= "<div class='row'>";
@@ -26,6 +27,7 @@ function login_formular(){
     $HTML .= "</div>";
 
     $HTML .= "</form>";
+    $HTML .= "</div>";
     $HTML .= "</div>";
 
     return $HTML;
