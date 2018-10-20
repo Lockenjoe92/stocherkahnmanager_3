@@ -69,7 +69,7 @@ function login_parser(){
         } else {
 
             $link = connect_db();
-            if (!($stmt = $link->prepare("SELECT id, secret FROM users WHERE mail = '?'"))) {
+            if (!($stmt = $link->prepare("SELECT id, secret FROM users WHERE mail = 'mail'"))) {
                 echo "Prepare failed: (" . $link->errno . ") " . $link->error;
             }
 
