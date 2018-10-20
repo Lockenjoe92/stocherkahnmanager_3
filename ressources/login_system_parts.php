@@ -73,7 +73,7 @@ function login_parser(){
                 echo "Prepare failed: (" . $link->errno . ") " . $link->error;
             }
 
-            if (!$stmt->bind_param("mail",$_POST['pass'])) {
+            if (!$stmt->bind_param("s",$_POST['pass'])) {
                 echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
             }
 
