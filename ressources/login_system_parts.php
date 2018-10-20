@@ -36,7 +36,8 @@ function login_formular(){
 function login_parser(){
 
     if(isset($_POST['submit'])){
-        echo "Button clicked";
+        echo $_POST['mail'];
+        echo $_POST['pass'];
     }
 
     return null;
