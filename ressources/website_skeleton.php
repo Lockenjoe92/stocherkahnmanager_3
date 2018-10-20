@@ -192,7 +192,7 @@ function site_navbar(){
 
 function navbar_links_big(){
 
-    $HTML = '<a id="logo-container" href="#" class="brand-logo">Medizinerkahn</a>';
+    $HTML = '<a id="logo-container" href="./index.php" class="brand-logo">Medizinerkahn</a>';
     $HTML .= '<ul class="right hide-on-med-and-down">';
     $HTML .= '<li><a href="#">Kahnverleih</a></li>';
     $HTML .= '<li><a href="#">Verein</a></li>';
