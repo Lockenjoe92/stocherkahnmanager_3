@@ -20,29 +20,29 @@ function add_new_user($Vorname, $Nachname, $Strasse, $Hausnummer, $PLZ, $Stadt, 
 
     if (!($stmt = $link->prepare("INSERT INTO users VALUES (?,?)"))) {
         $Antwort['erfolg'] = false;
-        $Antwort['meldung'] = "Prepare failed: (" . $link->errno . ") " . $link->error;
+        echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
     if (!$stmt->bind_param("ss", $Mail, $PSWD_hashed)) {
         $Antwort['erfolg'] = false;
-        $Antwort['meldung'] =  "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
     if (!$stmt->execute()) {
         $Antwort['erfolg'] = false;
-        $Antwort['meldung'] =  "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 
     } else {
 
         if (!($stmt = $link->prepare("SELECT id FROM users WHERE mail = ?"))) {
             $Antwort['erfolg'] = false;
-            $Antwort['meldung'] = "Prepare failed: (" . $link->errno . ") " . $link->error;
+            echo "Prepare failed: (" . $link->errno . ") " . $link->error;
         }
         if (!$stmt->bind_param("s", $Mail)) {
             $Antwort['erfolg'] = false;
-            $Antwort['meldung'] =  "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+            echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
         }
         if (!$stmt->execute()) {
             $Antwort['erfolg'] = false;
-            $Antwort['meldung'] = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
         $res = $stmt->get_result();
@@ -75,17 +75,17 @@ function add_user_meta($UserID, $Key, $Value){
 
     if (!($stmt = $link->prepare("INSERT INTO user_meta VALUES ?,?,?,?"))) {
         $Antwort['erfolg'] = false;
-        $Antwort['meldung'] = "Prepare failed: (" . $link->errno . ") " . $link->error;
+        echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
     if (!$stmt->bind_param("isss", $UserID, $Key, $Value, timestamp())) {
         $Antwort['erfolg'] = false;
-        $Antwort['meldung'] =  "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+        echo  "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
     if (!$stmt->execute()) {
         $Antwort['erfolg'] = false;
-        $Antwort['meldung'] = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     } else {
-        $Antwort['erfolg'] = true;
+       return true;
     }
 
 }
