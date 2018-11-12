@@ -168,12 +168,12 @@ function register_parser(){
             $DAUerror .= "Gib bitte deinen Wohnort an!<br>";
         }
 
-        if(empty($_POST['mail'])){
+        if(empty($_POST['mail_'.$arg.''])){
             $DAUcounter ++;
             $DAUerror .= "Du musst eine eMail-Adresse eingeben!<br>";
         } else {
 
-            if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+            if (!filter_var($_POST['mail_'.$arg.''], FILTER_VALIDATE_EMAIL)) {
                 $DAUcounter ++;
                 $DAUerror .= "Du musst eine echte eMail-Adresse eingeben!<br>";
             } else {
