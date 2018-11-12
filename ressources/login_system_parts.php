@@ -137,7 +137,6 @@ function session_manager(){
     $Timestamp = timestamp();
 
     $User_login = $_SESSION['user_id'];
-    echo $User_login;
     $LetzterSeitenaufruf = $_SESSION['timestamp'];
     $SessionOvertime = null;
 
@@ -152,6 +151,8 @@ function session_manager(){
         if($AnzahlLoginUeberpruefen == 0){
             #Userkonto existiert nicht
             echo "No user account found!";
+            var_dump($User_login);
+            echo $AnfrageLoginUeberpruefen;
             $Ergebnis = false;
         }
 
