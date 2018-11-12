@@ -106,11 +106,8 @@ function login_parser(){
                     $_SESSION['timestamp'] = timestamp();
 
                     //Redirect
-                    #header("Location: ./hauptansicht.php");
-                    #die();
-
-                    echo "login erfolgreich!";
-                    echo $Vals['id'];
+                    header("Location: ./hauptansicht.php");
+                    die();
 
                 } else {
                     $Antwort['meldung'] = "Passwort ung&uuml;ltig!";
@@ -140,6 +137,7 @@ function session_manager(){
     $Timestamp = timestamp();
 
     $User_login = $_SESSION['user_id'];
+    echo $User_login;
     $LetzterSeitenaufruf = $_SESSION['timestamp'];
     $SessionOvertime = null;
 
