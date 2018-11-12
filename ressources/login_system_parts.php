@@ -156,7 +156,7 @@ function session_manager(){
         }
 
         //Importiere Einstellung
-        $MaxMinutes = 15;
+        $MaxMinutes = 1;
         $MinimumTimestamp = strtotime("- " .$MaxMinutes. " minutes", $Timestamp);
         $OldTimestamp = strtotime($Timestamp);
 
