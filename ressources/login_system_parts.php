@@ -152,12 +152,16 @@ function session_manager(){
             #Userkonto existiert nicht
             echo "No user account found!";
             $Ergebnis = false;
+        } else {
+            $Ergebnis = true;
         }
 
         if (strtotime($LetzterSeitenaufruf) < strtotime($Timestamp, '-15 minutes')){
             echo "Session overtime!";
             $Ergebnis = false;
             $SessionOvertime = true;
+        } else {
+            $Ergebnis = true;
         }
 
     } else {
@@ -167,7 +171,7 @@ function session_manager(){
     }
 
     //Weiterleiten an die Login-Seite bei Fehler
-    if ($Ergebnis == false){
+    if ($Ergebnis === false){
 
         //Session initiieren
         session_start();
@@ -178,8 +182,8 @@ function session_manager(){
         echo "fuckup session manager";
 
         //Redirect
-        header("Location: ./login.php");
-        die();
+        #header("Location: ./login.php");
+        #die();
 
     } else {
 
