@@ -134,6 +134,7 @@ function session_manager(){
 
     $User_login = $_SESSION['user_id'];
     $LetzterSeitenaufruf = $_SESSION['timestamp'];
+    $SessionOvertime = null;
 
     if (!empty($User_login)){
 
@@ -144,23 +145,30 @@ function session_manager(){
         $AnzahlLoginUeberpruefen = mysqli_num_rows($AbfrageLoginUeberpruefen);
 
         if($AnzahlLoginUeberpruefen == 0){
+            #Userkonto existiert nicht
             $Ergebnis = false;
+        }
+
+        if (strtotime($LetzterSeitenaufruf) < strtotime($Timestamp, '-15 minutes')){
+            $Ergebnis = false;
+            $SessionOvertime = true;
         }
 
     } else {
 
+        #Session enthält keine User-ID
         $Ergebnis = false;
     }
 
 
-    //Weiterleiten an die Login-Seite
+    //Weiterleiten an die Login-Seite bei Fehler
     if ($Ergebnis == false){
 
         //Session initiieren
         session_start();
         session_destroy();
         session_start();
-        $_SESSION['session_overtime'] = true;
+        $_SESSION['session_overtime'] = $SessionOvertime;
 
         //Redirect
         header("Location: ./login.php");
