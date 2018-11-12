@@ -18,11 +18,11 @@ function add_new_user($Vorname, $Nachname, $Strasse, $Hausnummer, $PLZ, $Stadt, 
 
     $PSWD_hashed = password_hash($PSWD, 'PASSWORD_DEFAULT');
     echo "adding user account";
-    if (!($stmt = $link->prepare("INSERT INTO users VALUES (?,?)"))) {
+    if (!($stmt = $link->prepare("INSERT INTO users VALUES (?,?,?)"))) {
         $Antwort['erfolg'] = false;
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
-    if (!$stmt->bind_param("ss", $Mail, $PSWD_hashed)) {
+    if (!$stmt->bind_param("sss", $Mail, $PSWD_hashed, timestamp())) {
         $Antwort['erfolg'] = false;
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
