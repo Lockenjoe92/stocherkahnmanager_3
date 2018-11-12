@@ -151,8 +151,6 @@ function session_manager(){
         if($AnzahlLoginUeberpruefen == 0){
             #Userkonto existiert nicht
             echo "No user account found!";
-            var_dump($User_login);
-            echo $AnfrageLoginUeberpruefen;
             $Ergebnis = false;
         }
 
@@ -166,9 +164,9 @@ function session_manager(){
 
         #Session enthält keine User-ID
         echo "No user ID in Session.";
+        var_dump($User_login);
         $Ergebnis = false;
     }
-
 
     //Weiterleiten an die Login-Seite bei Fehler
     if ($Ergebnis == false){
