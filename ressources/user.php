@@ -16,7 +16,7 @@ function add_new_user($Vorname, $Nachname, $Strasse, $Hausnummer, $PLZ, $Stadt, 
 
     $link = connect_db();
 
-    $PSWD_hashed = password_hash($PSWD, 'PASSWORD_DEFAULT');
+    $PSWD_hashed = password_hash($PSWD, PASSWORD_DEFAULT);
     if($PSWD_hashed == false){
         echo "Error with hashing";
     }
