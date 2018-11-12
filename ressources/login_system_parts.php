@@ -1,6 +1,6 @@
 <?php
 
-function login_formular($Parser){
+function login_formular($Parser, $SessionMessage){
 
     $HTML = "<div class='container'>";
     $HTML .= "<div class='row center'>";
@@ -31,7 +31,11 @@ function login_formular($Parser){
     $HTML .= "<a href='./register.php'>Registrieren</a>";
     $HTML .= "</div>";
 
-    if(isset($Parser['meldung'])){
+    if(isset($SessionMessage)){
+        $HTML .= $SessionMessage;
+    }
+
+    if(!empty($Parser['meldung'])){
         $HTML .= $Parser['meldung'];
     }
 
@@ -177,6 +181,15 @@ function session_manager(){
     } else {
 
         return true;
+    }
+}
+
+function load_session_message(){
+    session_start();
+    if($_SESSION['session_overtime'] == true){
+        return "Deine Sitzung ist abgelaufen! Bitte melde dich erneut an!";
+    } else {
+        return null;
     }
 }
 
