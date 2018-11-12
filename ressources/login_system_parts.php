@@ -138,14 +138,14 @@ function session_manager(){
 
     $User_login = $_SESSION['user_id'];
     $LetzterSeitenaufruf = $_SESSION['timestamp'];
-    echo $LetzterSeitenaufruf;
+    var_dump($LetzterSeitenaufruf);
     $SessionOvertime = null;
 
     if (!empty($User_login)){
 
         //Überprüfe vorhandensein von User-Login
         $link = connect_db();
-        $AnfrageLoginUeberpruefen = "SELECT mail FROM users WHERE id = '$User_login'";
+        $AnfrageLoginUeberpruefen = "SELECT * FROM users WHERE id = '$User_login'";
         $AbfrageLoginUeberpruefen = mysqli_query($link, $AnfrageLoginUeberpruefen);
         $AnzahlLoginUeberpruefen = mysqli_num_rows($AbfrageLoginUeberpruefen);
 
