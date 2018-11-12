@@ -110,7 +110,8 @@ function login_parser(){
 
 function register_formular($Parser){
 
-    $HTML = "<form action='register.php' method='post'>";
+    $HTML = $Parser['meldung'];
+    $HTML .= "<form action='register.php' method='post'>";
     $HTML .= "Vorname: <input type='text' name='vorname_large' id='vorname_large'>";
     $HTML .= "Nachname: <input type='text' name='nachname_large' id='nachname_large'>";
     $HTML .= "Stra&szlig;e: <input type='text' name='strasse_large' id='strasse_large'> Hausnummer: <input type='text' name='hausnummer_large' id='hausnummer_large'>";
@@ -127,7 +128,30 @@ function register_formular($Parser){
 
 function register_parser(){
 
-    return null;
+    if(isset($_POST['action_large'])){
+
+        ## DAU CHECKS BEFORE LOGIN ATTEMPT ##
+        $DAUcounter = 0;
+        $DAUerror = "";
+        $arg = 'large';
+
+        if(empty($_POST['vorname_'.$arg.''])){
+            $DAUcounter ++;
+            $DAUerror .= "Gib bitte deinen Vornamen an!<br>";
+        }
+
+        ## DAU auswerten
+        if ($DAUcounter > 0){
+            $Antwort['meldung'] = $DAUerror;
+            return $Antwort;
+
+        } else {
+
+            $link = connect_db();
+
+        }
+
+    } else{return null;}
 }
 
 ?>
