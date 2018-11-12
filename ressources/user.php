@@ -17,6 +17,10 @@ function add_new_user($Vorname, $Nachname, $Strasse, $Hausnummer, $PLZ, $Stadt, 
     $link = connect_db();
 
     $PSWD_hashed = password_hash($PSWD, 'PASSWORD_DEFAULT');
+    if($PSWD_hashed == false){
+        echo "Error with hashing";
+    }
+
     echo "adding user account";
     if (!($stmt = $link->prepare("INSERT INTO users (mail,secret,register) VALUES (?,?,?)"))) {
         $Antwort['erfolg'] = false;
