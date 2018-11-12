@@ -222,7 +222,7 @@ function register_parser(){
             $Antwort = add_new_user($_POST['vorname_'.$arg.''], $_POST['nachname_'.$arg.''],
                 $_POST['strasse_'.$arg.''], $_POST['hausnummer_'.$arg.''],
                 $_POST['plz_'.$arg.''], $_POST['stadt_'.$arg.''],
-                $_POST['mail'.$arg.''], $_POST['password_'.$arg.'']);
+                $_POST['mail'.$arg.''], $_POST['password_'.$arg.''], null);
             return $Antwort;
         }
 
