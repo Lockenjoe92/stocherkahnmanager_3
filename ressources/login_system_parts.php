@@ -155,10 +155,14 @@ function session_manager(){
             $Ergebnis = false;
         }
 
-        if (strtotime($LetzterSeitenaufruf) < strtotime($Timestamp, '-15 minutes')){
-            echo "Session overtime!";
-            $Ergebnis = false;
+        //Importiere Einstellung
+        $MaxMinutes = 15;
+        $MinimumTimestamp = strtotime("- " .$MaxMinutes. " minutes", $Timestamp);
+        $OldTimestamp = strtotime($Timestamp);
+
+        if ($MinimumTimestamp > $OldTimestamp){
             $SessionOvertime = true;
+            $Ergebnis = false;
         }
 
     } else {
