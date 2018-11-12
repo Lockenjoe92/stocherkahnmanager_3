@@ -93,6 +93,7 @@ function login_parser(){
                 $StoredSecret = $Vals['secret'];
 
                 if (password_verify($_POST['pass'], $StoredSecret)){
+
                     $Antwort['meldung'] = "Einloggen erfolgreich!!";
 
                     //Session initiieren
@@ -103,6 +104,7 @@ function login_parser(){
                     //Redirect
                     header("Location: ./hauptansicht.php");
                     die();
+
                 } else {
                     $Antwort['meldung'] = "Passwort ung&uuml;ltig!";
                 }

@@ -7,7 +7,7 @@
  */
 
 include_once "./ressources/ressourcen.php";
-session_manager();
+#session_manager();
 
 echo "Hello logged in user";
 
