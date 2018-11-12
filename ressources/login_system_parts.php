@@ -175,7 +175,7 @@ function session_manager(){
         session_start();
 
         $_SESSION['session_overtime'] = $SessionOvertime;
-        echo "fuckup";
+        echo "fuckup session manager";
 
         //Redirect
         header("Location: ./login.php");
