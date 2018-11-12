@@ -138,6 +138,7 @@ function session_manager(){
 
     $User_login = $_SESSION['user_id'];
     $LetzterSeitenaufruf = $_SESSION['timestamp'];
+    echo timestamp();
     var_dump($LetzterSeitenaufruf);
     $SessionOvertime = null;
 
