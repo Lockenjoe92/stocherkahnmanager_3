@@ -78,7 +78,7 @@ function add_user_meta($UserID, $Key, $Value){
 
     $link = connect_db();
 
-    if (!($stmt = $link->prepare("INSERT INTO user_meta VALUES ?,?,?,?"))) {
+    if (!($stmt = $link->prepare("INSERT INTO user_meta (user,schluessel,wert,timestamp) VALUES (?,?,?,?)"))) {
         $Antwort['erfolg'] = false;
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
