@@ -84,6 +84,7 @@ function login_parser(){
 
             $res = $stmt->get_result();
             $num_user = mysqli_num_rows($res);
+            echo $num_user;
 
             if ($num_user != 1){
                 $Antwort['meldung'] = "Userkonto existiert nicht!";
