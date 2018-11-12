@@ -117,7 +117,7 @@ function register_formular($Parser){
     $HTML .= "Nachname: <input type='text' name='nachname_large' id='nachname_large'>";
     $HTML .= "Stra&szlig;e: <input type='text' name='strasse_large' id='strasse_large'> Hausnummer: <input type='text' name='hausnummer_large' id='hausnummer_large'>";
     $HTML .= "Postleitzahl: <input type='text' name='plz_large' id='plz_large'> Stadt: <input type='text' name='stadt_large' id='stadt_large'>";
-    $HTML .= "EMail: <input type='email' name='mail_large' id='mail_large'>";
+    $HTML .= "eMail: <input type='email' name='mail_large' id='mail_large'>";
     $HTML .= "Passwort: <input type='password' name='password_large' id='password_large'>";
     $HTML .= "Passwort wiederholen: <input type='password' name='password_verify_large' id='password_verify_large'>";
     $HTML .= "<input type='submit' name='action_large'>";
@@ -128,6 +128,8 @@ function register_formular($Parser){
 }
 
 function register_parser(){
+
+    $link = connect_db();
 
     if(isset($_POST['action_large'])){
 
@@ -141,15 +143,87 @@ function register_parser(){
             $DAUerror .= "Gib bitte deinen Vornamen an!<br>";
         }
 
+        if(empty($_POST['nachname_'.$arg.''])){
+            $DAUcounter ++;
+            $DAUerror .= "Gib bitte deinen Nachnamen an!<br>";
+        }
+
+        if(empty($_POST['strasse_'.$arg.''])){
+            $DAUcounter ++;
+            $DAUerror .= "Gib bitte deine Anschrift an!<br>";
+        }
+
+        if(empty($_POST['hausnummer_'.$arg.''])){
+            $DAUcounter ++;
+            $DAUerror .= "Gib bitte deine Hausnummer an!<br>";
+        }
+
+        if(empty($_POST['plz_'.$arg.''])){
+            $DAUcounter ++;
+            $DAUerror .= "Gib bitte deine Postleitzahl an!<br>";
+        }
+
+        if(empty($_POST['stadt_'.$arg.''])){
+            $DAUcounter ++;
+            $DAUerror .= "Gib bitte deinen Wohnort an!<br>";
+        }
+
+        if(empty($_POST['mail'])){
+            $DAUcounter ++;
+            $DAUerror .= "Du musst eine eMail-Adresse eingeben!<br>";
+        } else {
+
+            if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+                $DAUcounter ++;
+                $DAUerror .= "Du musst eine echte eMail-Adresse eingeben!<br>";
+            } else {
+
+                if (!($stmt = $link->prepare("SELECT id FROM users WHERE mail = ?"))) {
+                    echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+                }
+
+                if (!$stmt->bind_param("s",$_POST['mail'])) {
+                    echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+                }
+
+                if (!$stmt->execute()) {
+                    echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+                }
+
+                $res = $stmt->get_result();
+                $num_results = mysqli_num_rows($res);
+
+                if($num_results > 0){
+                    $DAUcounter ++;
+                    $DAUerror .= "Die von dir eingegebene eMail-Adresse ist bereits mit einem anderen Account verkn&uuml;pft! Versuche es mit einer anderen eMail oder verwende die <a href='./reset_password.php'>Passwort zur&uuml;cksetzen Funktion</a>.<br>";
+                }
+
+            }
+        }
+
+        if(empty($_POST['password_'.$arg.''])){
+            $DAUcounter ++;
+            $DAUerror .= "Gib bitte ein Passwort an!<br>";
+        } else {
+
+            if($_POST['password_'.$arg.''] != $_POST['password_verify_'.$arg.'']){
+                $DAUcounter ++;
+                $DAUerror .= "Die eingegebenen Passw&ouml;rter sind nicht identisch!<br>";
+            }
+
+        }
+
         ## DAU auswerten
         if ($DAUcounter > 0){
             $Antwort['meldung'] = $DAUerror;
             return $Antwort;
 
         } else {
-
-            $link = connect_db();
-
+            $Antwort = add_new_user($_POST['vorname_'.$arg.''], $_POST['nachname_'.$arg.''],
+                $_POST['strasse_'.$arg.''], $_POST['hausnummer_'.$arg.''],
+                $_POST['plz_'.$arg.''], $_POST['stadt_'.$arg.''],
+                $_POST['mail'.$arg.''], $_POST['password_'.$arg.'']);
+            return $Antwort;
         }
 
     } else{return null;}
