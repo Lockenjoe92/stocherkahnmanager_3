@@ -144,16 +144,18 @@ function session_manager(){
 
         //Überprüfe vorhandensein von User-Login
         $link = connect_db();
-        $AnfrageLoginUeberpruefen = "SELECT mail FROM user WHERE id = '$User_login'";
+        $AnfrageLoginUeberpruefen = "SELECT mail FROM users WHERE id = '$User_login'";
         $AbfrageLoginUeberpruefen = mysqli_query($link, $AnfrageLoginUeberpruefen);
         $AnzahlLoginUeberpruefen = mysqli_num_rows($AbfrageLoginUeberpruefen);
 
         if($AnzahlLoginUeberpruefen == 0){
             #Userkonto existiert nicht
+            echo "No user account found!";
             $Ergebnis = false;
         }
 
         if (strtotime($LetzterSeitenaufruf) < strtotime($Timestamp, '-15 minutes')){
+            echo "Session overtime!";
             $Ergebnis = false;
             $SessionOvertime = true;
         }
@@ -161,6 +163,7 @@ function session_manager(){
     } else {
 
         #Session enthält keine User-ID
+        echo "No user ID in Session.";
         $Ergebnis = false;
     }
 
