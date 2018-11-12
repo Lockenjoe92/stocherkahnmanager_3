@@ -84,7 +84,6 @@ function login_parser(){
 
             $res = $stmt->get_result();
             $num_user = mysqli_num_rows($res);
-            echo $num_user;
 
             if ($num_user != 1){
                 $Antwort['meldung'] = "Userkonto existiert nicht!";
@@ -95,6 +94,15 @@ function login_parser(){
 
                 if (password_verify($_POST['pass'], $StoredSecret)){
                     $Antwort['meldung'] = "Einloggen erfolgreich!!";
+
+                    //Session initiieren
+                    session_start();
+                    $_SESSION['user_id'] = $Vals['id'];
+                    $_SESSION['timestamp'] = timestamp();
+
+                    //Redirect
+                    header("Location: ./hauptansicht.php");
+                    die();
                 } else {
                     $Antwort['meldung'] = "Passwort ung&uuml;ltig!";
                 }
@@ -107,6 +115,58 @@ function login_parser(){
 
     } else {
         return null;
+    }
+}
+
+function session_manager(){
+
+    /**
+     * Stellt fest, ob eine Session noch gültig ist
+     * Lödt hierzu die entsprechende Einstellung aus der settings-Datei
+     *
+     * return-values: true & false
+     */
+
+    session_start();
+    $Timestamp = timestamp();
+
+    $User_login = $_SESSION['user_id'];
+    $LetzterSeitenaufruf = $_SESSION['timestamp'];
+
+    if (!empty($User_login)){
+
+        //Überprüfe vorhandensein von User-Login
+        $link = connect_db();
+        $AnfrageLoginUeberpruefen = "SELECT mail FROM user WHERE id = '$User_login'";
+        $AbfrageLoginUeberpruefen = mysqli_query($link, $AnfrageLoginUeberpruefen);
+        $AnzahlLoginUeberpruefen = mysqli_num_rows($AbfrageLoginUeberpruefen);
+
+        if($AnzahlLoginUeberpruefen == 0){
+            $Ergebnis = false;
+        }
+
+    } else {
+
+        $Ergebnis = false;
+    }
+
+
+    //Weiterleiten an die Login-Seite
+    if ($Ergebnis == false){
+
+        //Session initiieren
+        session_start();
+        session_destroy();
+        session_start();
+        $_SESSION['session_overtime'] = true;
+
+        //Redirect
+        header("Location: ./login.php");
+        die();
+
+    } else {
+
+        return true;
     }
 }
 
