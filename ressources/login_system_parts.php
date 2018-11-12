@@ -28,6 +28,7 @@ function login_formular($Parser){
 
     $HTML .= "</form>";
     $HTML .= "</div>";
+    $HTML .= "<a href='./register.php'>Registrieren</a>";
     $HTML .= "</div>";
 
     if(isset($Parser['meldung'])){
