@@ -108,4 +108,26 @@ function login_parser(){
     }
 }
 
+function register_formular($Parser){
+
+    $HTML = "<form action='register.php' method='post'>";
+    $HTML .= "Vorname: <input type='text' name='vorname_large' id='vorname_large'>";
+    $HTML .= "Nachname: <input type='text' name='nachname_large' id='nachname_large'>";
+    $HTML .= "Stra&szlig;e: <input type='text' name='strasse_large' id='strasse_large'> Hausnummer: <input type='text' name='hausnummer_large' id='hausnummer_large'>";
+    $HTML .= "Postleitzahl: <input type='text' name='plz_large' id='plz_large'> Stadt: <input type='text' name='stadt_large' id='stadt_large'>";
+    $HTML .= "EMail: <input type='email' name='mail_large' id='mail_large'>";
+    $HTML .= "Passwort: <input type='password' name='password_large' id='password_large'>";
+    $HTML .= "Passwort wiederholen: <input type='password' name='password_verify_large' id='password_verify_large'>";
+    $HTML .= "<input type='submit' name='action_large'>";
+    $HTML .= "</form>";
+
+    return $HTML;
+
+}
+
+function register_parser(){
+
+    return null;
+}
+
 ?>
