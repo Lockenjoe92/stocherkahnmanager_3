@@ -138,8 +138,6 @@ function session_manager(){
 
     $User_login = $_SESSION['user_id'];
     $LetzterSeitenaufruf = $_SESSION['timestamp'];
-    echo timestamp();
-    var_dump($LetzterSeitenaufruf);
     $SessionOvertime = null;
 
     if (!empty($User_login)){
@@ -176,6 +174,7 @@ function session_manager(){
         session_start();
         session_destroy();
         session_start();
+
         $_SESSION['session_overtime'] = $SessionOvertime;
         echo "fuckup";
 
