@@ -138,6 +138,7 @@ function session_manager(){
 
     $User_login = $_SESSION['user_id'];
     $LetzterSeitenaufruf = $_SESSION['timestamp'];
+    $Ergebnis = true;
     $SessionOvertime = false;
 
     if (!empty($User_login)){
@@ -148,20 +149,16 @@ function session_manager(){
         $AbfrageLoginUeberpruefen = mysqli_query($link, $AnfrageLoginUeberpruefen);
         $AnzahlLoginUeberpruefen = mysqli_num_rows($AbfrageLoginUeberpruefen);
 
-        if($AnzahlLoginUeberpruefen == 0){
+        if($AnzahlLoginUeberpruefen == 0) {
             #Userkonto existiert nicht
             echo "No user account found!";
             $Ergebnis = false;
-        } else {
-            $Ergebnis = true;
         }
 
         if (strtotime($LetzterSeitenaufruf) < strtotime($Timestamp, '-15 minutes')){
             echo "Session overtime!";
             $Ergebnis = false;
             $SessionOvertime = true;
-        } else {
-            $Ergebnis = true;
         }
 
     } else {
