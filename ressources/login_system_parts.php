@@ -137,8 +137,8 @@ function session_manager(){
     $Timestamp = timestamp();
 
     $User_login = $_SESSION['user_id'];
-    echo $User_login;
     $LetzterSeitenaufruf = $_SESSION['timestamp'];
+    echo $LetzterSeitenaufruf;
     $SessionOvertime = null;
 
     if (!empty($User_login)){
@@ -165,7 +165,6 @@ function session_manager(){
 
         #Session enthält keine User-ID
         echo "No user ID in Session.";
-        var_dump($User_login);
         $Ergebnis = false;
     }
 
