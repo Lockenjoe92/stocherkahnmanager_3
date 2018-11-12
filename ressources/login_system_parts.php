@@ -176,14 +176,13 @@ function session_manager(){
         session_start();
 
         $_SESSION['session_overtime'] = $SessionOvertime;
-        echo "fuckup session manager";
 
         //Redirect
         #header("Location: ./login.php");
         #die();
 
     } else {
-
+        $_SESSION['timestamp'] = timestamp();
         return true;
     }
 }
