@@ -138,7 +138,7 @@ function session_manager(){
 
     $User_login = $_SESSION['user_id'];
     $LetzterSeitenaufruf = $_SESSION['timestamp'];
-    $SessionOvertime = null;
+    $SessionOvertime = false;
 
     if (!empty($User_login)){
 
@@ -161,7 +161,6 @@ function session_manager(){
         }
 
     } else {
-
         #Session enthält keine User-ID
         echo "No user ID in Session.";
         $Ergebnis = false;
@@ -179,8 +178,8 @@ function session_manager(){
         echo "fuckup";
 
         //Redirect
-        #header("Location: ./login.php");
-        #die();
+        header("Location: ./login.php");
+        die();
 
     } else {
 
