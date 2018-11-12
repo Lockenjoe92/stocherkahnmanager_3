@@ -106,8 +106,11 @@ function login_parser(){
                     $_SESSION['timestamp'] = timestamp();
 
                     //Redirect
-                    header("Location: ./hauptansicht.php");
-                    die();
+                    #header("Location: ./hauptansicht.php");
+                    #die();
+
+                    echo "login erfolgreich!";
+                    echo $Vals['id'];
 
                 } else {
                     $Antwort['meldung'] = "Passwort ung&uuml;ltig!";
