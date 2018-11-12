@@ -173,10 +173,11 @@ function session_manager(){
         session_destroy();
         session_start();
         $_SESSION['session_overtime'] = $SessionOvertime;
+        echo "fuckup";
 
         //Redirect
-        header("Location: ./login.php");
-        die();
+        #header("Location: ./login.php");
+        #die();
 
     } else {
 
