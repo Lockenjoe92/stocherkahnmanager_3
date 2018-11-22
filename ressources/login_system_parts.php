@@ -182,8 +182,8 @@ function session_manager(){
         $_SESSION['session_overtime'] = $SessionOvertime;
 
         //Redirect
-        #header("Location: ./login.php");
-        #die();
+        header("Location: ./login.php");
+        die();
 
     } else {
         $_SESSION['timestamp'] = timestamp();
