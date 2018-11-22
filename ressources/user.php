@@ -12,6 +12,31 @@ function lade_user_id(){
 
 }
 
+function lade_user_meta($UserID){
+
+    $link = connect_db();
+
+    if (!($stmt = $link->prepare("SELECT * FROM user_meta WHERE user = ?"))) {
+        echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+        return false;
+    }
+
+    if (!$stmt->bind_param("i",$UserID)) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+        return false;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        return false;
+    }
+
+    $res = $stmt->get_result();
+    $Result = mysqli_fetch_assoc($res);
+
+    return $Result;
+}
+
 function add_new_user($Vorname, $Nachname, $Strasse, $Hausnummer, $PLZ, $Stadt, $Mail, $PSWD, $Rollen){
 
     $link = connect_db();
