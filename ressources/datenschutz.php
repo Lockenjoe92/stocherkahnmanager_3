@@ -152,6 +152,7 @@ function ds_unterschreiben($User, $DSid){
 function ds_unterschreiben_formular_parts(){
 
     $link = connect_db();
+    if(isset($_POST['ds'])){$Checked='checked';}else{$Checked='unchecked';}
 
     $Anfrage = "SELECT erklaerung, inhalt FROM datenschutzerklaerungen WHERE archivar = '0' ORDER BY create_time DESC";
     $Abfrage = mysqli_query($link, $Anfrage);
@@ -160,7 +161,7 @@ function ds_unterschreiben_formular_parts(){
     $HTML = "<h3>Datenschutzerkl&auml;rung</h3>";
     $HTML .= "<p>Zur Info:<br>".$Ergebnis['erklaerung']."</p>";
     $HTML .= "<p>".$Ergebnis['inhalt']."</p>";
-    $HTML .= " <p><label><input type='checkbox' name='ds' id='ds'><span>Ich stimme den Nutzungsbedingungen, sowie der Speicherung und Verarbeitung gem&auml;&szlig; der Datenschutzerkl&auml;rung zu.</span></label></p>";
+    $HTML .= " <p><label><input type='checkbox' name='ds' id='ds' checked='".$Checked."'><span>Ich stimme den Nutzungsbedingungen, sowie der Speicherung und Verarbeitung gem&auml;&szlig; der Datenschutzerkl&auml;rung zu.</span></label></p>";
 
     return $HTML;
 
