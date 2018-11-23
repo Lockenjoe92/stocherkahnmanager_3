@@ -214,6 +214,7 @@ function register_formular($Parser){
     $HTML .= "eMail: <input type='email' name='mail_large' id='mail_large' placeholder='".$_POST['mail_large']."'>";
     $HTML .= "Passwort: <input type='password' name='password_large' id='password_large'>";
     $HTML .= "Passwort wiederholen: <input type='password' name='password_verify_large' id='password_verify_large'>";
+    $HTML .= ds_unterschreiben_formular_parts();
     $HTML .= "<input type='submit' name='action_large'>";
     $HTML .= "</form>";
 

@@ -116,4 +116,43 @@ function ds_anlegen($Erklaerung, $Version, $Inhalt, $User){
 
 }
 
+function ds_unterschreiben($User, $DSid){
+
+    $link = connect_db();
+    $Timestamp = timestamp();
+
+    if (!($stmt = $link->prepare("INSERT INTO ds_unterzeichnungen (ds_id, user_id, timestamp) VALUES (?,?,?)"))) {
+        echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+    }
+
+    if (!$stmt->bind_param("iis",$DSid, $User, $Timestamp)) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function ds_unterschreiben_formular_parts(){
+
+    $link = connect_db();
+
+    $Anfrage = "SELECT erklaerung, inhalt FROM datenschutzerklaerungen WHERE archivar = '0' ORDER BY create_time DESC";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Ergebnis = mysqli_fetch_assoc($Abfrage);
+
+    $HTML = "<h3>Datenschutzerkl&auml;rung</h3>";
+    $HTML .= "<p>Zur Info:<br>".$Ergebnis['erklaerung']."</p>";
+    $HTML .= "<p>".$Ergebnis['inhalt']."</p>";
+    $HTML .= " <label><input type='checkbox' name='ds' value='ds_checked'>Ich stimme den Nutzungsbedingungen, sowie der Speicherung und Verarbeitung gem&auml;&szlig; der Datenschutzerkl&auml;rung zu.</label>";
+
+    return $HTML;
+
+}
+
 ?>
