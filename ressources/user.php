@@ -36,8 +36,6 @@ function lade_user_meta($UserID){
         $Result[$Row['schluessel']] = $Row['wert'];
     }
 
-    var_dump($Result);
-
     return $Result;
 }
 
