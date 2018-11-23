@@ -263,7 +263,7 @@ function register_parser(){
             $DAUerror .= "Gib bitte deinen Wohnort an!<br>";
         }
 
-        if(!isset($_POST['ds_checked'])){
+        if(!isset($_POST['ds'])){
             $DAUcounter ++;
             $DAUerror .= "Bitte die Datenschutzerkl&auml;rung abhaken!<br>";
         }

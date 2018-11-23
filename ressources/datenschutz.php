@@ -160,7 +160,7 @@ function ds_unterschreiben_formular_parts(){
     $HTML = "<h3>Datenschutzerkl&auml;rung</h3>";
     $HTML .= "<p>Zur Info:<br>".$Ergebnis['erklaerung']."</p>";
     $HTML .= "<p>".$Ergebnis['inhalt']."</p>";
-    $HTML .= " <p><label><input type='checkbox' name='ds' value='ds_checked'><span>Ich stimme den Nutzungsbedingungen, sowie der Speicherung und Verarbeitung gem&auml;&szlig; der Datenschutzerkl&auml;rung zu.</span></label></p>";
+    $HTML .= " <p><label><input type='checkbox' name='ds' id='ds'><span>Ich stimme den Nutzungsbedingungen, sowie der Speicherung und Verarbeitung gem&auml;&szlig; der Datenschutzerkl&auml;rung zu.</span></label></p>";
 
     return $HTML;
 
