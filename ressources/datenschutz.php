@@ -70,7 +70,7 @@ function ds_anlegen_parser(){
 
             if($num_results > 0){
                 $DAUcounter ++;
-                $DAUerror .= "Die von dir eingegebene eMail-Adresse ist bereits mit einem anderen Account verkn&uuml;pft! Versuche es mit einer anderen eMail oder verwende die <a href='./reset_password.php'>Passwort zur&uuml;cksetzen Funktion</a>.<br>";
+                $DAUerror .= "Die von dir eingegebene Version ist bereits vergeben!<br>";
             }
 
         }
