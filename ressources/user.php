@@ -29,8 +29,12 @@ function lade_user_meta($UserID){
     }
 
     $res = $stmt->get_result();
-    $Result = mysqli_fetch_assoc($res);
-    var_dump($Result);
+    $Hits = mysqli_num_rows($res);
+    $Result = array();
+    for($a=1;$a<=$Hits,$a++){
+        $Row = mysqli_fetch_assoc($res);
+        $Result[$Row['schluessel']] = $Row['wert'];
+    }
 
     return $Result;
 }
