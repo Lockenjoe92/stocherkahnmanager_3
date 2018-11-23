@@ -33,7 +33,7 @@ function ds_anlegen_parser(){
         $DAUerror = "";
         $arg = "large";
 
-        if($UserMeta['ist_wart'] != 'true'){
+        if($UserMeta['ist_admin'] != 'true'){
             $DAUcounter ++;
             $DAUerror .= "Du hast keine Berechtigung f&uuml;r diesen Vorgang!<br>";
         }
