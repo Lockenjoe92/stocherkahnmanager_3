@@ -26,7 +26,7 @@ function ds_anlegen_parser(){
     $CurrentUser = lade_user_id();
     $UserMeta = lade_user_meta($CurrentUser);
 
-    if(isset($_POST['action'])){
+    if(isset($_POST['action_large'])){
 
         ## DAU CHECKS BEFORE LOGIN ATTEMPT ##
         $DAUcounter = 0;
