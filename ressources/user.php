@@ -18,21 +18,19 @@ function lade_user_meta($UserID){
 
     if (!($stmt = $link->prepare("SELECT * FROM user_meta WHERE user = ?"))) {
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
-        die;
     }
 
-    if (!$stmt->bind_param("i",$UserID)) {
+    if (!$stmt->bind_param("s",$UserID)) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
-        die;
     }
 
     if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-        die;
     }
 
     $res = $stmt->get_result();
     $Result = mysqli_fetch_assoc($res);
+    var_dump($Result);
 
     return $Result;
 }
