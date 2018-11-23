@@ -8,7 +8,8 @@
 
 function ds_anlegen_formular($Parser){
 
-    $HTML = $Parser['meldung'];
+    $HTML = "<h2>Neue Datenschutzerkl&auml;rung anlegen</h2>";
+    $HTML .= $Parser['meldung'];
     $HTML .= "<form action='datenschutzerklaerungen.php' method='post'>";
     $HTML .= "Version: <input type='text' name='version_large' id='version_large' placeholder='".$_POST['version_large']."'>";
     $HTML .= "Erkl&auml;rung: <input type='text' name='erklaerung_large' id='erklaerung_large' placeholder='".$_POST['erklaerung_large']."'>";
