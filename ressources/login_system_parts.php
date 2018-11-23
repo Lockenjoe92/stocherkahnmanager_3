@@ -263,6 +263,11 @@ function register_parser(){
             $DAUerror .= "Gib bitte deinen Wohnort an!<br>";
         }
 
+        if(!isset($_POST['ds_checked'])){
+            $DAUcounter ++;
+            $DAUerror .= "Bitte die Datenschutzerkl&auml;rung abhaken!<br>";
+        }
+
         if(empty($_POST['mail_'.$arg.''])){
             $DAUcounter ++;
             $DAUerror .= "Du musst eine eMail-Adresse eingeben!<br>";
@@ -314,10 +319,38 @@ function register_parser(){
             return $Antwort;
 
         } else {
+
             $Antwort = add_new_user($_POST['vorname_'.$arg.''], $_POST['nachname_'.$arg.''],
                 $_POST['strasse_'.$arg.''], $_POST['hausnummer_'.$arg.''],
                 $_POST['plz_'.$arg.''], $_POST['stadt_'.$arg.''],
                 $_POST['mail_'.$arg.''], $_POST['password_'.$arg.''], null);
+
+            #Lade User ID
+            if (!($stmt = $link->prepare("SELECT id FROM users WHERE mail = '?'"))) {
+                echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+                return $Antwort['erfolg'] = false;
+            }
+
+            if (!$stmt->bind_param("s",$_POST['mail_'.$arg.''])) {
+                echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+                return $Antwort['erfolg'] = false;
+            }
+
+            if (!$stmt->execute()) {
+                echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+                return $Antwort['erfolg'] = false;
+            } else {
+
+                $res = $stmt->get_result();
+                $Results = mysqli_fetch_assoc($res);
+                $UserID = $Results['id'];
+            }
+
+            #Datenschutzunterzeichnung festhalten
+            if(isset($_POST['ds_checked'])){
+                ds_unterschreiben($UserID,aktuelle_ds_id_laden());
+            }
+
             return $Antwort;
         }
 

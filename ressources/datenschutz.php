@@ -116,6 +116,17 @@ function ds_anlegen($Erklaerung, $Version, $Inhalt, $User){
 
 }
 
+function aktuelle_ds_id_laden(){
+
+    $link = connect_db();
+
+    $Anfrage = "SELECT id FROM datenschutzerklaerungen WHERE archivar = '0' ORDER BY create_time DESC";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Ergebnis = mysqli_fetch_assoc($Abfrage);
+
+    return $Ergebnis['id'];
+}
+
 function ds_unterschreiben($User, $DSid){
 
     $link = connect_db();
