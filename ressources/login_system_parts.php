@@ -332,7 +332,7 @@ function register_parser(){
             }
 
             if (!$stmt->bind_param("s",$_POST['mail_'.$arg.''])) {
-                echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+                echo "Binding parameters Load User ID failed: (" . $stmt->errno . ") " . $stmt->error;
                 return $Antwort['erfolg'] = false;
             }
 

@@ -7,9 +7,10 @@
  */
 
 function lade_user_id(){
-
-    return 2;
-
+    //Session initiieren
+    session_start();
+    $UserSessionID = intval($_SESSION['user_id']);
+    return $UserSessionID;
 }
 
 function lade_user_meta($UserID){
