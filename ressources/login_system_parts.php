@@ -2,9 +2,8 @@
 
 function login_formular($Parser, $SessionMessage){
 
-    $HTML = "<form action='#' method='post'>";
-
-    $HTML .= "<div class='row col s12 m6 offset-m3'>";
+    $HTML = "<div class='row col s12 m6 offset-m3'>";
+    $HTML .= "<form action='#' method='post'>";
 
     $HTML .= "<div class='row'>";
     $HTML .= "<div class='input-field col s6'>";
@@ -26,8 +25,6 @@ function login_formular($Parser, $SessionMessage){
     $HTML .= "</div>";
     $HTML .= "</div>";
 
-    $HTML .= "</div>";
-
     $HTML .= "</form>";
     $HTML .= "<a href='./register.php'>Registrieren</a>";
 
@@ -39,6 +36,8 @@ function login_formular($Parser, $SessionMessage){
         $HTML .= $Parser['meldung'];
         $HTML .= toast($Parser['meldung']);
     }
+
+    $HTML .= "</div>";
 
     $Section = section_builder($HTML, 'login_formular_section', 'center');
     $Container = container_builder($Section, 'login_formular_container', '');
