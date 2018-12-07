@@ -26,6 +26,9 @@ function login_formular($Parser, $SessionMessage){
     $HTML .= "</div>";
 
     $HTML .= "</form>";
+    $HTML .= "</div>";
+
+    
     $HTML .= "<a href='./register.php'>Registrieren</a>";
 
     if(isset($SessionMessage)){
@@ -37,7 +40,7 @@ function login_formular($Parser, $SessionMessage){
         $HTML .= toast($Parser['meldung']);
     }
 
-    $HTML .= "</div>";
+
 
     $Section = section_builder($HTML, 'login_formular_section', 'center');
     $Container = container_builder($Section, 'login_formular_container', '');
