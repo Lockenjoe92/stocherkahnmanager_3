@@ -2,8 +2,7 @@
 
 function login_formular($Parser, $SessionMessage){
 
-    $HTML = "<div class='container'>";
-    $HTML .= "<div class='row center'>";
+    $HTML = "<div class='row center'>";
     $HTML .= "<form action='#' method='post' class='col s12'>";
 
     $HTML .= "<div class='row'>";
@@ -29,7 +28,6 @@ function login_formular($Parser, $SessionMessage){
     $HTML .= "</form>";
     $HTML .= "</div>";
     $HTML .= "<a href='./register.php'>Registrieren</a>";
-    $HTML .= "</div>";
 
     if(isset($SessionMessage)){
         $HTML .= $SessionMessage;
@@ -40,7 +38,9 @@ function login_formular($Parser, $SessionMessage){
         $HTML .= toast($Parser['meldung']);
     }
 
-    return $HTML;
+    $Container = container_builder($HTML, 'login_formular_container', '');
+
+    return $Container;
 }
 
 function login_parser(){
