@@ -4,6 +4,8 @@ function login_formular($Parser, $SessionMessage){
 
     $HTML = "<form action='#' method='post'>";
 
+    $HTML .= "<div class='row col s12 m6 offset-m3'>";
+
     $HTML .= "<div class='row'>";
     $HTML .= "<div class='input-field col s6'>";
     $HTML .= "<input id='login_mail' type='email' name='mail' value='".$Parser['mail']."'>";
@@ -22,6 +24,8 @@ function login_formular($Parser, $SessionMessage){
     $HTML .= "<div class='input-field col s6'>";
     $HTML .= "<input type='submit' name='submit'>";
     $HTML .= "</div>";
+    $HTML .= "</div>";
+
     $HTML .= "</div>";
 
     $HTML .= "</form>";
