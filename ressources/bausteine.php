@@ -63,7 +63,7 @@ function container_builder($ContentHTML, $ID='', $SpecialMode=''){
 }
 
 function toast($Message){
-    return "<script> materialize.toast('$Message', 6000) </script>";
+    return "<script> Materialize.toast(".$Message.", 6000) </script>";
 }
 
 ?>
