@@ -36,7 +36,7 @@ function login_formular($Parser, $SessionMessage){
     }
 
     if(!empty($Parser['meldung'])){
-        $HTML .= $Parser['meldung'];
+        $HTML .= toast($Parser['meldung']);
     }
 
     return $HTML;
@@ -197,9 +197,11 @@ function load_session_message(){
     if($_SESSION['session_overtime'] == true){
         session_destroy();
         return "Deine Sitzung ist abgelaufen! Bitte melde dich erneut an!";
-    } else {
+    } elseif(isset($_SESSION['session_overtime'])){
         session_destroy();
         return "Fehler in deiner Sitzung! Melde dich bitte erneut an!";
+    } else {
+        return null;
     }
 }
 
