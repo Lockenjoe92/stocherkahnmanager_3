@@ -36,6 +36,7 @@ function login_formular($Parser, $SessionMessage){
     }
 
     if(!empty($Parser['meldung'])){
+        $HTML .= $Parser['meldung'];
         $HTML .= toast($Parser['meldung']);
     }
 
