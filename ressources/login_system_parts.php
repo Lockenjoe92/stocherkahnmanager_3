@@ -38,7 +38,8 @@ function login_formular($Parser, $SessionMessage){
         $HTML .= toast($Parser['meldung']);
     }
 
-    $Container = container_builder($HTML, 'login_formular_container', '');
+    $Section = section_builder($HTML, 'login_formular_section', 'center');
+    $Container = container_builder($Section, 'login_formular_container', '');
 
     return $Container;
 }
