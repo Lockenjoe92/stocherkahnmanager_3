@@ -2,7 +2,7 @@
 
 function login_formular($Parser, $SessionMessage){
 
-    $HTML = "<form action='#' method='post' class='col s12'>";
+    $HTML = "<form action='#' method='post'>";
 
     $HTML .= "<div class='row'>";
     $HTML .= "<div class='input-field col s6'>";
