@@ -63,7 +63,7 @@ function container_builder($ContentHTML, $ID='', $SpecialMode=''){
 }
 
 function toast($Message){
-    return " M.toast({html: '".$Message."', displayLength:4000, classes: 'rounded'})";
+    return "<script>M.toast({html: '".$Message."', displayLength:4000, classes: 'rounded'})</script>";
 }
 
 ?>
