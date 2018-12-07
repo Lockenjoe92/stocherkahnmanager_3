@@ -2,7 +2,7 @@
 
 function login_formular($Parser, $SessionMessage){
 
-    $HTML = "<div class='row col s12 m6 offset-m3'>";
+    $HTML = "<div class='row center-align'>";
     $HTML .= "<form action='#' method='post'>";
 
     $HTML .= "<div class='row'>";
@@ -28,7 +28,7 @@ function login_formular($Parser, $SessionMessage){
     $HTML .= "</form>";
     $HTML .= "</div>";
 
-    
+
     $HTML .= "<a href='./register.php'>Registrieren</a>";
 
     if(isset($SessionMessage)){
