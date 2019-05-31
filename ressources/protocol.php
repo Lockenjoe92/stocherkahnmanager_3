@@ -13,16 +13,15 @@ function add_protocol_entry($user, $message, $protocol_type){
 
     $link = connect_db();
 
+    echo $user, $message, $protocol_type;
+
     if (!($stmt = $link->prepare("INSERT INTO protocol (user,protocol,message,timestamp) VALUES (?,?,?,?)"))) {
-        $Antwort['erfolg'] = false;
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
     if (!$stmt->bind_param("ssss", $user, $protocol_type, $message, timestamp())) {
-        $Antwort['erfolg'] = false;
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
     if (!$stmt->execute()) {
-        $Antwort['erfolg'] = false;
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     }
 
