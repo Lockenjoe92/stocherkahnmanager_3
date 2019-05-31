@@ -84,15 +84,15 @@ function form_switch_item($OptionLeft='off', $OptionRight='on', $BooleanText='fa
     $HTML .= $OptionLeft;
 
     if ($BooleanText == 'false'){
-        $PresetMode = 'unchecked';
+        $PresetMode = '';
     } elseif ($BooleanText == 'true'){
         $PresetMode = 'checked';
     }
 
     if ($Disabled == true){
-        $HTML .= "<input disabled type='checkbox' checked='".$PresetMode."'>";
+        $HTML .= "<input disabled type='checkbox' ".$PresetMode.">";
     } elseif($Disabled == false) {
-        $HTML .= "<input type='checkbox' checked='".$PresetMode."'>";
+        $HTML .= "<input type='checkbox' ".$PresetMode.">";
     }
 
     $HTML .= "<span class='lever'></span>";
