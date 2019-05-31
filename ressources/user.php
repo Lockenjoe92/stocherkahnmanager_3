@@ -10,6 +10,7 @@ function lade_user_id(){
     //Session initiieren
     session_start();
     $UserSessionID = intval($_SESSION['user_id']);
+    echo $UserSessionID;
     return $UserSessionID;
 }
 
