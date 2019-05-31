@@ -19,7 +19,7 @@ function login_formular($Parser, $SessionMessage){
     $HTMLform .= "</div>";
     $HTMLform .= "</div>";
 
-    $HTMLBigscreenButtons = "<div class='row hide-on-small-and-down'>";
+    $HTMLBigscreenButtons = "<div class='row'>";
     $HTMLBigscreenButtons .= form_button_builder('submit', 'Einloggen', 'submit', 'send');
     $HTMLBigscreenButtons .= button_link_creator('Registrieren', './register.php', '', '');
     $HTMLBigscreenButtons .= button_link_creator('Passwort vergessen', './iforgot.php', '', '');
@@ -30,8 +30,8 @@ function login_formular($Parser, $SessionMessage){
     $HTMLMobileButtons .= button_link_creator('Passwort vergessen', './iforgot.php', '', '');
 
     $FormSections = section_builder($HTMLform);
-    $FormSections .= section_builder($HTMLBigscreenButtons);
-    $FormSections .= section_builder($HTMLMobileButtons);
+    $FormSections .= section_builder($HTMLBigscreenButtons, '', 'hide-on-small-and-down');
+    $FormSections .= section_builder($HTMLMobileButtons, '', 'hide-on-med-and-up');
 
     $HTML = form_builder($FormSections,'#', 'post');
 
