@@ -10,8 +10,6 @@ include_once "./ressourcen.php";
 
 function add_protocol_entry($UserID, $message, $protocol_type){
 
-    echo "xkhbs";
-
     $link = connect_db();
 
     if (!($stmt = $link->prepare("INSERT INTO protocol (user,protocol,message,timestamp) VALUES (?,?,?,?)"))) {
