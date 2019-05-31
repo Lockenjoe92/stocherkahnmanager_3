@@ -10,7 +10,7 @@ $PageTitle = '<h1>Admineinstellungen</h1>';
 $HTML = section_builder($PageTitle);
 
 #Settings Form
-$SettingTableItems = table_form_swich_item('TestWert1', 'deaktiviert', 'aktiviert', lade_db_einstellung('testtest'), false);
+$SettingTableItems = table_form_swich_item('TestWert1', 'deaktiviert', 'aktiviert', 'deaktiviert',lade_db_einstellung('testtest'), false);
 $SettingTableItems .= table_form_string_item('Website Name', 'site_name', lade_db_einstellung('site_name'), false);
 
 #Complete Settings Form
