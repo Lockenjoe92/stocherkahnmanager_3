@@ -62,12 +62,12 @@ function container_builder($ContentHTML, $ID='', $SpecialMode=''){
 
 }
 
-function form_builder($ContentHTML, $ActionPageLink, $ID=''){
+function form_builder($ContentHTML, $ActionPageLink, $FormMode='post', $ID=''){
 
     if ($ID == ''){
-        $HTML = "<form action='".$ActionPageLink."'>";
+        $HTML = "<form action='".$ActionPageLink."' method='".$FormMode."'>";
     } else {
-        $HTML = "<form action='".$ActionPageLink."' id='".$ID."'>";
+        $HTML = "<form action='".$ActionPageLink."' method='".$FormMode."' id='".$ID."'>";
     }
 
     $HTML .= $ContentHTML;
@@ -148,7 +148,7 @@ function table_form_string_item($ItemTitle, $ItemName, $Placeholdertext='', $Dis
 }
 
 function toast($Message){
-    return "<script>M.toast({html: 'I am a toast'})</script>";
+    return "<script>M.toast({html: ".$Message."})</script>";
 }
 
 ?>

@@ -102,4 +102,31 @@ function lade_db_einstellung($NameEinstellung){
 
 }
 
+function update_db_setting($Setting, $SettingValue, $UserID){
+
+    $link = connect_db();
+    $CurrentSettingValue = lade_db_einstellung($Setting);
+
+    if ($CurrentSettingValue != $SettingValue){
+
+        if (!($stmt = $link->prepare("UPDATE settings SET value = ? WHERE name = ?"))) {
+            $Antwort['erfolg'] = false;
+            echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+        }
+        if (!$stmt->bind_param("ss", $SettingValue, $Setting)) {
+            $Antwort['erfolg'] = false;
+            echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+        if (!$stmt->execute()) {
+            $Antwort['erfolg'] = false;
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        } else {
+            $Message = 'Updated Setting '.$Setting.' to '.$SettingValue.'';
+            add_protocol_entry($UserID, $Message, 'settings');
+        }
+
+    }
+
+}
+
 ?>
