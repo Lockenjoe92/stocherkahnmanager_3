@@ -77,9 +77,10 @@ function form_builder($ContentHTML, $ActionPageLink, $ID=''){
 
 }
 
-function form_switch_item($OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
+function form_switch_item($ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
 
-    $HTML = "<div class='switch'>";
+    $HTML = "".$ItemName." ";
+    $HTML .= "<div class='switch'>";
     $HTML .= "<label>";
     $HTML .= $OptionLeft;
 
