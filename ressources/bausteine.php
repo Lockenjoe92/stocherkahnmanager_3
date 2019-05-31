@@ -128,9 +128,9 @@ function form_string_item($ItemName, $Placeholdertext='', $Disabled=false){
     }
 
     if ($Placeholdertext==''){
-        return "<input ".$DisabledCommand." id='".$ItemName."' type='text' class='validate'>";
+        return "<input ".$DisabledCommand." id='".$ItemName."' name='".$ItemName."' type='text' class='validate'>";
     } else {
-        return "<input ".$DisabledCommand." value='".$Placeholdertext."' id='".$ItemName."' type='text' class='validate'>";
+        return "<input ".$DisabledCommand." value='".$Placeholdertext."' id='".$ItemName."' name='".$ItemName."' type='text' class='validate'>";
     }
 
 }
