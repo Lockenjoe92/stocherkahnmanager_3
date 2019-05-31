@@ -86,6 +86,12 @@ function table_builder($ContentHTML){
     return $HTML;
 }
 
+function form_button_builder($ButtonName, $ButtonMessage, $ButtonMode, $Icon, $SpecialMode=''){
+
+    return "<button class='btn waves-effect waves-light ".$SpecialMode."' type='".$ButtonMode."' name='".$ButtonName."'>".$ButtonMessage."<i class='material-icons left'>".$Icon."</i></button>";
+
+}
+
 function form_switch_item($ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
 
     $HTML = "<div class='switch'>";

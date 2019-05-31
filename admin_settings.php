@@ -15,6 +15,9 @@ $SettingTableItems .= table_form_string_item('Website Name', 'site_name', lade_d
 
 #Complete Settings Form
 $SettingTable = table_builder($SettingTableItems);
+$SettingTable = section_builder($SettingTable);
+$SettingTable .= section_builder(form_button_builder('admin_settings_action', 'Speichern', 'action', 'send'));
+
 $SettingForm = form_builder($SettingTable, './admin_settings.php');
 $HTML .= section_builder($SettingForm);
 
