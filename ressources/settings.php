@@ -129,4 +129,25 @@ function update_db_setting($Setting, $SettingValue, $UserID){
 
 }
 
+### Parser Logic
+function admin_settings_parser($SettingsArray){
+
+    if (isset($_POST['admin_settings_action'])){
+
+        for($x=0;$x<=sizeof($SettingsArray);$x++){
+
+            $Setting = $SettingsArray[$x];
+            $SettingValue = $_POST[$Setting];
+            update_db_setting($Setting, $SettingValue, lade_user_id());
+
+        }
+
+        return toast('Einstellungen erfolgreich gespeichert!');
+
+    } else {
+        return null;
+    }
+
+}
+
 ?>
