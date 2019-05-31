@@ -1,7 +1,7 @@
 <?php
 
 include_once "./ressources/ressourcen.php";
-session_manager('admin');
+session_manager('ist_admin');
 
 $HTML = '<h1>Hello World!</h1>';
 
