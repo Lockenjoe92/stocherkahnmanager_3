@@ -7,11 +7,16 @@ $Header = "Admin Einstellungen - " . lade_xml_einstellung('site_name', 'local');
 #Generate content
 # Page Title
 $PageTitle = '<h1>Admineinstellungen</h1>';
-$PageTitle = section_builder($PageTitle);
+$HTML = section_builder($PageTitle);
 
-$PageTitle .= section_builder("hsdkjcgdskjcgsk");
+#Settings Form
+$SettingTableItems = table_form_swich_item('TestWert1', 'deaktiviert', 'aktiviert', 'false', false);
+$SettingTable = table_builder($SettingTableItems);
+$SettingForm = form_builder($SettingTable, './admin_settings.php');
+$HTML .= section_builder($SettingForm);
 
-$HTML = container_builder($PageTitle, 'admin_settings_page_title');
+#Put it all in a container
+$HTML = container_builder($HTML, 'admin_settings_page_title');
 
 # Output site
 echo site_header($Header);
