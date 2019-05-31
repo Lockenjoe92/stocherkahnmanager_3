@@ -20,7 +20,7 @@ $SettingTable = table_builder($SettingTableItems);
 $SettingTable = section_builder($SettingTable);
 $SettingTable .= section_builder(form_button_builder('admin_settings_action', 'Speichern', 'action', 'send'));
 
-$SettingForm = form_builder($SettingTable, './admin_settings.php');
+$SettingForm = form_builder($SettingTable, './admin_settings.php', 'post');
 $HTML .= section_builder($SettingForm);
 
 #Put it all in a container
