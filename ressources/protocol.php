@@ -9,18 +9,17 @@
 include_once "./ressourcen.php";
 
 
-function add_protocol_entry($user, $message, $protocol_type){
+function add_protocol_entry($message, $protocol_type){
 
     $link = connect_db();
 
-    echo $user;
     echo $message;
     echo $protocol_type;
 
     if (!($stmt = $link->prepare("INSERT INTO protocol (user,protocol,message,timestamp) VALUES (?,?,?,?)"))) {
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
-    if (!$stmt->bind_param("ssss", $user, $protocol_type, $message, timestamp())) {
+    if (!$stmt->bind_param("isss", lade_user_id(), $protocol_type, $message, timestamp())) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
     if (!$stmt->execute()) {

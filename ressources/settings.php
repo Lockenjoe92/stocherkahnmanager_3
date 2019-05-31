@@ -102,7 +102,7 @@ function lade_db_einstellung($NameEinstellung){
 
 }
 
-function update_db_setting($Setting, $SettingValue, $UserID){
+function update_db_setting($Setting, $SettingValue){
 
     $link = connect_db();
     $CurrentSettingValue = lade_db_einstellung($Setting);
@@ -119,7 +119,7 @@ function update_db_setting($Setting, $SettingValue, $UserID){
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         } else {
             $Message = 'Updated Setting '.$Setting.' to '.$SettingValue.'';
-            #add_protocol_entry($UserID, $Message, 'settings');
+            add_protocol_entry($Message, 'settings');
         }
 
     }
@@ -135,7 +135,7 @@ function admin_settings_parser($SettingsArray){
 
             $Setting = $SettingsArray[$x];
             $SettingValue = $_POST[$Setting];
-            update_db_setting($Setting, $SettingValue, lade_user_id());
+            update_db_setting($Setting, $SettingValue);
 
         }
 
