@@ -164,7 +164,7 @@ function session_manager($Necessary_User_Role = NULL){
             if ($Necessary_User_Role != NULL){
 
                 $UserMeta = lade_user_meta($User_login);
-                if ($UserMeta[$Necessary_User_Role] != 'TRUE'){
+                if ($UserMeta[$Necessary_User_Role] != 'true'){
                     echo "User does not have neccessary rights.";
                     $Ergebnis = false;
                 }
