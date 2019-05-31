@@ -106,6 +106,7 @@ function update_db_setting($Setting, $SettingValue){
 
     $link = connect_db();
     $CurrentSettingValue = lade_db_einstellung($Setting);
+    $SettingValue = strval($SettingValue);
 
     if ($CurrentSettingValue != $SettingValue){
 
