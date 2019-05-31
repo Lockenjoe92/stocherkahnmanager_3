@@ -18,7 +18,7 @@ function add_protocol_entry($message, $protocol_type){
     echo $message;
     echo $protocol_type;
 
-    if (!($stmt = $link->prepare("INSERT INTO protocol (user,protocol,message,timestamp) VALUES (?,?,?,?)"))) {
+    if (!($stmt = $link->prepare("INSERT INTO protocol (user,protocol,message,timestamp) VALUES (NULL,?,?,?,?)"))) {
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
     if (!$stmt->bind_param("isss", lade_user_id(), $protocol_type, $message, $timestamp)) {
