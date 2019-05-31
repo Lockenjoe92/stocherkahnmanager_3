@@ -10,6 +10,8 @@ include_once "./ressourcen.php";
 
 function add_protocol_entry($message, $protocol_type){
 
+    echo "xkhbs";
+
     $link = connect_db();
 
     $timestamp = "2019-06-09 23:45:44";
