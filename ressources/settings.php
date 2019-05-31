@@ -65,7 +65,7 @@ function add_db_einstellung($NameEinstellung, $ValueEinstellung){
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     } else {
         $Message = 'Loaded Setting '.$NameEinstellung.' from settings.xml';
-        add_protocol_entry(0, $Message, 'settings');
+        #add_protocol_entry(0, $Message, 'settings');
     }
 
 }
