@@ -138,6 +138,7 @@ function admin_settings_parser($SettingsArray){
 
             echo $x;
             $Setting = $SettingsArray[$x];
+            echo $Setting;
             $SettingValue = $_POST[$Setting];
             echo $SettingValue;
             echo "aftxkahs";
