@@ -142,11 +142,6 @@ function admin_settings_parser($SettingsArray){
 
         }
 
-        #eturn toast('Einstellungen erfolgreich gespeichert!');
-        return 'ERFOLG';
-
-    } else {
-        return null;
     }
 
 }
