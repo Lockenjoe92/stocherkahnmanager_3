@@ -212,6 +212,12 @@ function table_form_select_item($ItemTitle, $ItemName, $Min, $Max, $StartValue, 
 
 }
 
+function button_link_creator($ButtonMessage, $ButtonLink, $Icon, $SpecialMode){
+
+    return "<a href='".$ButtonLink."' class='waves-effect waves-light btn ".$SpecialMode."'><i class='material-icons left'>".$Icon."</i>".$ButtonMessage."</a>";
+
+}
+
 function toast($Message){
     return "<script>M.toast({html: ".$Message."})</script>";
 }

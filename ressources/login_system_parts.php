@@ -19,16 +19,18 @@ function login_formular($Parser, $SessionMessage){
     $HTMLform .= "</div>";
     $HTMLform .= "</div>";
 
-    $HTMLform .= "<div class='row'>";
-    $HTMLform .= "<div class='input-field'>";
-    $HTMLform .= "<input type='submit' name='submit'>";
-    $HTMLform .= "</div>";
-    $HTMLform .= "</div>";
-    $FormSections = section_builder($HTMLform);
-    $FormSections .= section_builder(form_button_builder('submit', 'Einloggen', 'submit', 'send'));
-    $HTML = form_builder($FormSections,'#', 'post');
+    $RegisterButton = button_link_creator('Registrieren', './register.php', '', '');
+    $LoginButton = form_button_builder('submit', 'Einloggen', 'submit', 'send');
+    $ForgotButton = button_link_creator('Passwort vergessen', './iforgot.php', '', '');;
+    $HTMLButtons = "<div class='row'>";
+    $HTMLButtons .= $RegisterButton;
+    $HTMLButtons .= $LoginButton;
+    $HTMLButtons .= $ForgotButton;
+    $HTMLButtons .= "</div>";
 
-    $HTML .= "<a href='./register.php'>Registrieren</a>";
+    $FormSections = section_builder($HTMLform);
+    $FormSections .= section_builder($HTMLButtons);
+    $HTML = form_builder($FormSections,'#', 'post');
 
     if(isset($SessionMessage)){
         $HTML .= $SessionMessage;
