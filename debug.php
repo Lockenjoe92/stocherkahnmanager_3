@@ -16,4 +16,6 @@ $protocol_type = "sessoin";
 
 add_protocol_entry($message, $protocol_type);
 
+echo "lebr";
+
 ?>
