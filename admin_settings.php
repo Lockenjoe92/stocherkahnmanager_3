@@ -20,6 +20,6 @@ $FormHTML = form_builder($FormTable, './admin_settings.php', 'admin_settings_for
 
 # Output site
 echo site_header($Header);
-echo site_body($ContainerHTML);
+echo site_body($HTML);
 
 ?>
