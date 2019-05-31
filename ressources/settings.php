@@ -16,12 +16,15 @@ function lade_xml_einstellung($NameEinstellung, $mode='global'){
 
     if (false === $xml) {
         // throw new Exception("Cannot load xml source.\n");
-        echo "Einstellung ".$NameEinstellung." laden";
-        echo " -> Fehler!";
+        $StrValue = false;
+
+    } else {
+
+        $Value = $xml->$NameEinstellung;
+        $StrValue = (string) $Value;
+        $StrValue = ($StrValue);
+
     }
-    $Value = $xml->$NameEinstellung;
-    $StrValue = (string) $Value;
-    $StrValue = ($StrValue);
 
     return $StrValue;
 
@@ -43,9 +46,55 @@ function update_xml_einstellung($NameEinstellung, $WertEinstellung, $mode='globa
 
 }
 
+function add_db_einstellung($NameEinstellung, $ValueEinstellung){
+
+    $link = connect_db();
+
+    if (!($stmt = $link->prepare("INSERT INTO settings (name,value) VALUES (?,?)"))) {
+        $Antwort['erfolg'] = false;
+        echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+    }
+    if (!$stmt->bind_param("ss", $NameEinstellung, $ValueEinstellung)) {
+        $Antwort['erfolg'] = false;
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    if (!$stmt->execute()) {
+        $Antwort['erfolg'] = false;
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    } else {
+        $Message = 'Loaded Setting '.$NameEinstellung.' from settings.xml';
+        add_protocol_entry(0, $Message, 'settings');
+    }
+
+}
+
 function lade_db_einstellung($NameEinstellung){
 
-    $value = 'true';
+    $link = connect_db();
+
+    #Try to load Setting
+    $Anfrage = "SELECT * FROM settings WHERE name = '".$NameEinstellung."'";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Anzahl = mysqli_num_rows($Abfrage);
+
+    if ($Anzahl == 0){
+
+        #Try to load the setting from the xml_file
+        $XML = lade_xml_einstellung($NameEinstellung, $mode='global');
+
+        if ($XML == false){
+            $value = 'ERROR';
+        } else {
+            $value = $XML;
+            add_db_einstellung($NameEinstellung, $value);
+        }
+
+    } elseif ($Anzahl == 1) {
+
+        $Ergebnis = mysqli_fetch_assoc($Abfrage);
+        $value = $Ergebnis['value'];
+
+    }
 
     return $value;
 
