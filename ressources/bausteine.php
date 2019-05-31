@@ -86,7 +86,7 @@ function table_builder($ContentHTML){
     return $HTML;
 }
 
-function form_switch_item($OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
+function form_switch_item($ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
 
     $HTML = "<div class='switch'>";
     $HTML .= "<label>";
@@ -99,9 +99,9 @@ function form_switch_item($OptionLeft='off', $OptionRight='on', $BooleanText='fa
     }
 
     if ($Disabled == true){
-        $HTML .= "<input disabled type='checkbox' ".$PresetMode.">";
+        $HTML .= "<input name='".$ItemName."' id='".$ItemName."' disabled type='checkbox' ".$PresetMode.">";
     } elseif($Disabled == false) {
-        $HTML .= "<input type='checkbox' ".$PresetMode.">";
+        $HTML .= "<input name='".$ItemName."' id='".$ItemName."' type='checkbox' ".$PresetMode.">";
     }
 
     $HTML .= "<span class='lever'></span>";
@@ -113,9 +113,31 @@ function form_switch_item($OptionLeft='off', $OptionRight='on', $BooleanText='fa
     return $HTML;
 }
 
-function table_form_swich_item($ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
+function form_string_item($ItemName, $Placeholdertext='', $Disabled=false){
 
-    return "<tr><th>".$ItemName."</th><td>".form_switch_item($OptionLeft, $OptionRight, $BooleanText, $Disabled)."</td></tr>";
+    if ($Disabled == false) {
+        $DisabledCommand = '';
+    } elseif ($Disabled == true){
+        $DisabledCommand = 'disabled';
+    }
+
+    if ($Placeholdertext==''){
+        return "<input ".$DisabledCommand." id='".$ItemName."' type='text' class='validate'>";
+    } else {
+        return "<input ".$DisabledCommand." value='".$Placeholdertext."' id='".$ItemName."' type='text' class='validate'>";
+    }
+
+}
+
+function table_form_swich_item($ItemTitle, $ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
+
+    return "<tr><th>".$ItemTitle."</th><td>".form_switch_item($ItemName, $OptionLeft, $OptionRight, $BooleanText, $Disabled)."</td></tr>";
+
+}
+
+function table_form_string_item($ItemTitle, $ItemName, $Placeholdertext='', $Disabled=false){
+
+    return "<tr><th>".$ItemTitle."</th><td>".form_string_item($ItemName, $Placeholdertext, $Disabled)."</td></tr>";
 
 }
 
