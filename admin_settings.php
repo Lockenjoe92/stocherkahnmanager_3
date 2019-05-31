@@ -16,7 +16,7 @@ $FormHTML = form_builder($FormTable, './admin_settings.php', 'admin_settings_for
 
 
 $HTML .= section_builder($FormHTML, 'admin_settings_form_section');
-$ContainerHTML = container_builder($HTML);
+$ContainerHTML = section_builder($HTML);
 
 # Output site
 echo site_header($Header);
