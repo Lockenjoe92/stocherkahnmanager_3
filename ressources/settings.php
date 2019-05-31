@@ -136,10 +136,9 @@ function admin_settings_parser($SettingsArray){
 
         for($x=0;$x<sizeof($SettingsArray);$x++){
 
-            echo $x;
             $Setting = $SettingsArray[$x];
-            echo $Setting;
             $SettingValue = $_POST[$Setting];
+            echo $_POST;
             echo $SettingValue;
             echo "aftxkahs";
             update_db_setting($Setting, $SettingValue, lade_user_id());
