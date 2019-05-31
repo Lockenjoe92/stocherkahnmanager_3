@@ -135,6 +135,22 @@ function form_string_item($ItemName, $Placeholdertext='', $Disabled=false){
 
 }
 
+function form_range_item($ItemName, $Min, $Max, $StartValue, $Disabled=false){
+
+    if ($Disabled == false){
+        $DisabledCommand = '';
+    } elseif ($Disabled == true){
+        $DisabledCommand = 'disabled';
+    }
+
+    $HTML = "<p class='range-field'>";
+    $HTML .= "<input ".$DisabledCommand." type='range' id='".$ItemName."' value='".$StartValue."' min='".$Min."' max='".$Max."'/>";
+    $HTML .= "</p>";
+
+    return $HTML;
+
+}
+
 function table_form_swich_item($ItemTitle, $ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
 
     return "<tr><th>".$ItemTitle."</th><td>".form_switch_item($ItemName, $OptionLeft, $OptionRight, $BooleanText, $Disabled)."</td></tr>";
@@ -144,6 +160,12 @@ function table_form_swich_item($ItemTitle, $ItemName, $OptionLeft='off', $Option
 function table_form_string_item($ItemTitle, $ItemName, $Placeholdertext='', $Disabled=false){
 
     return "<tr><th>".$ItemTitle."</th><td>".form_string_item($ItemName, $Placeholdertext, $Disabled)."</td></tr>";
+
+}
+
+function table_form_range_item($ItemTitle, $ItemName, $Min, $Max, $StartValue, $Disabled=false){
+
+    return "<tr><th>".$ItemTitle."</th><td>".form_range_item($ItemName, $Min, $Max, $StartValue, $Disabled=false)."</td></tr>";
 
 }
 

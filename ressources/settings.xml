@@ -8,4 +8,7 @@
     <!--- GENERAL -->
     <max_items_row_container>4</max_items_row_container>
 
+
+    <earliest_begin>8</earliest_begin>
+
 </global_settings>
