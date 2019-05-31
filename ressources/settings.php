@@ -64,7 +64,7 @@ function add_db_einstellung($NameEinstellung, $ValueEinstellung){
         $Antwort['erfolg'] = false;
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     } else {
-        $Message = 'Loaded Setting '.$NameEinstellung.' from settings.xml';
+        #$Message = 'Loaded Setting '.$NameEinstellung.' from settings.xml';
         #add_protocol_entry(0, $Message, 'settings');
     }
 
@@ -117,9 +117,6 @@ function update_db_setting($Setting, $SettingValue){
         }
         if (!$stmt->execute()) {
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-        } else {
-            $Message = 'Updated Setting '.$Setting.' to '.$SettingValue.'';
-            add_protocol_entry($Message, 'settings');
         }
 
     }
