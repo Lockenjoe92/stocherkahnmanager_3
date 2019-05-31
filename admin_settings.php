@@ -2,7 +2,7 @@
 
 include_once "./ressources/ressourcen.php";
 session_manager('ist_admin');
-$Header = "Admin Einstellungen - " . lade_xml_einstellung('site_name', 'local');
+$Header = "Admin Einstellungen - " . lade_db_einstellung('site_name');
 $Settings = ['site_name', 'site_footer_name'];
 $HTML = admin_settings_parser($Settings);
 
