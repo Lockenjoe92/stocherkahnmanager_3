@@ -40,8 +40,15 @@ function update_xml_einstellung($NameEinstellung, $WertEinstellung, $mode='globa
         $xml->$NameEinstellung = $WertEinstellung;
         $xml->asXML("./ressourcen/local_db_settings.xml");
     }
+
 }
 
+function lade_db_einstellung($NameEinstellung){
 
+    $value = 'true';
+
+    return $value;
+
+}
 
 ?>

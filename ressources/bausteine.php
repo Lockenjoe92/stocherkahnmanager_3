@@ -77,6 +77,33 @@ function form_builder($ContentHTML, $ActionPageLink, $ID=''){
 
 }
 
+function form_switch_item($OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
+
+    $HTML = "<div class='switch'>";
+    $HTML .= "<label>";
+    $HTML .= $OptionLeft;
+
+    if ($BooleanText == 'false'){
+        $PresetMode = 'unchecked';
+    } elseif ($BooleanText == 'true'){
+        $PresetMode = 'checked';
+    }
+
+    if ($Disabled == true){
+        $HTML .= "<input disabled type='checkbox' checked='".$PresetMode."'>";
+    } elseif($Disabled == false) {
+        $HTML .= "<input type='checkbox' checked='".$PresetMode."'>";
+    }
+
+    $HTML .= "<span class='lever'></span>";
+
+    $HTML .= $OptionRight;
+    $HTML .= "</label>";
+    $HTML .= "</div>";
+
+    return $HTML;
+}
+
 function toast($Message){
     return "<script>M.toast({html: 'I am a toast'})</script>";
 }
