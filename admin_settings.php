@@ -10,7 +10,8 @@ $PageTitle = '<h1>Admineinstellungen</h1>';
 $HTML = section_builder($PageTitle, 'admin_settings_page_title');
 
 # Settings List
-$FormItems = form_switch_item('Seitenaktivierung', 'Deaktiviert', 'Aktiviert', 'false', true);    #Website aktivieren
+$FormTableItems = table_form_swich_item('Deaktiviert', 'Aktiviert', 'false', true);
+$FormTable = table_builder($FormTableItems);
 
 # Wrap up everything
 $FormHTML = form_builder($FormItems, './admin_settings.php', 'admin_settings_form');

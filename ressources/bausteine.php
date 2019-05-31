@@ -77,10 +77,18 @@ function form_builder($ContentHTML, $ActionPageLink, $ID=''){
 
 }
 
-function form_switch_item($ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
+function table_builder($ContentHTML){
+
+    $HTML = "<table>";
+    $HTML .= $ContentHTML;
+    $HTML .= "<table>";
+
+    return $HTML;
+}
+
+function form_switch_item($OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
 
     $HTML = "<div class='switch'>";
-    $HTML .= "<b>".$ItemName."</b>   ";
     $HTML .= "<label>";
     $HTML .= $OptionLeft;
 
@@ -103,6 +111,12 @@ function form_switch_item($ItemName, $OptionLeft='off', $OptionRight='on', $Bool
     $HTML .= "</div>";
 
     return $HTML;
+}
+
+function table_form_swich_item($ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
+
+    return "<tr><th>".$ItemName."</th><td>".form_switch_item($OptionLeft, $OptionRight, $BooleanText, $Disabled)."</td></tr>";
+
 }
 
 function toast($Message){
