@@ -12,8 +12,8 @@ $HTML = section_builder($PageTitle, 'admin_settings_page_title');
 # Settings List
 $FormItems = "Form here";
 $FormHTML = form_builder($FormItems, './admin_settings.php', 'admin_settings_form');
-$Form = section_builder($FormHTML, 'admin_settings_form_section');
-$HTML = container_builder($Form, 'admin_settings_main_container');
+$HTML .= section_builder($FormHTML, 'admin_settings_form_section');
+$HTML = container_builder($HTML, 'admin_settings_main_container');
 
 # Output site
 echo site_header($Header);
