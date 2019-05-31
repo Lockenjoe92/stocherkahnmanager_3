@@ -130,7 +130,7 @@ function login_parser(){
     }
 }
 
-function session_manager(){
+function session_manager($Necessary_User_Role = NULL){
 
     /**
      * Stellt fest, ob eine Session noch gültig ist
@@ -159,6 +159,18 @@ function session_manager(){
             #Userkonto existiert nicht
             echo "No user account found!";
             $Ergebnis = false;
+        } else {
+
+            if ($Necessary_User_Role != NULL){
+
+                $UserMeta = lade_user_meta($User_login);
+                if ($UserMeta[$Necessary_User_Role] != 'TRUE'){
+                    echo "User does not have neccessary rights.";
+                    $Ergebnis = false;
+                }
+
+            }
+
         }
 
         //Importiere Einstellung

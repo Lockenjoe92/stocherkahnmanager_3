@@ -2,6 +2,9 @@
 <global_settings>
 
     <!--- STARTSEITE -->
+    <site_name>Stocherkahn XY e.V.</site_name>
+
+    <!--- GENERAL -->
     <max_items_row_container>4</max_items_row_container>
 
 </global_settings>

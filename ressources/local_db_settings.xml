@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<local_settings>
+<local_db_settings>
 
     <!--- DATABASE -->
     <db_host>localhost</db_host>
@@ -7,7 +7,4 @@
     <db_pswd>pswd</db_pswd>
     <db_dbname>database</db_dbname>
 
-    <!--- GENERAL -->
-    <site_name>Stocherkahn Medizin Tübingen e.V.</site_name>
-
-</local_settings>
+</local_db_settings>

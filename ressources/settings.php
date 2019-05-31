@@ -10,8 +10,8 @@ function lade_xml_einstellung($NameEinstellung, $mode='global'){
 
     if($mode == 'global'){
         $xml = simplexml_load_file("./ressources/settings.xml");
-    } elseif ($mode == 'local'){
-        $xml = simplexml_load_file("./ressources/local_settings.xml");
+    } elseif ($mode == 'db'){
+        $xml = simplexml_load_file("./ressources/local_db_settings.xml");
     }
 
     if (false === $xml) {
@@ -33,12 +33,13 @@ function update_xml_einstellung($NameEinstellung, $WertEinstellung, $mode='globa
 
     if($mode == 'global'){
         $xml = simplexml_load_file("./ressources/settings.xml");
-    } elseif ($mode == 'local'){
-        $xml = simplexml_load_file("./ressources/local_settings.xml");
+        $xml->$NameEinstellung = $WertEinstellung;
+        $xml->asXML("./ressourcen/settings.xml");
+    } elseif ($mode == 'db'){
+        $xml = simplexml_load_file("./ressources/local_db_settings.xml");
+        $xml->$NameEinstellung = $WertEinstellung;
+        $xml->asXML("./ressourcen/local_db_settings.xml");
     }
-
-    $xml->$NameEinstellung = $WertEinstellung;
-    $xml->asXML("./ressourcen/settings.xml");
 }
 
 ?>
