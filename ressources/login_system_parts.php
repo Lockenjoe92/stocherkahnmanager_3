@@ -19,15 +19,14 @@ function login_formular($Parser, $SessionMessage){
     $HTMLform .= "</div>";
     $HTMLform .= "</div>";
 
-    $HTMLBigscreenButtons = "<div class='row'>";
-    $HTMLBigscreenButtons .= form_button_builder('submit', 'Einloggen', 'submit', 'send');
+    $HTMLBigscreenButtons = form_button_builder('submit', 'Einloggen', 'submit', 'send');
     $HTMLBigscreenButtons .= button_link_creator('Registrieren', './register.php', '', '');
     $HTMLBigscreenButtons .= button_link_creator('Passwort vergessen', './iforgot.php', '', '');
-    $HTMLBigscreenButtons .= "</div>";
+    $HTMLBigscreenButtons = row_builder($HTMLBigscreenButtons);
 
-    $HTMLMobileButtons = form_button_builder('submit', 'Einloggen', 'submit', 'send');
-    $HTMLMobileButtons .= button_link_creator('Registrieren', './register.php', '', '');
-    $HTMLMobileButtons .= button_link_creator('Passwort vergessen', './iforgot.php', '', '');
+    $HTMLMobileButtons = row_builder(form_button_builder('submit', 'Einloggen', 'submit', 'send'));
+    $HTMLMobileButtons .= row_builder(button_link_creator('Registrieren', './register.php', '', ''));
+    $HTMLMobileButtons .= row_builder(button_link_creator('Passwort vergessen', './iforgot.php', '', ''));
 
     $FormSections = section_builder($HTMLform);
     $FormSections .= section_builder($HTMLBigscreenButtons, '', 'hide-on-small-and-down');

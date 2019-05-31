@@ -33,6 +33,21 @@ function parallax_content_builder($ContentHTML, $ID='', $SpecialMode=''){
     return $HTML;
 }
 
+function row_builder($ContentHTML, $ID='', $SpecialMode=''){
+
+    if ($ID!=''){
+        $HTML = ' <div id="'.$ID.'" class="row '.$SpecialMode.'">';
+    } else {
+        $HTML = ' <div class="row '.$SpecialMode.'">';
+    }
+
+    $HTML .= $ContentHTML;
+    $HTML .= '</div>';
+
+    return $HTML;
+
+}
+
 function section_builder($ContentHTML, $ID='', $SpecialMode=''){
 
     if ($ID!=''){
