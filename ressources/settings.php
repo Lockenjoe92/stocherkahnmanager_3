@@ -136,6 +136,7 @@ function admin_settings_parser($SettingsArray){
 
         }
 
+        return toast('Einstellungen erfolgreich gespeichert.');
     }
 
 }
