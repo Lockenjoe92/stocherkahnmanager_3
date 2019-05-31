@@ -17,7 +17,7 @@ function add_protocol_entry($user, $message, $protocol_type){
         $Antwort['erfolg'] = false;
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
-    if (!$stmt->bind_param("isss", $user, $protocol_type, $message, timestamp())) {
+    if (!$stmt->bind_param("ssss", $user, $protocol_type, $message, timestamp())) {
         $Antwort['erfolg'] = false;
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
