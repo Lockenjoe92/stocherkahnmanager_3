@@ -106,14 +106,13 @@ function update_db_setting($Setting, $SettingValue){
 
     $link = connect_db();
     $CurrentSettingValue = lade_db_einstellung($Setting);
-    $SettingValue = strval($SettingValue);
 
     if ($CurrentSettingValue != $SettingValue){
 
         if (!($stmt = $link->prepare("UPDATE settings SET value = ? WHERE name = ?"))) {
             echo "Prepare failed: (" . $link->errno . ") " . $link->error;
         }
-        if (!$stmt->bind_param("ss", $SettingValue, $Setting)) {
+        if (!$stmt->bind_param("ss", strval($SettingValue), $Setting)) {
             echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
         }
         if (!$stmt->execute()) {
