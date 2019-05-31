@@ -5,9 +5,15 @@ session_manager('ist_admin');
 $Header = "Admin Einstellungen - " . lade_xml_einstellung('site_name', 'local');
 
 #Generate content
-$HTML = '<h1>Hello World!</h1>';
-$HTML = section_builder($HTML, 'admin_settings_page_title');
-$HTML = container_builder($HTML, 'admin_settings_main_container');
+# Page Title
+$PageTitle = '<h1>Admineinstellungen</h1>';
+$HTML = section_builder($PageTitle, 'admin_settings_page_title');
+
+# Settings List
+$FormItems = "Form here";
+$FormHTML = form_builder($FormItems, './admin_settings.php', 'admin_settings_form');
+$Form = section_builder($FormHTML, 'admin_settings_form_section');
+$HTML = container_builder($Form, 'admin_settings_main_container');
 
 # Output site
 echo site_header($Header);

@@ -62,6 +62,21 @@ function container_builder($ContentHTML, $ID='', $SpecialMode=''){
 
 }
 
+function form_builder($ContentHTML, $ActionPageLink, $ID=''){
+
+    if ($ID == ''){
+        $HTML = "<form action='".$ActionPageLink."'>";
+    } else {
+        $HTML = "<form action='".$ActionPageLink."' id='".$ID."'>";
+    }
+
+    $HTML .= $ContentHTML;
+    $HTML .= "</form>";
+
+    return $HTML;
+
+}
+
 function toast($Message){
     return "<script>M.toast({html: 'I am a toast'})</script>";
 }

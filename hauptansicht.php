@@ -10,5 +10,6 @@ include_once "./ressources/ressourcen.php";
 session_manager();
 
 echo "Hello logged in user";
+echo "<a href='./admin_settings.php'>Admin Settings</a>";
 
 ?>

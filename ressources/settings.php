@@ -42,4 +42,6 @@ function update_xml_einstellung($NameEinstellung, $WertEinstellung, $mode='globa
     }
 }
 
+
+
 ?>
