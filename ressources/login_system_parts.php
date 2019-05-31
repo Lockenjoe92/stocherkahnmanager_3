@@ -19,17 +19,20 @@ function login_formular($Parser, $SessionMessage){
     $HTMLform .= "</div>";
     $HTMLform .= "</div>";
 
-    $RegisterButton = button_link_creator('Registrieren', './register.php', '', '');
-    $LoginButton = form_button_builder('submit', 'Einloggen', 'submit', 'send');
-    $ForgotButton = button_link_creator('Passwort vergessen', './iforgot.php', '', '');;
-    $HTMLButtons = "<div class='row'>";
-    $HTMLButtons .= $RegisterButton;
-    $HTMLButtons .= $LoginButton;
-    $HTMLButtons .= $ForgotButton;
-    $HTMLButtons .= "</div>";
+    $HTMLBigscreenButtons = "<div class='row hide-on-small-and-down'>";
+    $HTMLBigscreenButtons .= form_button_builder('submit', 'Einloggen', 'submit', 'send');
+    $HTMLBigscreenButtons .= button_link_creator('Registrieren', './register.php', '', '');
+    $HTMLBigscreenButtons .= button_link_creator('Passwort vergessen', './iforgot.php', '', '');
+    $HTMLBigscreenButtons .= "</div>";
+
+    $HTMLMobileButtons = form_button_builder('submit', 'Einloggen', 'submit', 'send');
+    $HTMLMobileButtons .= button_link_creator('Registrieren', './register.php', '', '');
+    $HTMLMobileButtons .= button_link_creator('Passwort vergessen', './iforgot.php', '', '');
 
     $FormSections = section_builder($HTMLform);
-    $FormSections .= section_builder($HTMLButtons);
+    $FormSections .= section_builder($HTMLBigscreenButtons);
+    $FormSections .= section_builder($HTMLMobileButtons);
+
     $HTML = form_builder($FormSections,'#', 'post');
 
     if(isset($SessionMessage)){
