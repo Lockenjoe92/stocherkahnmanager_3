@@ -14,16 +14,10 @@ function add_protocol_entry($message, $protocol_type){
 
     $link = connect_db();
 
-    $timestamp = "2019-06-09 23:45:44";
-    $userID = 2;
-
-    echo $message;
-    echo $protocol_type;
-
     if (!($stmt = $link->prepare("INSERT INTO protocol ('user',protocol,message,'timestamp') VALUES (?,?,?,?)"))) {
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
-    if (!$stmt->bind_param("isss", $userID, $protocol_type, $message, $timestamp)) {
+    if (!$stmt->bind_param("isss", lade_user_id(), $protocol_type, $message, timestamp())) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
     if (!$stmt->execute()) {
