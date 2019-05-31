@@ -119,8 +119,7 @@ function update_db_setting($Setting, $SettingValue, $UserID){
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         } else {
             $Message = 'Updated Setting '.$Setting.' to '.$SettingValue.'';
-            echo $Message;
-            add_protocol_entry($UserID, $Message, 'settings');
+            #add_protocol_entry($UserID, $Message, 'settings');
         }
 
     }
