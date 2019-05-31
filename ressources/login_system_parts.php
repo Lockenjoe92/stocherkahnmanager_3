@@ -3,21 +3,21 @@
 function login_formular($Parser, $SessionMessage){
 
     $HTML = "<div class='row'>";
-    $HTML .= "<div class='input-field col s6'>";
+    $HTML .= "<div class='input-field'>";
     $HTML .= "<input id='login_mail' type='email' name='mail' value='".$Parser['mail']."'>";
     $HTML .= "<label for='login_mail'>Mail</label>";
     $HTML .= "</div>";
     $HTML .= "</div>";
 
     $HTML .= "<div class='row'>";
-    $HTML .= "<div class='input-field col s6'>";
+    $HTML .= "<div class='input-field'>";
     $HTML .= "<input id='login_pswd' type='password' name='pass'>";
     $HTML .= "<label for='login_pswd'>Passwort</label>";
     $HTML .= "</div>";
     $HTML .= "</div>";
 
     $HTML .= "<div class='row'>";
-    $HTML .= "<div class='input-field col s6'>";
+    $HTML .= "<div class='input-field'>";
     $HTML .= "<input type='submit' name='submit'>";
     $HTML .= "</div>";
     $HTML .= "</div>";
