@@ -35,7 +35,9 @@ function login_formular($Parser, $SessionMessage){
         $HTML .= toast($Parser['meldung']);
     }
 
-    return $HTML;
+    $Container = container_builder($HTML);
+
+    return $Container;
 }
 
 function login_parser(){
