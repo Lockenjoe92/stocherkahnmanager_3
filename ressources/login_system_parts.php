@@ -2,27 +2,31 @@
 
 function login_formular($Parser, $SessionMessage){
 
-    $HTML = "<div class='row'>";
-    $HTML .= "<div class='input-field'>";
-    $HTML .= "<input id='login_mail' type='email' name='mail' value='".$Parser['mail']."'>";
-    $HTML .= "<label for='login_mail'>Mail</label>";
-    $HTML .= "</div>";
-    $HTML .= "</div>";
+    $HTMLform = '<h1>Login zum Buchungstool</h1>';
 
-    $HTML .= "<div class='row'>";
-    $HTML .= "<div class='input-field'>";
-    $HTML .= "<input id='login_pswd' type='password' name='pass'>";
-    $HTML .= "<label for='login_pswd'>Passwort</label>";
-    $HTML .= "</div>";
-    $HTML .= "</div>";
 
-    $HTML .= "<div class='row'>";
-    $HTML .= "<div class='input-field'>";
-    $HTML .= "<input type='submit' name='submit'>";
-    $HTML .= "</div>";
-    $HTML .= "</div>";
+    $HTMLform .= "<div class='row'>";
+    $HTMLform .= "<div class='input-field'>";
+    $HTMLform .= "<input id='login_mail' type='email' name='mail' value='".$Parser['mail']."'>";
+    $HTMLform .= "<label for='login_mail'>Mail</label>";
+    $HTMLform .= "</div>";
+    $HTMLform .= "</div>";
 
-    $HTML = form_builder($HTML,'#', 'post');
+    $HTMLform .= "<div class='row'>";
+    $HTMLform .= "<div class='input-field'>";
+    $HTMLform .= "<input id='login_pswd' type='password' name='pass'>";
+    $HTMLform .= "<label for='login_pswd'>Passwort</label>";
+    $HTMLform .= "</div>";
+    $HTMLform .= "</div>";
+
+    $HTMLform .= "<div class='row'>";
+    $HTMLform .= "<div class='input-field'>";
+    $HTMLform .= "<input type='submit' name='submit'>";
+    $HTMLform .= "</div>";
+    $HTMLform .= "</div>";
+    $FormSections = section_builder($HTMLform);
+    $FormSections .= section_builder(form_button_builder('submit', 'Einloggen', 'submit', 'send'));
+    $HTML = form_builder($FormSections,'#', 'post');
 
     $HTML .= "<a href='./register.php'>Registrieren</a>";
 
