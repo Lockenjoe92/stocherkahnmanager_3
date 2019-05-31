@@ -6,6 +6,8 @@
  * Time: 15:04
  */
 
+include_once "./ressourcen.php";
+
 function lade_xml_einstellung($NameEinstellung, $mode='global'){
 
     if($mode == 'global'){

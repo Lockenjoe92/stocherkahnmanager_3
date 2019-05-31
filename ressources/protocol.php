@@ -6,6 +6,9 @@
  * Time: 20:58
  */
 
+include_once "./ressourcen.php";
+
+
 function add_protocol_entry($user, $message, $protocol_type){
 
     $link = connect_db();
