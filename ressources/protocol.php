@@ -13,7 +13,9 @@ function add_protocol_entry($user, $message, $protocol_type){
 
     $link = connect_db();
 
-    echo $user, $message, $protocol_type;
+    echo $user;
+    echo $message;
+    echo $protocol_type;
 
     if (!($stmt = $link->prepare("INSERT INTO protocol (user,protocol,message,timestamp) VALUES (?,?,?,?)"))) {
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
