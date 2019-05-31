@@ -16,7 +16,7 @@ $SettingForm = form_builder($SettingTable, './admin_settings.php');
 $HTML .= section_builder($SettingForm);
 
 #Put it all in a container
-$HTML = container_builder($HTML, 'admin_settings_page_title');
+$HTML = container_builder($HTML, 'admin_settings_page');
 
 # Output site
 echo site_header($Header);

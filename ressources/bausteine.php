@@ -81,7 +81,7 @@ function table_builder($ContentHTML){
 
     $HTML = "<table>";
     $HTML .= $ContentHTML;
-    $HTML .= "<table>";
+    $HTML .= "</table>";
 
     return $HTML;
 }
