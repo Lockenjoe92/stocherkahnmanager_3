@@ -151,6 +151,43 @@ function form_range_item($ItemName, $Min, $Max, $StartValue, $Disabled=false){
 
 }
 
+function form_select_item($ItemName, $Min=0, $Max=0, $StartValue='', $Einheit='', $Label='', $SpecialMode='', $Disabled=false){
+
+    $HTML = "<div class='input-field ".$SpecialMode."'>";
+    $HTML .= "<select id='".$ItemName."' name='".$ItemName."'>";
+
+    if ($Disabled == false){
+        $DisabledCommand = '';
+    } elseif ($Disabled == true){
+        $DisabledCommand = 'disabled';
+    }
+
+    if($StartValue == ''){
+        $HTML .= "<option value='' ".$DisabledCommand." selected>Bitte w&auml;hlen</option>";
+    } else {
+        $HTML .= "<option value='' ".$DisabledCommand.">Bitte w&auml;hlen</option>";
+    }
+
+    for ($x=$Min;$x<$Max;$x++) {
+
+        if ($StartValue == $x) {
+            $HTML .= "<option value='" . $x . "' " . $DisabledCommand . " selected>" . $x . " " . $Einheit . "</option>";
+        } else {
+            $HTML .= "<option value='" . $x . "' " . $DisabledCommand . ">" . $x . " " . $Einheit . "</option>";
+        }
+    }
+
+    $HTML .= "</select>";
+
+    if ($Label!=''){
+        $HTML .= "<label>".$Label."</label>";
+    }
+
+    $HTML .= "</div>";
+
+    return $HTML;
+}
+
 function table_form_swich_item($ItemTitle, $ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
 
     return "<tr><th>".$ItemTitle."</th><td>".form_switch_item($ItemName, $OptionLeft, $OptionRight, $BooleanText, $Disabled)."</td></tr>";
@@ -166,6 +203,12 @@ function table_form_string_item($ItemTitle, $ItemName, $Placeholdertext='', $Dis
 function table_form_range_item($ItemTitle, $ItemName, $Min, $Max, $StartValue, $Disabled=false){
 
     return "<tr><th>".$ItemTitle."</th><td>".form_range_item($ItemName, $Min, $Max, $StartValue, $Disabled=false)."</td></tr>";
+
+}
+
+function table_form_select_item($ItemTitle, $ItemName, $Min, $Max, $StartValue, $Einheit, $Label, $SpecialMode, $Disabled=false){
+
+    return "<tr><th>".$ItemTitle."</th><td>".form_select_item($ItemName, $Min, $Max, $StartValue, $Einheit, $Label, $SpecialMode, $Disabled)."</td></tr>";
 
 }
 
