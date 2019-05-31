@@ -11,7 +11,7 @@ include_once "./ressources/ressourcen.php";
 
 # Generate Content
 $HTML = startseite_inhalt_home();
-$Header = "Home - " . lade_xml_einstellung('site_name', 'local');
+$Header = "Home - " . lade_db_einstellung('site_name');
 
 # Output site
 echo site_header($Header);
