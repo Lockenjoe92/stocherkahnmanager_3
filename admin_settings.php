@@ -19,6 +19,6 @@ $ContainerHTML = container_builder($HTML);
 
 # Output site
 echo site_header($Header);
-echo site_body($HTML);
+echo site_body($ContainerHTML);
 
 ?>
