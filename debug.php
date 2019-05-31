@@ -9,6 +9,11 @@
 include_once "./ressources/ressourcen.php";
 
 echo "debugging";
-connect_db();
+$link = connect_db();
+
+$message = "Test1";
+$protocol_type = "sessoin";
+
+add_protocol_entry($message, $protocol_type);
 
 ?>
