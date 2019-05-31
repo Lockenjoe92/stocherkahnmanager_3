@@ -134,7 +134,7 @@ function admin_settings_parser($SettingsArray){
 
     if (isset($_POST['admin_settings_action'])){
 
-        for($x=0;$x<=sizeof($SettingsArray);$x++){
+        for($x=0;$x<sizeof($SettingsArray);$x++){
 
             echo $x;
             $Setting = $SettingsArray[$x];
