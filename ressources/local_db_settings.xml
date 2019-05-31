@@ -4,7 +4,7 @@
     <!--- DATABASE -->
     <db_host>localhost</db_host>
     <db_user>stochertool</db_user>
-    <db_pswd>pswd</db_pswd>
-    <db_dbname>database</db_dbname>
+    <db_pswd>cw8W05$n</db_pswd>
+    <db_dbname>stocherkahnmanager_3-0</db_dbname>
 
 </local_db_settings>

@@ -8,10 +8,10 @@
 
 function connect_db(){
 
-    $host = lade_xml_einstellung('db_host', 'local');
-    $user = lade_xml_einstellung('db_user', 'local');
-    $pswd = lade_xml_einstellung('db_pswd', 'local');
-    $name = lade_xml_einstellung('db_dbname', 'local');
+    $host = lade_xml_einstellung('db_host', 'db');
+    $user = lade_xml_einstellung('db_user', 'db');
+    $pswd = lade_xml_einstellung('db_pswd', 'db');
+    $name = lade_xml_einstellung('db_dbname', 'db');
 
     $sql = new mysqli($host,$user,$pswd,$name);
 
