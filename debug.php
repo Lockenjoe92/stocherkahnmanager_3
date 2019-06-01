@@ -11,11 +11,7 @@ include_once "./ressources/ressourcen.php";
 echo "debugging";
 $link = connect_db();
 
-$message = "Test1";
-$protocol_type = "sessoin";
-
-add_protocol_entry($message, $protocol_type);
-
-echo "lebr";
+$Einstallung = lade_db_einstellung('big_footer_right_column_html');
+echo $Einstallung;
 
 ?>
