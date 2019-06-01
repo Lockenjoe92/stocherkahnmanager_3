@@ -85,7 +85,7 @@ function lade_db_einstellung($NameEinstellung){
         $XML = lade_xml_einstellung($NameEinstellung, $mode='global');
 
         if ($XML == false){
-            $value = 'ERROR';
+            $value = 'ERROR loading '.$NameEinstellung.'';
         } else {
             $value = $XML;
             add_db_einstellung($NameEinstellung, $value);
