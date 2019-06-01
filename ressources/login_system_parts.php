@@ -25,9 +25,9 @@ function login_formular($Parser, $SessionMessage){
     $HTMLBigscreenButtons .= button_link_creator('Passwort vergessen', './iforgot.php', '', '');
     $HTMLBigscreenButtons = row_builder($HTMLBigscreenButtons);
 
-    $HTMLMobileButtons = row_builder(form_button_builder('submit', 'Einloggen', 'submit', 'send'));
-    $HTMLMobileButtons .= row_builder(button_link_creator('Registrieren', './register.php', '', ''));
-    $HTMLMobileButtons .= row_builder(button_link_creator('Passwort vergessen', './iforgot.php', '', ''));
+    $HTMLMobileButtons = row_builder(form_button_builder('submit', 'Einloggen', 'submit', 'send col s3'));
+    $HTMLMobileButtons .= row_builder(button_link_creator('Registrieren', './register.php', '', 'col s3 offset-s1'));
+    $HTMLMobileButtons .= row_builder(button_link_creator('Passwort vergessen', './iforgot.php', '', 'col s3 offset-s1'));
 
     $FormSections = section_builder($HTMLform);
     $FormSections .= section_builder($HTMLBigscreenButtons, '', 'hide-on-small-and-down');
