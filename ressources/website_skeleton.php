@@ -69,6 +69,16 @@ function site_body($BodyHTMLcontent){
     return $HTML;
 }
 
+function site_skripts(){
+
+    $HTML = '  <!--  Scripts-->';
+    $HTML .= '<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>';
+    $HTML .= '<script src="/materialize/js/materialize.js"></script>';
+    $HTML .= '<script src="/materialize/js/init.js"></script>';
+
+    return $HTML;
+}
+
 function site_footer(){
 
     # Initialize Footer
@@ -82,34 +92,18 @@ function site_footer(){
     return $HTML;
 }
 
-function site_skripts(){
-
-    $HTML = '  <!--  Scripts-->';
-    $HTML .= '<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>';
-    $HTML .= '<script src="/materialize/js/materialize.js"></script>';
-    $HTML .= '<script src="/materialize/js/init.js"></script>';
-
-    return $HTML;
-}
-
 function footer_container(){
 
     #Initialize container
     $HTML = '  <!--  footer container -->';
-    $HTML .= '<div class="container">';
 
-    #Initialize row
-    $HTML .= '<div class="row">';
-
-    # Gather row content
-    $HTML .= footer_content_about();
-    $HTML .= footer_content_connect();
-
-    # Close row
-    $HTML .= '</div>';
-
-    # Close container
-    $HTML .= '</div>';
+    # Display big Footer if so chosen
+    if (lade_db_einstellung('display_big_footer') == 'true'){
+        $HTML .= footer_content_about();
+        $HTML .= footer_content_connect();
+        $HTML = row_builder($HTML, 'big_footer_row');
+        $HTML = container_builder($HTML, 'big_footer_container');
+    }
 
     # Copyright
     $HTML .= footer_content_copyright();

@@ -3,7 +3,7 @@
 include_once "./ressources/ressourcen.php";
 session_manager('ist_admin');
 $Header = "Admin Einstellungen - " . lade_db_einstellung('site_name');
-$Settings = ['site_name', 'site_footer_name', 'earliest_begin', 'latest_begin', 'site_menue_color', 'site_footer_color', 'site_buttons_color', 'site_error_buttons_color'];
+$Settings = ['site_name', 'site_footer_name', 'earliest_begin', 'latest_begin', 'site_menue_color', 'site_footer_color', 'site_buttons_color', 'site_error_buttons_color', 'display_big_footer'];
 $HTML = admin_settings_parser($Settings);
 
 #Generate content
@@ -14,6 +14,8 @@ $HTML .= section_builder($PageTitle);
 #Settings Form
 $SettingTableItems = table_form_string_item('Website Name', 'site_name', lade_db_einstellung('site_name'), false);
 $SettingTableItems .= table_form_string_item('Website Footer Name', 'site_footer_name', lade_db_einstellung('site_footer_name'), false);
+$SettingTableItems .= table_form_swich_item('Website Big Footer', 'display_big_footer', 'deaktiviert', 'aktiviert', lade_db_einstellung('display_big_footer'), false);
+
 $SettingTableItems .= table_form_select_item('Fr&uuml;hester Verleihbeginn', 'earliest_begin', 5, 23,intval(lade_db_einstellung('earliest_begin')), '', '', '');
 $SettingTableItems .= table_form_select_item('Sp&auml;tester Verleihbeginn', 'latest_begin', 5, 23,intval(lade_db_einstellung('latest_begin')), '', '', '');
 $SettingTableItems .= table_form_string_item('Website Men&uuml;farbe', 'site_menue_color', lade_db_einstellung('site_menue_color'), false);
