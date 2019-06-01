@@ -40,7 +40,7 @@ function login_formular($Parser, $SessionMessage){
     #}
 
     if(!empty($Parser['meldung'])){
-        $HTML .= row_builder(button_link_creator($Parser['meldung'], '#', '', ''), '', '');
+        $HTML .= row_builder(button_link_creator($Parser['meldung'], '#', '', 'red-darken-1 col s12'), '', '');
         #$HTML .= toast($Parser['meldung']);
     }
 
@@ -59,18 +59,18 @@ function login_parser(){
 
         if(empty($_POST['mail'])){
             $DAUcounter ++;
-            $DAUerror .= "Du musst eine eMail-Adresse eingeben!<br>";
+            $DAUerror .= "Du musst eine eMail-Adresse eingeben! ";
         } else {
 
              if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
                  $DAUcounter ++;
-                 $DAUerror .= "Du musst eine echte eMail-Adresse eingeben!<br>";
+                 $DAUerror .= "Du musst eine echte eMail-Adresse eingeben! ";
              }
         }
 
         if(empty($_POST['pass'])){
             $DAUcounter ++;
-            $DAUerror .= "Du musst dein Passwort eingeben!<br>";
+            $DAUerror .= "Du musst dein Passwort eingeben! ";
         }
 
         if ($DAUcounter > 0){
