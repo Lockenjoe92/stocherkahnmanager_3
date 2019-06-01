@@ -6,6 +6,8 @@
  * Time: 20:27
  */
 
+include_once "./ressourcen.php";
+
 function site_header($PageTitle, $LoginCheckActive=Null){
 
     #Redirect wenn Login erforderlich und login nicht erfolgt
@@ -71,7 +73,7 @@ function site_footer(){
 
     # Initialize Footer
     $HTML = '<!--  footer-->';
-    $HTML .= '<footer class="page-footer teal">';
+    $HTML .= '<footer class="page-footer teal '.lade_db_einstellung('site_footer_color').'">';
     $HTML .= footer_container();
 
     #Close footer
@@ -179,7 +181,7 @@ function site_navbar(){
 
     $HTML = '<!--  navbar   -->';
     $HTML .= '<nav class="white" role="navigation">';
-    $HTML .= '<div class="nav-wrapper container blue">';
+    $HTML .= '<div class="nav-wrapper container '.lade_db_einstellung('site_menue_color').'">';
 
     $HTML .= navbar_links_big();
     $HTML .= navbar_links_mobile();
@@ -204,7 +206,7 @@ function navbar_links_big(){
 
 function navbar_links_mobile(){
 
-    $HTML = '<ul id="nav-mobile" class="sidenav blue">';
+    $HTML = '<ul id="nav-mobile" class="sidenav '.lade_db_einstellung('site_menue_color').'">';
     $HTML .= '<li><a href="#">Kahnverleih</a></li>';
     $HTML .= '<li><a href="#">Verein</a></li>';
     $HTML .= '<li><a href="./login.php">Login</a></li>';

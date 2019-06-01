@@ -13,6 +13,7 @@
     <latest_begin>22</latest_begin>
 
     <!--- COLORS -->
-    <site_menue_color>blue</site_menue_color>
+    <site_menue_color>white</site_menue_color>
+    <site_footer_color>white</site_footer_color>
 
 </global_settings>
