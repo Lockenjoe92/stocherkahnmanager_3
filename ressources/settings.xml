@@ -8,8 +8,11 @@
     <!--- GENERAL -->
     <max_items_row_container>4</max_items_row_container>
 
-
+    <!--- VERLEIH -->
     <earliest_begin>8</earliest_begin>
     <latest_begin>22</latest_begin>
+
+    <!--- COLORS -->
+    <site_menue_color>blue</site_menue_color>
 
 </global_settings>
