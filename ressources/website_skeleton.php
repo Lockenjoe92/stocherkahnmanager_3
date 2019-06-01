@@ -98,7 +98,7 @@ function footer_container(){
     $HTML = '  <!--  footer container -->';
 
     # Display big Footer if so chosen
-    if (lade_db_einstellung('display_big_footer') == 'true'){
+    if (lade_db_einstellung('display_big_footer') == 'on'){
         $HTML .= footer_content_about();
         $HTML .= footer_content_connect();
         $HTML = row_builder($HTML, 'big_footer_row');
