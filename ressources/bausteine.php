@@ -247,9 +247,9 @@ function table_form_select_item($ItemTitle, $ItemName, $Min, $Max, $StartValue, 
 
 }
 
-function table_form_html_area_item($ItemTitle, $ItemName, $Placeholdertext, $Disabled){
+function table_form_html_area_item($ItemTitle, $ItemName, $Placeholdertext='', $Disabled=false){
 
-    return "<tr><th>".$ItemTitle."</th><td>".form_html_area_item($ItemName, $Placeholdertext='', $Disabled=false)."</td></tr>";
+    return "<tr><th>".$ItemTitle."</th><td>".form_html_area_item($ItemName, $Placeholdertext, $Disabled)."</td></tr>";
 
 }
 
