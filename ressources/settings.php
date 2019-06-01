@@ -135,6 +135,7 @@ function admin_settings_parser($SettingsArray){
 
             $Setting = $SettingsArray[$x];
             $SettingValue = $_POST[$Setting];
+            var_dump($SettingValue);
             update_db_setting($Setting, $SettingValue);
 
         }
