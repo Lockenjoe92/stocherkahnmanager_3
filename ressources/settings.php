@@ -134,7 +134,14 @@ function admin_settings_parser($SettingsArray){
         for($x=0;$x<sizeof($SettingsArray);$x++){
 
             $Setting = $SettingsArray[$x];
-            $SettingValue = strval($_POST[$Setting]);
+            $SettingValue = $_POST[$Setting];
+
+            #Remove certain HTML Tags from HTML-Textarea-Input
+            $SettingValue = str_replace('<pre>','',$SettingValue);
+            $SettingValue = str_replace('<code>','',$SettingValue);
+            $SettingValue = str_replace('</code>','',$SettingValue);
+            $SettingValue = str_replace('</pre>','',$SettingValue);
+
             update_db_setting($Setting, $SettingValue);
 
         }
