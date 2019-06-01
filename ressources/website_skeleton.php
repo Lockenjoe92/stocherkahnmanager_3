@@ -118,10 +118,7 @@ function footer_content_left_column(){
     $HTML .= '<div class="col l6 s12">';
 
     # Title
-    $HTML .= '<h5 class="white-text">Über uns...</h5>';
-
-    # Text
-    $HTML .= '<p class="grey-text text-lighten-4">Ne coole Truppe die Spaß am Kahnfahren hat:)</p>';
+    $HTML .= lade_db_einstellung('big_footer_right_column_html');
 
     # Close container
     $HTML .= '</div>';
