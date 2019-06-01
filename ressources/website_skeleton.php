@@ -73,7 +73,7 @@ function site_footer(){
 
     # Initialize Footer
     $HTML = '<!--  footer-->';
-    $HTML .= '<footer class="page-footer teal">';
+    $HTML .= '<footer class="page-footer teal '.lade_db_einstellung('site_footer_color').'">';
     $HTML .= footer_container();
 
     #Close footer
