@@ -5,6 +5,7 @@
     <site_name>Stocherkahn XY e.V.</site_name>
     <site_footer_name>Stocherkahn Medizin e.V.</site_footer_name>
     <display_big_footer>false</display_big_footer>
+    <big_footer_left_column_html></big_footer_left_column_html>
 
     <!--- GENERAL -->
     <max_items_row_container>4</max_items_row_container>
