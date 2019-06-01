@@ -16,5 +16,6 @@
     <site_menue_color>white</site_menue_color>
     <site_footer_color>green</site_footer_color>
     <site_buttons_color>green</site_buttons_color>
+    <site_error_buttons_color>red</site_error_buttons_color>>
 
 </global_settings>

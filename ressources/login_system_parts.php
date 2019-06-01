@@ -40,7 +40,7 @@ function login_formular($Parser, $SessionMessage){
     #}
 
     if(!empty($Parser['meldung'])){
-        $HTML .= row_builder(button_link_creator($Parser['meldung'], '#', '', 'red darken-1 col s12'), '', '');
+        $HTML .= error_button_creator($Parser['meldung'],  '', '');
         #$HTML .= toast($Parser['meldung']);
     }
 
