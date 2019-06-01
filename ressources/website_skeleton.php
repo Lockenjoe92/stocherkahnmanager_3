@@ -99,8 +99,8 @@ function footer_container(){
 
     # Display big Footer if so chosen
     if (lade_db_einstellung('display_big_footer') == 'on'){
-        $HTML .= footer_content_about();
-        $HTML .= footer_content_connect();
+        $HTML .= footer_content_left_column();
+        $HTML .= footer_content_right_column();
         $HTML = row_builder($HTML, 'big_footer_row');
         $HTML = container_builder($HTML, 'big_footer_container');
     }
@@ -111,7 +111,7 @@ function footer_container(){
     return $HTML;
 }
 
-function footer_content_about(){
+function footer_content_left_column(){
 
     # Initialize container
     $HTML = '  <!--  content footer about -->';
@@ -130,22 +130,14 @@ function footer_content_about(){
 
 }
 
-function footer_content_connect(){
+function footer_content_right_column(){
 
     # Initialize column
     $HTML = '  <!--  content footer connect -->';
     $HTML .= '<div class="col l3 s12">';
 
     # Content
-    $HTML .= '<h5 class="white-text">Connect</h5>';
-
-    # Create list
-    $HTML .= '<ul>';
-    $HTML .= '<li><a class="white-text" href="#!">Link 1</a></li>';
-    $HTML .= '<li><a class="white-text" href="#!">Link 2</a></li>';
-    $HTML .= '<li><a class="white-text" href="#!">Link 3</a></li>';
-    $HTML .= '<li><a class="white-text" href="#!">Link 4</a></li>';
-    $HTML .= '</ul>';
+    $HTML .= lade_db_einstellung('big_footer_left_column_html');
 
     # Close column
     $HTML .= '</div>';
