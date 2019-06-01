@@ -103,7 +103,7 @@ function table_builder($ContentHTML){
 
 function form_button_builder($ButtonName, $ButtonMessage, $ButtonMode, $Icon, $SpecialMode=''){
 
-    return "<button class='btn waves-effect waves-light ".$SpecialMode."' type='".$ButtonMode."' name='".$ButtonName."'>".$ButtonMessage."<i class='material-icons left'>".$Icon."</i></button>";
+    return "<button class='btn waves-effect waves-light ".lade_db_einstellung('site_buttons_color')." ".$SpecialMode."' type='".$ButtonMode."' name='".$ButtonName."'>".$ButtonMessage."<i class='material-icons left'>".$Icon."</i></button>";
 
 }
 
@@ -229,7 +229,7 @@ function table_form_select_item($ItemTitle, $ItemName, $Min, $Max, $StartValue, 
 
 function button_link_creator($ButtonMessage, $ButtonLink, $Icon, $SpecialMode){
 
-    return "<a href='".$ButtonLink."' class='waves-effect waves-light btn ".$SpecialMode."'><i class='material-icons left'>".$Icon."</i>".$ButtonMessage."</a>";
+    return "<a href='".$ButtonLink."' class='waves-effect waves-light btn ".lade_db_einstellung('site_buttons_color')." ".$SpecialMode."'><i class='material-icons left'>".$Icon."</i>".$ButtonMessage."</a>";
 
 }
 
