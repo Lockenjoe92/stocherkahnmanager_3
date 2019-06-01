@@ -35,13 +35,13 @@ function login_formular($Parser, $SessionMessage){
 
     $HTML = form_builder($FormSections,'#', 'post');
 
-    if(isset($SessionMessage)){
-        $HTML .= $SessionMessage;
-    }
+    #if(isset($SessionMessage)){
+     #   $HTML .= $SessionMessage;
+    #}
 
     if(!empty($Parser['meldung'])){
-        $HTML .= $Parser['meldung'];
-        $HTML .= toast($Parser['meldung']);
+        $HTML .= row_builder(button_link_creator($Parser['meldung'], '#', '', ''), '', '');
+        #$HTML .= toast($Parser['meldung']);
     }
 
     $Container = container_builder($HTML);
