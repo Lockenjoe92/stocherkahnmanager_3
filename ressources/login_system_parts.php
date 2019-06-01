@@ -3,7 +3,7 @@
 function login_formular($Parser, $SessionMessage){
 
     $HTMLform = row_builder('<h1>Login zum Buchungstool</h1>', '', 'hide-on-small-and-down');
-    $HTMLform .= row_builder('<h2>Login zum Buchungstool</h2>', '', 'hide-on-med-and-up');
+    $HTMLform .= row_builder('<h3>Login zum Buchungstool</h3>', '', 'hide-on-med-and-up');
 
 
     $HTMLform .= "<div class='row'>";
