@@ -107,15 +107,15 @@ function form_button_builder($ButtonName, $ButtonMessage, $ButtonMode, $Icon, $S
 
 }
 
-function form_switch_item($ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
+function form_switch_item($ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='off', $Disabled=false){
 
     $HTML = "<div class='switch'>";
     $HTML .= "<label>";
     $HTML .= $OptionLeft;
 
-    if ($BooleanText == 'false'){
+    if ($BooleanText == 'off'){
         $PresetMode = '';
-    } elseif ($BooleanText == 'true'){
+    } elseif ($BooleanText == 'on'){
         $PresetMode = 'checked';
     }
 
