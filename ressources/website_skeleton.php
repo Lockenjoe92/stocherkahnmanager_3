@@ -73,7 +73,7 @@ function site_footer(){
 
     # Initialize Footer
     $HTML = '<!--  footer-->';
-    $HTML .= '<footer class="page-footer teal '.lade_db_einstellung('site_footer_color').'">';
+    $HTML .= '<footer class="page-footer teal">';
     $HTML .= footer_container();
 
     #Close footer
@@ -121,7 +121,7 @@ function footer_content_about(){
 
     # Initialize container
     $HTML = '  <!--  content footer about -->';
-    $HTML .= '<div class="col l6 s12">';
+    $HTML .= '<div class="col l6 s12 '.lade_db_einstellung('site_footer_color').'">';
 
     # Title
     $HTML .= '<h5 class="white-text">Über uns...</h5>';
@@ -140,7 +140,7 @@ function footer_content_connect(){
 
     # Initialize column
     $HTML = '  <!--  content footer connect -->';
-    $HTML .= '<div class="col l3 s12">';
+    $HTML .= '<div class="col l3 s12 '.lade_db_einstellung('site_footer_color').'">';
 
     # Content
     $HTML .= '<h5 class="white-text">Connect</h5>';
