@@ -203,6 +203,26 @@ function form_select_item($ItemName, $Min=0, $Max=0, $StartValue='', $Einheit=''
     return $HTML;
 }
 
+function form_html_area_item($ItemName, $Placeholdertext='', $Disabled=false){
+
+    if ($Disabled == false){
+        $DisabledCommand = '';
+    } elseif($Disabled == true) {
+        $DisabledCommand = 'disabled';
+    }
+
+    $HTML = "<div class='input-field col s12'>";
+    $HTML .= "<textarea id='".$ItemName."' name='".$ItemName."' class='materialize-textarea' ".$DisabledCommand.">";
+    $HTML .= "<pre><code>";
+    $HTML .= $Placeholdertext;
+    $HTML .= "</code></pre>";
+    $HTML .= "</textarea>";
+    $HTML .= "</div>";
+
+    return $HTML;
+
+}
+
 function table_form_swich_item($ItemTitle, $ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='false', $Disabled=false){
 
     return "<tr><th>".$ItemTitle."</th><td>".form_switch_item($ItemName, $OptionLeft, $OptionRight, $BooleanText, $Disabled)."</td></tr>";
@@ -224,6 +244,12 @@ function table_form_range_item($ItemTitle, $ItemName, $Min, $Max, $StartValue, $
 function table_form_select_item($ItemTitle, $ItemName, $Min, $Max, $StartValue, $Einheit, $Label, $SpecialMode, $Disabled=false){
 
     return "<tr><th>".$ItemTitle."</th><td>".form_select_item($ItemName, $Min, $Max, $StartValue, $Einheit, $Label, $SpecialMode, $Disabled)."</td></tr>";
+
+}
+
+function table_form_html_area_item($ItemTitle, $ItemName, $Placeholdertext, $Disabled){
+
+    return "<tr><th>".$ItemTitle."</th><td>".form_html_area_item($ItemName, $Placeholdertext='', $Disabled=false)."</td></tr>";
 
 }
 
