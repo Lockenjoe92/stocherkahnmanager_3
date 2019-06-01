@@ -10,7 +10,7 @@
 include_once "./ressources/ressourcen.php";
 
 #Generate Content
-$Header = "Login - " . lade_xml_einstellung('site_name', 'local');
+$Header = "Login - " . lade_db_einstellung('site_name');
 $SessionMessage = load_session_message();
 $Parser = login_parser();
 $HTML = login_formular($Parser, $SessionMessage);

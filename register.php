@@ -10,7 +10,7 @@
 include_once "./ressources/ressourcen.php";
 
 #Generate Content
-$Header = "Registrieren - " . lade_xml_einstellung('site_name', 'local');
+$Header = "Registrieren - " . lade_db_einstellung('site_name');
 $Parser = register_parser();
 $HTML = register_formular($Parser);
 
