@@ -243,7 +243,7 @@ function table_form_range_item($ItemTitle, $ItemName, $Min, $Max, $StartValue, $
 
 function table_form_select_item($ItemTitle, $ItemName, $Min, $Max, $StartValue, $Einheit, $Label, $SpecialMode, $Disabled=false){
 
-    return "<tr><th>".$ItemTitle."</th><td>".form_select_item($ItemName, $Min, $Max, $StartValue, $Einheit, $Label, $SpecialMode, $Disabled)."</td></tr>";
+    return "<tr><th>".$ItemTitle."</th><td>".row_builder(form_select_item($ItemName, $Min, $Max, $StartValue, $Einheit, $Label, $SpecialMode, $Disabled))."</td></tr>";
 
 }
 
