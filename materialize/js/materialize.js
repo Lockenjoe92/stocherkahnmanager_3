@@ -12376,3 +12376,6 @@ $jscomp.polyfill = function (e, r, p, m) {
 $(document).ready(function() {
     $('select').formSelect();
 });
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+});
