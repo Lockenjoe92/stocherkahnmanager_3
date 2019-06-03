@@ -185,6 +185,8 @@ function navbar_links_big(){
     $Anfrage = "SELECT * FROM homepage_sites WHERE delete_user != 0 AND menue_rang != 0 AND show_in_main_menue = 'on' ORDER BY menue_rang ASC";
     $Abfrage = mysqli_query($link, $Anfrage);
     $Anzahl = mysqli_num_rows($Abfrage);
+    echo $Anzahl;
+
     for ($x=1;$x<=$Anzahl;$x++){
         $Ergebnis = mysqli_fetch_assoc($Abfrage);
         $HTML .= "<li><a href='".$Ergebnis['name'].".php'>".$Ergebnis['menue_text']."</a></li>";
