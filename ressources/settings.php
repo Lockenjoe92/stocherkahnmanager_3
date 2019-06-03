@@ -153,7 +153,7 @@ function admin_settings_parser($SettingsArray){
 
 function slider_setting_interpreter($SettingValue){
 
-    if ($SettingValue == 'off'){
+    if ($SettingValue == ''){
         return true;
     } elseif ($SettingValue == 'on'){
         return false;
