@@ -154,13 +154,10 @@ function admin_settings_parser($SettingsArray){
 function slider_setting_interpreter($SettingValue){
 
     if ($SettingValue == ''){
-        var_dump($SettingValue);
         return true;
     } elseif ($SettingValue == 'on'){
-        var_dump($SettingValue);
         return false;
     } else{
-        var_dump($SettingValue);
         return true;
     }
 
