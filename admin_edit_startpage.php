@@ -70,14 +70,16 @@ function generate_move_buttons_page_level($AnzahlGesamtSeiten, $ZeroRangCounter,
             #Can be moved down
             if($AktuellerRang < $NumberRankedSites){
                 $ButtonDownName = "decrease_rank_".$AktuellerName."";
-                $HTML .= "<button class='btn waves-effect waves-light' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_downward</i> Rang senken</button>";
+                $HTML .= "<button class='btn waves-effect waves-light col s3' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_downward</i> Rang senken</button>";
             }
 
             #Can be moved up
             if($AktuellerRang > 1){
                 $ButtonDownName = "increase_rank_".$AktuellerName."";
-                $HTML .= "<button class='btn waves-effect waves-light' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_upward</i> Rang erhöhen</button>";
+                $HTML .= "<button class='btn waves-effect waves-light col s3' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_upward</i> Rang erhöhen</button>";
             }
+
+            $HTML = row_builder($HTML);
 
             return $HTML;
         }
