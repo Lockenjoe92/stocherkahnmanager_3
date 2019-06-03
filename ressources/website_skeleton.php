@@ -203,8 +203,11 @@ function navbar_links_big(){
         if($UserMeta['ist_kasse'] == 'true'){
             $HTML .= '<li><a href="./kasse.php">Kasse</a></li>';
         }
+        if($UserMeta['ist_wart'] == 'true'){
+            $HTML .= '<li><a href="./wartwesen.php">Wartwesen</a></li>';
+        }
 
-        $HTML .= '<li><a href="./my_reservations.php">Reservierungen</a></li>';
+        $HTML .= '<li><a href="./my_reservations.php">Deine Reservierungen</a></li>';
         $HTML .= '<li><a href="./usereinstellungen.php">Einstellungen</a></li>';
         $HTML .= '<li><a href="./logout.php">Logout</a></li>';
     } else{
@@ -241,6 +244,9 @@ function navbar_links_mobile(){
         }
         if($UserMeta['ist_kasse'] == 'true'){
             $HTML .= '<li><a href="./kasse.php">Kasse</a></li>';
+        }
+        if($UserMeta['ist_wart'] == 'true'){
+            $HTML .= '<li><a href="./wartwesen.php">Wartwesen</a></li>';
         }
 
         $HTML .= '<li><a href="./my_reservations.php">Reservierungen</a></li>';

@@ -113,7 +113,13 @@ function login_parser(){
                     $_SESSION['timestamp'] = timestamp();
 
                     //Redirect
-                    header("Location: ./my_reservations.php");
+                    $UserMeta = lade_user_meta($Vals['id']);
+                    
+                    if ($UserMeta['ist_wart'] == 'true'){
+                        header("Location: ./wartwesen.php");
+                    } else {
+                        header("Location: ./my_reservations.php");
+                    }
                     die();
 
                 } else {
