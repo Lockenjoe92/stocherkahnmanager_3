@@ -32,7 +32,8 @@ for($x=1;$x<=$Anzahl;$x++){
     $TitleHTML = $Ergebnis['menue_text'];
 
     #Build Card Content
-    $ContentHTML = generate_move_buttons_page_level($Anzahl, $ZeroRangCounter, $Ergebnis['menue_rang'], $Ergebnis['menue_text']);
+    $ContentHTML = generate_bausteine_view($Ergebnis['name']);
+    $ContentHTML .= section_builder(generate_move_buttons_page_level($Anzahl, $ZeroRangCounter, $Ergebnis['menue_rang'], $Ergebnis['menue_text']));
 
     #Build the Item
     $CollapsibleItems .= collapsible_item_builder($TitleHTML, $ContentHTML, 'pageview');
@@ -108,7 +109,7 @@ function generate_bausteine_view($Seite){
         $Header = "".$Ergebnis['rang']." - ".$Ergebnis['typ']." - ".$Ergebnis['typ']."";
         $Items = generate_inhalte_views($Ergebnis['id']);
 
-        $BausteineHTML .= collection_with_header_builder($Header, $Items);
+        $BausteineHTML .= section_builder(collection_with_header_builder($Header, $Items));
 
     }
 
