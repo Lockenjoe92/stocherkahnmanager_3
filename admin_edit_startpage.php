@@ -99,7 +99,7 @@ function generate_bausteine_view($Seite){
     $BausteineHTML = "";
 
     # Load Subsites
-    $Anfrage = "SELECT * FROM homepage_bausteine WHERE storno_user = 0 AND ort = ".$Seite." ORDER BY rang ASC";
+    $Anfrage = "SELECT * FROM homepage_bausteine WHERE storno_user = 0 AND ort = '".$Seite."' ORDER BY rang ASC";
     $Abfrage = mysqli_query($link, $Anfrage);
     $Anzahl = mysqli_num_rows($Abfrage);
 
