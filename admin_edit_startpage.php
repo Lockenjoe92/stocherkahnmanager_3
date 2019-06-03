@@ -118,7 +118,24 @@ function generate_bausteine_view($Seite){
 
 function generate_inhalte_views($BausteinID){
 
-    return "TESTtestTEST";
+    $link = connect_db();
+    $InhalteHTML = "";
+
+    # Load Content
+    $Anfrage = "SELECT * FROM homepage_content WHERE storno_user = 0 AND id_baustein = '".$BausteinID."' ORDER BY rang ASC";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Anzahl = mysqli_num_rows($Abfrage);
+
+    for ($x=1;$x<=$Anzahl;$x++){
+
+        $Ergebnis = mysqli_fetch_assoc($Abfrage);
+        $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Ergebnis['zweite ueberschrift']."";
+
+        $InhalteHTML .= collection_item_builder($Header);
+
+    }
+
+    return $InhalteHTML;
 
 }
 
