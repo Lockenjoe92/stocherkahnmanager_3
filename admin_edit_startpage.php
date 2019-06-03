@@ -30,13 +30,14 @@ for($x=1;$x<=$Anzahl;$x++){
 
     #Build Title Content
     $TitleHTML = $Ergebnis['menue_text'];
-    $TitleHTML .= generate_move_buttons_page_level($Anzahl, $ZeroRangCounter, $Ergebnis['menue_rang'], $Ergebnis['menue_text']);
+    $TitleControls = generate_move_buttons_page_level($Anzahl, $ZeroRangCounter, $Ergebnis['menue_rang'], $Ergebnis['menue_text']);
+    $TitleContent = table_builder(table_row_builder(table_data_builder($TitleHTML) .+ table_data_builder($TitleControls)));
 
     #Build Card Content
     $ContentHTML = "CONTENT";
 
     #Build the Item
-    $CollapsibleItems .= collapsible_item_builder($TitleHTML, $ContentHTML, 'pageview');
+    $CollapsibleItems .= collapsible_item_builder($TitleContent, $ContentHTML, 'pageview');
 
 }
 
