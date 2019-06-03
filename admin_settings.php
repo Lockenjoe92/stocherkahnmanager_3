@@ -31,7 +31,8 @@ $SettingTableItems .= table_form_string_item('Farbe Error Buttons', 'site_error_
 #Complete Settings Form
 $SettingTable = table_builder($SettingTableItems);
 $SettingTable = section_builder($SettingTable);
-$SettingTable .= section_builder(form_button_builder('admin_settings_action', 'Speichern', 'action', 'send'));
+$Buttons = row_builder(form_button_builder('admin_settings_action', 'Speichern', 'action', 'send'), button_link_creator('Zurück', './administration.php', 'arrow_back', ''));
+$SettingTable .= section_builder($Buttons);
 
 $SettingForm = form_builder($SettingTable, './admin_settings.php', 'post');
 $HTML .= section_builder($SettingForm);
