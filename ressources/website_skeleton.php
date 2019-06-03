@@ -191,9 +191,11 @@ function navbar_links_big(){
     }
 
     $UserID = lade_user_id();
-    var_dump($UserID);
-
-    $HTML .= '<li><a href="./login.php">Login</a></li>';
+    if($UserID>0){
+        $HTML .= '<li><a href="./logout.php">Logout</a></li>';
+    } else{
+        $HTML .= '<li><a href="./login.php">Login</a></li>';
+    }
     $HTML .= '</ul>';
 
     return $HTML;
