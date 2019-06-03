@@ -111,7 +111,7 @@ function footer_container(){
     return $HTML;
 }
 
-function footer_content_left_column(){
+function footer_content_right_column(){
 
     # Initialize container
     $HTML = '  <!--  content footer about -->';
@@ -127,7 +127,7 @@ function footer_content_left_column(){
 
 }
 
-function footer_content_right_column(){
+function footer_content_left_column(){
 
     # Initialize column
     $HTML = '  <!--  content footer connect -->';
