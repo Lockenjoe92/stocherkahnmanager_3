@@ -196,10 +196,10 @@ function navbar_links_big(){
         #Load User Meta -> find user rights
         $UserMeta = lade_user_meta($UserID);
 
-        if($UserMeta['admin'] == 'true'){
+        if($UserMeta['ist_admin'] == 'true'){
             $HTML .= '<li><a href="./administration.php">Admin</a></li>';
         }
-        if($UserMeta['kasse'] == 'true'){
+        if($UserMeta['ist_kasse'] == 'true'){
             $HTML .= '<li><a href="./kasse.php">Kasse</a></li>';
         }
 
@@ -234,10 +234,10 @@ function navbar_links_mobile(){
         #Load User Meta -> find user rights
         $UserMeta = lade_user_meta($UserID);
 
-        if($UserMeta['admin'] == 'true'){
+        if($UserMeta['ist_admin'] == 'true'){
             $HTML .= '<li><a href="./administration.php">Admin</a></li>';
         }
-        if($UserMeta['kasse'] == 'true'){
+        if($UserMeta['ist_kasse'] == 'true'){
             $HTML .= '<li><a href="./kasse.php">Kasse</a></li>';
         }
 
