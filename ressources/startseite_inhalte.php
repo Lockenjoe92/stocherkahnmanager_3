@@ -31,7 +31,7 @@ function startseite_inhalt_home(){
     #Iteriere über die Seiteninhalte
     $HTML = '';
     if($Anzahl == 0){
-        $HTML .= 'Bitte Seiteninhalt hinzuf&uuml;gen!';
+        $HTML .= container_builder(section_builder('<h2>Hier entsteht eine neue Seite!</h2>'));
     } elseif($Anzahl > 0) {
         $i = 1;
         while ($i <= $Anzahl){
