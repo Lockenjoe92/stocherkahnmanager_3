@@ -179,8 +179,20 @@ function navbar_links_big(){
 
     $HTML = '<a id="logo-container" href="./index.php" class="brand-logo">'.lade_db_einstellung('site_name').'</a>';
     $HTML .= '<ul class="right hide-on-med-and-down">';
-    $HTML .= '<li><a href="#">Kahnverleih</a></li>';
-    $HTML .= '<li><a href="#">Verein</a></li>';
+
+    #Load all available Menue sites
+    $link = connect_db();
+    $Anfrage = "SELECT * FROM homepage_sites WHERE delete_user != 0 AND menue_rang != 0 AND show_in_main_menue = 'on' ORDER BY menue_rang ASC";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Anzahl = mysqli_num_rows($Abfrage);
+    for ($x=1;$x<=$Anzahl;$x++){
+        $Ergebnis = mysqli_fetch_assoc($Abfrage);
+        $HTML .= "<li><a href='".$Ergebnis['name'].".php'>".$Ergebnis['menue_text']."</a></li>";
+    }
+
+    $UserID = lade_user_id();
+    var_dump($UserID);
+
     $HTML .= '<li><a href="./login.php">Login</a></li>';
     $HTML .= '</ul>';
 
