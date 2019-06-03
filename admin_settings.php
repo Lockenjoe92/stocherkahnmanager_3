@@ -17,8 +17,8 @@ $HTML .= section_builder($PageTitle);
 $SettingTableItems = table_form_string_item('Website Name', 'site_name', lade_db_einstellung('site_name'), false);
 $SettingTableItems .= table_form_string_item('Website Footer Name', 'site_footer_name', lade_db_einstellung('site_footer_name'), false);
 $SettingTableItems .= table_form_swich_item('Website Big Footer', 'display_big_footer', 'deaktiviert', 'aktiviert', lade_db_einstellung('display_big_footer'), false);
-$SettingTableItems .= table_form_html_area_item('Big Footer Left Column', 'big_footer_left_column_html', lade_db_einstellung('big_footer_left_column_html'), false);
-$SettingTableItems .= table_form_html_area_item('Big Footer Right Column', 'big_footer_right_column_html', lade_db_einstellung('big_footer_right_column_html'), false);
+$SettingTableItems .= table_form_html_area_item('Big Footer Left Column', 'big_footer_left_column_html', lade_db_einstellung('big_footer_left_column_html'), slider_setting_interpreter(lade_db_einstellung('big_footer_left_column_html')));
+$SettingTableItems .= table_form_html_area_item('Big Footer Right Column', 'big_footer_right_column_html', lade_db_einstellung('big_footer_right_column_html'), slider_setting_interpreter(lade_db_einstellung('big_footer_right_column_html')));
 
 $SettingTableItems .= table_form_select_item('Fr&uuml;hester Verleihbeginn', 'earliest_begin', 5, 23,intval(lade_db_einstellung('earliest_begin')), '', '', '');
 $SettingTableItems .= table_form_select_item('Sp&auml;tester Verleihbeginn', 'latest_begin', 5, 23,intval(lade_db_einstellung('latest_begin')), '', '', '');
