@@ -168,7 +168,7 @@ function form_range_item($ItemName, $Min, $Max, $StartValue, $Disabled=false){
 
 function form_select_item($ItemName, $Min=0, $Max=0, $StartValue='', $Einheit='', $Label='', $SpecialMode='', $Disabled=false){
 
-    $HTML = "<div class='select-wrapper' ".$SpecialMode."' col s12>";
+    $HTML = "<div class='input-field inline' ".$SpecialMode."'>";
     $HTML .= "<select id='".$ItemName."' name='".$ItemName."'>";
 
     if ($Disabled == false){
