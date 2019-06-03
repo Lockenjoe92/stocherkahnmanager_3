@@ -249,7 +249,7 @@ function navbar_links_mobile(){
     }
 
     $HTML .= '</ul>';
-    $HTML .= '<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>';
+    $HTML .= '<a href="./index.php" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>';
 
     return $HTML;
 }
