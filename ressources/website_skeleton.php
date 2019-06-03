@@ -193,6 +193,17 @@ function navbar_links_big(){
     #Load available sites according to login and rights status
     $UserID = lade_user_id();
     if($UserID>0){
+        #Load User Meta -> find user rights
+        $UserMeta = lade_user_meta($UserID);
+
+        if($UserMeta['admin'] == 'true'){
+            $HTML .= '<li><a href="./administration.php">Admin</a></li>';
+        }
+        if($UserMeta['kasse'] == 'true'){
+            $HTML .= '<li><a href="./kasse.php">Kasse</a></li>';
+        }
+
+        $HTML .= '<li><a href="./usereinstellungen.php">Einstellungen</a></li>';
         $HTML .= '<li><a href="./logout.php">Logout</a></li>';
     } else{
         $HTML .= '<li><a href="./login.php">Login</a></li>';
@@ -220,6 +231,17 @@ function navbar_links_mobile(){
     #Load available sites according to login and rights status
     $UserID = lade_user_id();
     if($UserID>0){
+        #Load User Meta -> find user rights
+        $UserMeta = lade_user_meta($UserID);
+
+        if($UserMeta['admin'] == 'true'){
+            $HTML .= '<li><a href="./administration.php">Admin</a></li>';
+        }
+        if($UserMeta['kasse'] == 'true'){
+            $HTML .= '<li><a href="./kasse.php">Kasse</a></li>';
+        }
+
+        $HTML .= '<li><a href="./usereinstellungen.php">Einstellungen</a></li>';
         $HTML .= '<li><a href="./logout.php">Logout</a></li>';
     } else{
         $HTML .= '<li><a href="./login.php">Login</a></li>';
