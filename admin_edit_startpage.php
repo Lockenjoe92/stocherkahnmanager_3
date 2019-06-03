@@ -129,7 +129,7 @@ function generate_inhalte_views($BausteinID){
     for ($x=1;$x<=$Anzahl;$x++){
 
         $Ergebnis = mysqli_fetch_assoc($Abfrage);
-        $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Ergebnis['zweite ueberschrift']."";
+        $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Ergebnis['zweite_ueberschrift']."";
 
         $InhalteHTML .= collection_item_builder($Header);
 
