@@ -168,7 +168,7 @@ function form_range_item($ItemName, $Min, $Max, $StartValue, $Disabled=false){
 
 function form_select_item($ItemName, $Min=0, $Max=0, $StartValue='', $Einheit='', $Label='', $SpecialMode='', $Disabled=false){
 
-    $HTML = "<div class='input-field' ".$SpecialMode.">";
+    $HTML = "<div class='input-field' col s6 ".$SpecialMode.">";
     $HTML .= "<select id='".$ItemName."' name='".$ItemName."' class='validate'>";
 
     if ($Disabled == false){
@@ -178,9 +178,9 @@ function form_select_item($ItemName, $Min=0, $Max=0, $StartValue='', $Einheit=''
     }
 
     if($StartValue == ''){
-        $HTML .= "<option value='' ".$DisabledCommand." selected>Bitte w&auml;hlen</option>";
+        $HTML .= "<option value='' disabled selected>Bitte w&auml;hlen</option>";
     } else {
-        $HTML .= "<option value='' ".$DisabledCommand.">Bitte w&auml;hlen</option>";
+        $HTML .= "<option value='' disabled>Bitte w&auml;hlen</option>";
     }
 
     for ($x=$Min;$x<=$Max;$x++) {
