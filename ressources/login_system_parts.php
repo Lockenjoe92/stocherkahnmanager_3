@@ -113,7 +113,7 @@ function login_parser(){
                     $_SESSION['timestamp'] = timestamp();
 
                     //Redirect
-                    header("Location: ./hauptansicht.php");
+                    header("Location: ./my_reservations.php");
                     die();
 
                 } else {
