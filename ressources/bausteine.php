@@ -92,6 +92,34 @@ function form_builder($ContentHTML, $ActionPageLink, $FormMode='post', $ID=''){
 
 }
 
+function collection_builder($ListElements){
+
+    $HTML = "<ul class='collection'>";
+    $HTML .= $ListElements;
+    $HTML .= "</ul>";
+
+    return $HTML;
+
+}
+
+function collection_with_header_builder($Header, $ListElements){
+
+    $HTML = "<ul class='collection with-header'>";
+    $HTML .= "<li class='collection-header'><h4>".$Header."</h4></li>";
+    $HTML .= $ListElements;
+    $HTML .= "</ul>";
+
+    return $HTML;
+
+}
+
+function collection_item_builder($ItemContent){
+
+    $HTML = "<li class='collection-item'>".$ItemContent."</li>";
+    return $HTML;
+
+}
+
 function collapsible_builder($ListElements){
 
     $HTML = "<ul class='collapsible'>";

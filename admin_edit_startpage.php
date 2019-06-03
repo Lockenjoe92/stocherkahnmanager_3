@@ -92,7 +92,33 @@ function generate_move_buttons_page_level($AnzahlGesamtSeiten, $ZeroRangCounter,
     }
 }
 
+function generate_bausteine_view($Seite){
 
+    $link = connect_db();
+    $BausteineHTML = "";
 
+    # Load Subsites
+    $Anfrage = "SELECT * FROM homepage_bausteine WHERE storno_user = 0 WHERE ort = ".$Seite." ORDER BY rang ASC";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Anzahl = mysqli_num_rows($Abfrage);
+
+    for ($x=1;$x<=$Anzahl;$x++){
+
+        $Ergebnis = mysqli_fetch_assoc($Abfrage);
+        $Header = "".$Ergebnis['rang']." - ".$Ergebnis['typ']." - ".$Ergebnis['typ']."";
+        $Items = generate_inhalte_views($Ergebnis['id']);
+
+        $BausteineHTML .= collection_with_header_builder($Header, $Items);
+
+    }
+
+    return $BausteineHTML;
+}
+
+function generate_inhalte_views($BausteinID){
+
+    return "TESTtestTEST";
+
+}
 
 ?>
