@@ -20,8 +20,8 @@ $SettingTableItems .= table_form_swich_item('Website Big Footer', 'display_big_f
 $SettingTableItems .= table_form_html_area_item('Big Footer Left Column', 'big_footer_left_column_html', lade_db_einstellung('big_footer_left_column_html'), slider_setting_interpreter(lade_db_einstellung('display_big_footer')));
 $SettingTableItems .= table_form_html_area_item('Big Footer Right Column', 'big_footer_right_column_html', lade_db_einstellung('big_footer_right_column_html'), slider_setting_interpreter(lade_db_einstellung('display_big_footer')));
 
-$SettingTableItems .= table_form_select_item('Fr&uuml;hester Verleihbeginn', 'earliest_begin', 0, 23,intval(lade_db_einstellung('earliest_begin')), '', '', '');
-$SettingTableItems .= table_form_select_item('Sp&auml;tester Verleihbeginn', 'latest_begin', 0, 23,intval(lade_db_einstellung('latest_begin')), '', '', '');
+$SettingTableItems .= table_form_select_item('Fr&uuml;hester Verleihbeginn', 'earliest_begin', 0, 23,intval(lade_db_einstellung('earliest_begin')), 'h', 'Frühester Verleihzeitraum', '');
+$SettingTableItems .= table_form_select_item('Sp&auml;tester Verleihbeginn', 'latest_begin', 0, 23,intval(lade_db_einstellung('latest_begin')), 'h', 'Ende Verleihzeitraum', '');
 $SettingTableItems .= table_form_string_item('Website Men&uuml;farbe', 'site_menue_color', lade_db_einstellung('site_menue_color'), false);
 $SettingTableItems .= table_form_string_item('Website Footerfarbe', 'site_footer_color', lade_db_einstellung('site_footer_color'), false);
 $SettingTableItems .= table_form_string_item('Farbe Link Buttons', 'site_buttons_color', lade_db_einstellung('site_buttons_color'), false);
