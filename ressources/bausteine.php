@@ -92,6 +92,29 @@ function form_builder($ContentHTML, $ActionPageLink, $FormMode='post', $ID=''){
 
 }
 
+function collapsible_builder($ListElements){
+
+    $HTML = "<ul class='collapsible'>";
+    $HTML .= $ListElements;
+    $HTML .= "</ul>";
+
+    return $HTML;
+
+}
+
+function collapsible_item_builder($Title, $Content, $Icon){
+
+    if($Icon == ''){$IconHTML = '';} else {$IconHTML = "<i class='material-icons'>".$Icon."</i>";}
+
+    $HTML = "<li>";
+    $HTML .= "<div class='collapsible-header'>".$IconHTML."".$Title."</div>";
+    $HTML .= "<div class='collapsible-body'><span>".$Content."</span></div>";
+    $HTML .= "</li>";
+
+    return $HTML;
+
+}
+
 function table_builder($ContentHTML){
 
     $HTML = "<table>";
