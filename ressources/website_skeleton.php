@@ -188,7 +188,7 @@ function navbar_links_big(){
 
     for ($x=1;$x<=$Anzahl;$x++){
         $Ergebnis = mysqli_fetch_assoc($Abfrage);
-        $HTML .= "<li><a href='".$Ergebnis['name'].".php'>".$Ergebnis['menue_text']."</a></li>";
+        $HTML .= "<li><a href='./index.php?tab=".$Ergebnis['name']."'>".$Ergebnis['menue_text']."</a></li>";
     }
 
     #Load available sites according to login and rights status
@@ -227,7 +227,7 @@ function navbar_links_mobile(){
     $Anzahl = mysqli_num_rows($Abfrage);
     for ($x=1;$x<=$Anzahl;$x++){
         $Ergebnis = mysqli_fetch_assoc($Abfrage);
-        $HTML .= "<li><a href='".$Ergebnis['name'].".php'>".$Ergebnis['menue_text']."</a></li>";
+        $HTML .= "<li><a href='./index.php?tab=".$Ergebnis['name']."'>".$Ergebnis['menue_text']."</a></li>";
     }
 
     #Load available sites according to login and rights status
