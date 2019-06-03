@@ -237,7 +237,7 @@ function table_form_string_item($ItemTitle, $ItemName, $Placeholdertext='', $Dis
 
 function table_form_range_item($ItemTitle, $ItemName, $Min, $Max, $StartValue, $Disabled=false){
 
-    return "<tr><th>".$ItemTitle."</th><td>".form_range_item($ItemName, $Min, $Max, $StartValue, $Disabled=false)."</td></tr>";
+    return "<tr><th>".$ItemTitle."</th><td>".form_range_item($ItemName, $Min, $Max, $StartValue, $Disabled)."</td></tr>";
 
 }
 
