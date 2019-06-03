@@ -71,7 +71,7 @@ function generate_move_buttons_page_level($AnzahlGesamtSeiten, $ZeroRangCounter,
             #Can be moved down
             if($AktuellerRang < $NumberRankedSites){
                 $ButtonDownName = "decrease_rank_".$AktuellerName."";
-                $HTML .= form_button_builder($ButtonDownName, '', 'action', 'arrow_upward', '');
+                $HTML .= form_button_builder($ButtonDownName, '', 'action', 'arrow_downward', '');
             }
 
             #Can be moved up
