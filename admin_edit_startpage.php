@@ -106,7 +106,7 @@ function generate_bausteine_view($Seite){
     for ($x=1;$x<=$Anzahl;$x++){
 
         $Ergebnis = mysqli_fetch_assoc($Abfrage);
-        $Header = "".$Ergebnis['rang']." - ".$Ergebnis['typ']." - ".$Ergebnis['typ']."";
+        $Header = "".$Ergebnis['rang']." - ".$Ergebnis['typ']." - ".$Ergebnis['name']."";
         $Items = generate_inhalte_views($Ergebnis['id']);
 
         $BausteineHTML .= section_builder(collection_with_header_builder($Header, $Items));

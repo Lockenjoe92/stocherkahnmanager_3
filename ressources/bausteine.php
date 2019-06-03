@@ -105,7 +105,7 @@ function collection_builder($ListElements){
 function collection_with_header_builder($Header, $ListElements){
 
     $HTML = "<ul class='collection with-header'>";
-    $HTML .= "<li class='collection-header'><h4>".$Header."</h4></li>";
+    $HTML .= "<li class='collection-header'><h5>".$Header."</h5></li>";
     $HTML .= $ListElements;
     $HTML .= "</ul>";
 
