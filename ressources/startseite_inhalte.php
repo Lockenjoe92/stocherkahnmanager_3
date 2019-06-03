@@ -9,21 +9,34 @@
 function startseite_inhalt_home(){
 
     $link = connect_db();
-    $HTML = '';
+    $Tab = $_GET['tab'];
+    if (!isset($Tab)){$Tab='index';}
 
     #Lade alle Websiteteile
-    $Anfrage = "SELECT * FROM homepage_bausteine WHERE ort = 'index' AND storno_user = '0' ORDER BY rang ASC";
-    $Abfrage = mysqli_query($link, $Anfrage);
-    $Anzahl = mysqli_num_rows($Abfrage);
+    if (!($stmt = $link->prepare("SELECT * FROM homepage_bausteine WHERE ort = ? AND storno_user = '0' ORDER BY rang ASC"))) {
+        echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+    }
+
+    if (!$stmt->bind_param("s",$Tab)) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    $res = $stmt->get_result();
+    $Anzahl = mysqli_num_rows($res);
 
     #Iteriere über die Seiteninhalte
+    $HTML = '';
     if($Anzahl == 0){
         $HTML .= 'Bitte Seiteninhalt hinzuf&uuml;gen!';
     } elseif($Anzahl > 0) {
         $i = 1;
         while ($i <= $Anzahl){
             # Lade Informationen
-            $Ergebnis = mysqli_fetch_assoc($Abfrage);
+            $Ergebnis = mysqli_fetch_assoc($res);
             $HTML .= generiere_startseite_content($Ergebnis);
             $i++;
         }
