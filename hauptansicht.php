@@ -8,8 +8,13 @@
 
 include_once "./ressources/ressourcen.php";
 session_manager();
+$Header = "Hauptansicht - " . lade_db_einstellung('site_name');
 
-echo "Hello logged in user";
-echo "<a href='./admin_settings.php'>Admin Settings</a>";
+$HTML = "Hello logged in user";
+$HTML .= "<a href='./admin_settings.php'>Admin Settings</a>";
+
+# Output site
+echo site_header($Header);
+echo site_body($HTML);
 
 ?>
