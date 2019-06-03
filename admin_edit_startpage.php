@@ -30,8 +30,8 @@ for($x=1;$x<=$Anzahl;$x++){
 }
 
 #Wrap Collapsibles
-$HTML = collapsible_builder($CollapsibleItems);
-$HTML = section_builder($HTML);
+$CollapsibleList = collapsible_builder($CollapsibleItems);
+$HTML .= section_builder($CollapsibleList);
 $HTML = container_builder($HTML, 'admin_edit_startpage_container', '');
 
 # Output site
