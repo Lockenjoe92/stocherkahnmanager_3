@@ -30,14 +30,13 @@ for($x=1;$x<=$Anzahl;$x++){
 
     #Build Title Content
     $TitleHTML = $Ergebnis['menue_text'];
-    $TitleControls = generate_move_buttons_page_level($Anzahl, $ZeroRangCounter, $Ergebnis['menue_rang'], $Ergebnis['menue_text']);
-    $TitleContent = table_builder(table_row_builder(table_data_builder($TitleHTML) .+ table_data_builder($TitleControls)));
+    $TitleHTML .= generate_move_buttons_page_level($Anzahl, $ZeroRangCounter, $Ergebnis['menue_rang'], $Ergebnis['menue_text']);
 
     #Build Card Content
     $ContentHTML = "CONTENT";
 
     #Build the Item
-    $CollapsibleItems .= collapsible_item_builder($TitleContent, $ContentHTML, 'pageview');
+    $CollapsibleItems .= collapsible_item_builder($TitleHTML, $ContentHTML, 'pageview');
 
 }
 
@@ -72,13 +71,13 @@ function generate_move_buttons_page_level($AnzahlGesamtSeiten, $ZeroRangCounter,
             #Can be moved down
             if($AktuellerRang < $NumberRankedSites){
                 $ButtonDownName = "decrease_rank_".$AktuellerName."";
-                $HTML .= form_button_builder($ButtonDownName, '', 'action', 'arrow_downward', '');
+                $HTML .= "<button id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow-downward</i> Rang senken</button>";
             }
 
             #Can be moved up
             if($AktuellerRang > 1){
                 $ButtonDownName = "increase_rank_".$AktuellerName."";
-                $HTML .= form_button_builder($ButtonDownName, '', 'action', 'arrow_upward', '');
+                $HTML .= "<button id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow-upward</i> Rang erhöhen</button>";
             }
 
             return $HTML;
