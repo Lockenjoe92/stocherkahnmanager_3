@@ -101,6 +101,16 @@ function table_builder($ContentHTML){
     return $HTML;
 }
 
+function table_row_builder($ContentHTML){
+
+    return "<tr>".$ContentHTML."</tr>";
+}
+
+function table_data_builder($ContentHTML){
+
+    return "<td>".$ContentHTML."</td>";
+}
+
 function form_button_builder($ButtonName, $ButtonMessage, $ButtonMode, $Icon, $SpecialMode=''){
 
     return "<button class='btn waves-effect waves-light ".lade_db_einstellung('site_buttons_color')." ".$SpecialMode."' type='".$ButtonMode."' name='".$ButtonName."'>".$ButtonMessage."<i class='material-icons left'>".$Icon."</i></button>";
