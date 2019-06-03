@@ -103,6 +103,8 @@ function generate_bausteine_view($Seite){
     $Abfrage = mysqli_query($link, $Anfrage);
     $Anzahl = mysqli_num_rows($Abfrage);
 
+    echo $Anzahl;
+    echo $Anfrage;
     for ($x=1;$x<=$Anzahl;$x++){
 
         $Ergebnis = mysqli_fetch_assoc($Abfrage);
