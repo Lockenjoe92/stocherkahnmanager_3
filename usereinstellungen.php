@@ -10,7 +10,6 @@ include_once "./ressources/ressourcen.php";
 session_manager();
 $Header = "Einstellungen - " . lade_db_einstellung('site_name');
 $Settings = ['vorname', 'nachname', 'strasse', 'hausnummer', 'plz', 'stadt'];
-$UserMeta = lade_user_meta(lade_user_id());
 
 #Parse input
 user_settings_parser($Settings);
@@ -21,6 +20,7 @@ $PageTitle = '<h1>Persönliche Einstellungen</h1>';
 $HTML .= section_builder($PageTitle);
 
 # Settings Form
+$UserMeta = lade_user_meta(lade_user_id());
 $SettingTableItems = table_form_string_item('Vorname', 'vorname', $UserMeta['vorname'], false);
 $SettingTableItems .= table_form_string_item('Nachname', 'nachname', $UserMeta['nachname'], false);
 $SettingTableItems .= table_form_string_item('Straße', 'strasse', $UserMeta['strasse'], false);
