@@ -163,6 +163,12 @@ function footer_content_copyright(){
 function site_navbar(){
 
     $HTML = '<!--  navbar   -->';
+
+    $HTML .= "<ul id='dropdown1' class='dropdown-conten'>";
+    $HTML .= '<li><a href="./my_reservations.php">Reservierungen</a></li>';
+    $HTML .= '<li><a href="./usereinstellungen.php">Einstellungen</a></li>';
+    $HTML .= "</ul>";
+
     $HTML .= '<nav class="white" role="navigation">';
     $HTML .= '<div class="nav-wrapper container '.lade_db_einstellung('site_menue_color').'">';
 
@@ -178,12 +184,6 @@ function site_navbar(){
 function navbar_links_big(){
 
     $HTML = '<a id="logo-container" href="./index.php" class="brand-logo">'.lade_db_einstellung('site_name').'</a>';
-
-    $HTML = "<ul id='dropdown1' class='dropdown-conten'>";
-    $HTML .= '<li><a href="./my_reservations.php">Reservierungen</a></li>';
-    $HTML .= '<li><a href="./usereinstellungen.php">Einstellungen</a></li>';
-    $HTML .= "</ul>";
-
     $HTML .= '<ul class="right hide-on-med-and-down">';
 
     #Load all available Menue sites
