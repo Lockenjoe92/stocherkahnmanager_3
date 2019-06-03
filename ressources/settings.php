@@ -157,6 +157,8 @@ function slider_setting_interpreter($SettingValue){
         return true;
     } elseif ($SettingValue == 'on'){
         return false;
+    } else{
+        return true;
     }
 
 }
