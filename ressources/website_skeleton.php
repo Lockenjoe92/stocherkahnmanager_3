@@ -115,7 +115,7 @@ function footer_content_right_column(){
 
     # Initialize container
     $HTML = '  <!--  content footer about -->';
-    $HTML .= '<div class="col l6 s12">';
+    $HTML .= '<div class="col l3 s12">';
 
     # Title
     $HTML .= lade_db_einstellung('big_footer_right_column_html');
@@ -131,7 +131,7 @@ function footer_content_left_column(){
 
     # Initialize column
     $HTML = '  <!--  content footer connect -->';
-    $HTML .= '<div class="col l3 s12">';
+    $HTML .= '<div class="col l6 s12">';
 
     # Content
     $HTML .= lade_db_einstellung('big_footer_left_column_html');
