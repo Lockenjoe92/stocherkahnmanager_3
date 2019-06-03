@@ -204,6 +204,7 @@ function navbar_links_big(){
             $HTML .= '<li><a href="./kasse.php">Kasse</a></li>';
         }
 
+        $HTML .= '<li><a href="./hauptansicht.php">Buchungstool</a></li>';
         $HTML .= '<li><a href="./usereinstellungen.php">Einstellungen</a></li>';
         $HTML .= '<li><a href="./logout.php">Logout</a></li>';
     } else{
@@ -242,6 +243,7 @@ function navbar_links_mobile(){
             $HTML .= '<li><a href="./kasse.php">Kasse</a></li>';
         }
 
+        $HTML .= '<li><a href="./hauptansicht.php">Buchungstool</a></li>';
         $HTML .= '<li><a href="./usereinstellungen.php">Einstellungen</a></li>';
         $HTML .= '<li><a href="./logout.php">Logout</a></li>';
     } else{
