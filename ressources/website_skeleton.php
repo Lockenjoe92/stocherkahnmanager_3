@@ -178,6 +178,12 @@ function site_navbar(){
 function navbar_links_big(){
 
     $HTML = '<a id="logo-container" href="./index.php" class="brand-logo">'.lade_db_einstellung('site_name').'</a>';
+
+    $HTML = "<ul id='dropdown1' class='dropdown-conten'>";
+    $HTML .= '<li><a href="./my_reservations.php">Reservierungen</a></li>';
+    $HTML .= '<li><a href="./usereinstellungen.php">Einstellungen</a></li>';
+    $HTML .= "</ul>";
+
     $HTML .= '<ul class="right hide-on-med-and-down">';
 
     #Load all available Menue sites
@@ -207,8 +213,7 @@ function navbar_links_big(){
             $HTML .= '<li><a href="./wartwesen.php">Wartwesen</a></li>';
         }
 
-        $HTML .= '<li><a href="./my_reservations.php">Reservierungen</a></li>';
-        $HTML .= '<li><a href="./usereinstellungen.php">Einstellungen</a></li>';
+        $HTML .= '<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Buchungstool<i class="material-icons right">arrow_drop_down</i></a></li>';
         $HTML .= '<li><a href="./logout.php">Logout</a></li>';
     } else{
         $HTML .= '<li><a href="./login.php">Login</a></li>';
