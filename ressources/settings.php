@@ -126,6 +126,18 @@ function update_db_setting($Setting, $SettingValue){
 
 }
 
+function slider_setting_interpreter($SettingValue){
+
+    if ($SettingValue == ''){
+        return true;
+    } elseif ($SettingValue == 'on'){
+        return false;
+    } else{
+        return true;
+    }
+
+}
+
 ### Parser Logic
 function admin_settings_parser($SettingsArray){
 
@@ -151,14 +163,20 @@ function admin_settings_parser($SettingsArray){
 
 }
 
-function slider_setting_interpreter($SettingValue){
+function user_settings_parser($SettingsArray){
 
-    if ($SettingValue == ''){
-        return true;
-    } elseif ($SettingValue == 'on'){
-        return false;
-    } else{
-        return true;
+    if (isset($_POST['user_settings_action'])){
+
+        for($x=0;$x<sizeof($SettingsArray);$x++){
+
+            $Setting = $SettingsArray[$x];
+            $SettingValue = $_POST[$Setting];
+
+            update_user_meta(lade_user_id(), $Setting, $SettingValue);
+
+        }
+
+        #return toast('Einstellungen erfolgreich gespeichert.');
     }
 
 }

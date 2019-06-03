@@ -122,4 +122,30 @@ function add_user_meta($UserID, $Key, $Value){
     }
 
 }
+
+function update_user_meta($UserID, $Key, $Value){
+
+    $link = connect_db();
+
+    if ($Value == ''){
+        return false;
+    } else {
+
+        if (!($stmt = $link->prepare("INSERT INTO user_meta (user,schluessel,wert,timestamp) VALUES (?,?,?,?)"))) {
+            $Antwort['erfolg'] = false;
+            echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+        }
+        if (!$stmt->bind_param("isss", $UserID, $Key, $Value, timestamp())) {
+            $Antwort['erfolg'] = false;
+            echo  "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+        if (!$stmt->execute()) {
+            $Antwort['erfolg'] = false;
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        } else {
+            return true;
+        }
+    }
+}
+
 ?>
