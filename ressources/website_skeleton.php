@@ -164,7 +164,7 @@ function site_navbar(){
 
     $HTML = '<!--  navbar   -->';
 
-    $HTML .= "<ul id='dropdown1' class='dropdown-conten'>";
+    $HTML .= "<ul id='dropdown1' class='dropdown-content'>";
     $HTML .= '<li><a href="./my_reservations.php">Reservierungen</a></li>';
     $HTML .= '<li><a href="./usereinstellungen.php">Einstellungen</a></li>';
     $HTML .= "</ul>";
