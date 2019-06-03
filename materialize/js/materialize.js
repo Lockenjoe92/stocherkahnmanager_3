@@ -12374,5 +12374,5 @@ $jscomp.polyfill = function (e, r, p, m) {
 })(cash, M.anime);
 
 $(document).ready(function() {
-    $('select').material_select();
+    $('select').formSelect();
 });
