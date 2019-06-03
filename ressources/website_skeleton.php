@@ -190,12 +190,14 @@ function navbar_links_big(){
         $HTML .= "<li><a href='".$Ergebnis['name'].".php'>".$Ergebnis['menue_text']."</a></li>";
     }
 
+    #Load available sites according to login and rights status
     $UserID = lade_user_id();
     if($UserID>0){
         $HTML .= '<li><a href="./logout.php">Logout</a></li>';
     } else{
         $HTML .= '<li><a href="./login.php">Login</a></li>';
     }
+
     $HTML .= '</ul>';
 
     return $HTML;
@@ -204,9 +206,25 @@ function navbar_links_big(){
 function navbar_links_mobile(){
 
     $HTML = '<ul id="nav-mobile" class="sidenav '.lade_db_einstellung('site_menue_color').'">';
-    $HTML .= '<li><a href="#">Kahnverleih</a></li>';
-    $HTML .= '<li><a href="#">Verein</a></li>';
-    $HTML .= '<li><a href="./login.php">Login</a></li>';
+
+    #Load all available Menue sites
+    $link = connect_db();
+    $Anfrage = "SELECT * FROM homepage_sites WHERE delete_user != 0 AND menue_rang != 0 AND show_in_main_menue = 'on' ORDER BY menue_rang ASC";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Anzahl = mysqli_num_rows($Abfrage);
+    for ($x=1;$x<=$Anzahl;$x++){
+        $Ergebnis = mysqli_fetch_assoc($Abfrage);
+        $HTML .= "<li><a href='".$Ergebnis['name'].".php'>".$Ergebnis['menue_text']."</a></li>";
+    }
+
+    #Load available sites according to login and rights status
+    $UserID = lade_user_id();
+    if($UserID>0){
+        $HTML .= '<li><a href="./logout.php">Logout</a></li>';
+    } else{
+        $HTML .= '<li><a href="./login.php">Login</a></li>';
+    }
+
     $HTML .= '</ul>';
     $HTML .= '<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>';
 
