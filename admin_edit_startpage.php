@@ -210,7 +210,6 @@ function generate_move_buttons_baustein_level($AnzahlGesamtBausteine, $Aktueller
     } elseif ($AnzahlGesamtBausteine > 1){
 
         $HTML = '';
-        $DownToo = false;
 
         #Can be moved down
         if($AktuellerBausteinRang < $AnzahlGesamtBausteine){
@@ -224,9 +223,7 @@ function generate_move_buttons_baustein_level($AnzahlGesamtBausteine, $Aktueller
             $HTML .= "<a href='".$ButtonDownName."'><i class='tiny material-icons'>arrow_upward</i></a> ";
         }
 
-        $Output = row_builder($HTML);
-
-        return $Output;
+        return $HTML;
     }
 }
 
