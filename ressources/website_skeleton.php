@@ -200,6 +200,7 @@ function navbar_links_big(){
     #Load available sites according to login and rights status
     $UserID = lade_user_id();
     if($UserID>0){
+
         #Load User Meta -> find user rights
         $UserMeta = lade_user_meta($UserID);
 
@@ -215,6 +216,7 @@ function navbar_links_big(){
 
         $HTML .= '<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Buchungstool<i class="material-icons right">arrow_drop_down</i></a></li>';
         $HTML .= '<li><a href="./logout.php">Logout</a></li>';
+
     } else{
         $HTML .= '<li><a href="./login.php">Login</a></li>';
     }
