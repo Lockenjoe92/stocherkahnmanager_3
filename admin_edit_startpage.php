@@ -166,6 +166,7 @@ function generate_inhalte_views($BausteinID){
     $Anzahl = mysqli_num_rows($Abfrage);
 
     if ($Anzahl == 0){
+        echo "Treffer";
         $Header = "Bislang noch keine Inhaltselemente hinzugefügt!";
         $InhalteHTML .= collection_item_builder($Header);
     } else {
