@@ -145,7 +145,7 @@ function collapsible_item_builder($Title, $Content, $Icon){
 
 function generate_bausteine_dropdown_menue($SpecialMode){
 
-    return null;
+    return '';
 
 }
 
