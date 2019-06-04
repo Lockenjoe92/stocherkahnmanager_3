@@ -108,7 +108,7 @@ function generate_bausteine_view($Seite){
 
     if ($Anzahl == 0){
         $Header = "Bislang noch keine Bausteine hinzugefügt!";
-        $BausteineHTML .= collection_item_builder($Header);
+        $BausteineHTML .= section_builder(collection_with_header_builder($Header, ''));
     } else {
         for ($x = 1; $x <= $Anzahl; $x++) {
 
