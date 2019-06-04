@@ -337,4 +337,25 @@ function toast($Message){
     return "<script>M.toast({html: ".$Message."})</script>";
 }
 
+function lade_baustein($BausteinID){
+
+    $link = connect_db();
+    if (!($stmt = $link->prepare("SELECT * FROM homepage_bausteine WHERE id = ?"))) {
+        echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+    }
+
+    if (!$stmt->bind_param("i",$BausteinID)) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    $res = $stmt->get_result();
+    $Array = mysqli_fetch_assoc($res);
+
+    return $Array;
+}
+
 ?>

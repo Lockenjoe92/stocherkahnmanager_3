@@ -164,6 +164,7 @@ function generate_inhalte_views($BausteinID){
 
     $link = connect_db();
     $InhalteHTML = "";
+    $Baustein = lade_baustein($BausteinID);
 
     # Load Content
     $Anfrage = "SELECT * FROM homepage_content WHERE storno_user = 0 AND id_baustein = '".$BausteinID."' ORDER BY rang ASC";
@@ -177,7 +178,15 @@ function generate_inhalte_views($BausteinID){
         for ($x=1;$x<=$Anzahl;$x++){
 
             $Ergebnis = mysqli_fetch_assoc($Abfrage);
-            $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Ergebnis['zweite_ueberschrift']."";
+            $ReferenceEdit = "./edit_website_item_".$Ergebnis['id']."";
+            $ReferenceDelete = "./delete_website_item_".$Ergebnis['id']."";
+            $Operators = "<a href='".$ReferenceEdit."'><i class='tiny material-icons'>edit</i></a> <a href='".$ReferenceDelete."'><i class='tiny material-icons'>delete_forever</i></a> ";
+
+            if($Baustein['typ'] == 'parallax_mit_text'){
+                $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Ergebnis['zweite_ueberschrift']." - ".$Operators."";
+            } elseif ($Baustein['typ'] == 'row_container'){
+                $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Operators."";
+            }
 
             $InhalteHTML .= collection_item_builder($Header);
 
