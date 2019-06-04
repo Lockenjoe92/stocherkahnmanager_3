@@ -106,14 +106,19 @@ function generate_bausteine_view($Seite){
     $Abfrage = mysqli_query($link, $Anfrage);
     $Anzahl = mysqli_num_rows($Abfrage);
 
-    for ($x=1;$x<=$Anzahl;$x++){
+    if ($Anzahl == 0){
+        $Header = "Bislang noch keine Bausteine hinzugefügt!";
+        $BausteineHTML .= collection_item_builder($Header);
+    } else {
+        for ($x = 1; $x <= $Anzahl; $x++) {
 
-        $Ergebnis = mysqli_fetch_assoc($Abfrage);
-        $Header = "".$Ergebnis['rang']." - ".$Ergebnis['typ']." - ".$Ergebnis['name']."";
-        $Items = generate_inhalte_views($Ergebnis['id']);
+            $Ergebnis = mysqli_fetch_assoc($Abfrage);
+            $Header = "" . $Ergebnis['rang'] . " - " . $Ergebnis['typ'] . " - " . $Ergebnis['name'] . "";
+            $Items = generate_inhalte_views($Ergebnis['id']);
 
-        $BausteineHTML .= section_builder(collection_with_header_builder($Header, $Items));
+            $BausteineHTML .= section_builder(collection_with_header_builder($Header, $Items));
 
+        }
     }
 
     return $BausteineHTML;
@@ -166,7 +171,6 @@ function generate_inhalte_views($BausteinID){
     $Anzahl = mysqli_num_rows($Abfrage);
 
     if ($Anzahl == 0){
-        echo "Treffer";
         $Header = "Bislang noch keine Inhaltselemente hinzugefügt!";
         $InhalteHTML .= collection_item_builder($Header);
     } else {
