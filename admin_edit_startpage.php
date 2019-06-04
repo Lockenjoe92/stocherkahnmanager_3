@@ -33,7 +33,7 @@ for($x=1;$x<=$Anzahl;$x++){
 
     #Build Card Content
     $ContentHTML = generate_bausteine_view($Ergebnis['name']);
-    #$ContentHTML .= generate_baustein_adder($Ergebnis['name']);
+    $ContentHTML .= generate_baustein_adder($Ergebnis['name']);
     $ContentHTML .= section_builder(generate_move_buttons_page_level($Anzahl, $ZeroRangCounter, $Ergebnis['menue_rang'], $Ergebnis['menue_text']));
 
     #Build the Item
@@ -120,29 +120,36 @@ function generate_bausteine_view($Seite){
     return $BausteineHTML;
 }
 
+function generate_bausteine_dropdown_menue($ItemName, $Label, $SpecialMode){
+
+    $HTML = "<div class='input-field' ".$SpecialMode.">";
+    $HTML .= "<select id='".$ItemName."' name='".$ItemName."' class='browser-default'>";
+
+    $HTML .= "<option value='' disabled selected>Bitte w&auml;hlen</option>";
+
+    $HTML .= "</select>";
+
+    if ($Label!=''){
+        $HTML .= "<label>".$Label."</label>";
+    }
+
+    $HTML .= "</div>";
+
+    return $HTML;
+}
+
 function generate_baustein_adder($SiteName){
 
     $NameNewBaustein = "name_new_baustein_".$SiteName."";
     $TypeNewBaustein = "type_new_baustein_".$SiteName."";
     $NameAddButtonBaustein = "add_new_baustein_".$SiteName."";
 
-    $HTML = generate_bausteine_dropdown_menue($TypeNewBaustein, '');
+    $HTML = generate_bausteine_dropdown_menue($TypeNewBaustein, 'Baustein wählen', '');
     $HTML .= form_string_item($NameNewBaustein, 'gib dem Element einen Namen', '');
     $HTML .= form_button_builder($NameAddButtonBaustein, 'Hinzufügen', 'action', 'add_box', '');
 
     $HTML = row_builder($HTML);
     $HTML = section_builder($HTML);
-
-    return $HTML;
-}
-
-function generate_bausteine_dropdown_menue($ItemName, $SpecialMode){
-
-    $HTML = "<div class='input-field' ".$SpecialMode.">";
-    $HTML .= "<select id='".$ItemName."' name='".$ItemName."' class='browser-default'>";
-    $HTML .= "<option value='' disabled selected>Bitte wählen</option>";
-    $HTML .= "</select>";
-    $HTML .= "</div>";
 
     return $HTML;
 }
