@@ -123,7 +123,7 @@ function generate_bausteine_view($Seite){
 function generate_bausteine_dropdown_menue($ItemName, $Label, $SpecialMode){
 
     $HTML = "<div class='input-field' ".$SpecialMode.">";
-    $HTML .= "<select id='".$ItemName."' name='".$ItemName."' class='browser-default'>";
+    $HTML .= "<select id='".$ItemName."' name='".$ItemName."'>";
 
     $HTML .= "<option value='' disabled selected>Bitte w&auml;hlen</option>";
 
