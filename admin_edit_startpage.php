@@ -144,13 +144,11 @@ function generate_baustein_adder($SiteName){
     $TypeNewBaustein = "type_new_baustein_".$SiteName."";
     $NameAddButtonBaustein = "add_new_baustein_".$SiteName."";
 
-    $TableData = table_data_builder(generate_bausteine_dropdown_menue($TypeNewBaustein, 'Baustein wählen', ''));
-    $TableData .= table_data_builder(form_string_item($NameNewBaustein, 'gib dem Element einen Namen', ''));
-    $TableButtons = table_data_builder(form_button_builder($NameAddButtonBaustein, 'Hinzufügen', 'action', 'add_box', '') .+ table_data_builder(''));
+    $HTML = row_builder('<h6>Baustein hinzufügen</h6>');
+    $HTML .= row_builder(generate_bausteine_dropdown_menue($TypeNewBaustein, 'Baustein wählen', ''));
+    $HTML .= row_builder(form_string_item($NameNewBaustein, 'gib dem Element einen Namen', ''));
+    $HTML .= row_builder(form_button_builder($NameAddButtonBaustein, 'Hinzufügen', 'action', 'add_box', ''));
 
-    $HTML = table_builder(table_row_builder($TableData) .+ table_row_builder($TableButtons));
-
-    $HTML = row_builder($HTML);
     $HTML = section_builder($HTML);
 
     return $HTML;
