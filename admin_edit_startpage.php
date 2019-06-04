@@ -105,10 +105,12 @@ function generate_inhalte_views($BausteinID){
 
             if($Baustein['typ'] == 'parallax_mit_text'){
                 $Operators = "<a href='".$ReferenceEdit."'><i class='tiny material-icons'>edit</i></a> ";
-                $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Ergebnis['zweite_ueberschrift']." - ".$Operators."";
+                $Operators .= generate_move_buttons_item_level($Anzahl, $Ergebnis['id'], $Ergebnis['rang'], $Ergebnis['id_baustein']);
+                $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Ergebnis['zweite_ueberschrift']." ".$Operators."";
             } elseif ($Baustein['typ'] == 'row_container'){
                 $Operators = "<a href='".$ReferenceEdit."'><i class='tiny material-icons'>edit</i></a> <a href='".$ReferenceDelete."'><i class='tiny material-icons'>delete_forever</i></a> ";
-                $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Operators."";
+                $Operators .= generate_move_buttons_item_level($Anzahl, $Ergebnis['id'], $Ergebnis['rang'], $Ergebnis['id_baustein']);
+                $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." ".$Operators."";
             }
 
             $InhalteHTML .= collection_item_builder($Header);
@@ -227,48 +229,29 @@ function generate_move_buttons_baustein_level($AnzahlGesamtBausteine, $Aktueller
     }
 }
 
-function generate_move_buttons_item_level($AnzahlGesamtSeiten, $ZeroRangCounter, $AktuellerRang, $AktuellerName){
+function generate_move_buttons_item_level($AnzahlGesamtItems, $AktuellerItemID, $AktuellerItemRang, $AktuellerBaustein){
 
-    if ($AktuellerRang == 0){
-        #This is a site not to be moved in relevance
+    #We are in a site with a rank
+    if ($AnzahlGesamtItems == 1){
+        #This site cannot be moved as it is the only one with a rank
         return '';
-    } else {
+    } elseif ($AnzahlGesamtItems > 1){
 
-        #NUmber of ranked sites
-        $NumberRankedSites = $AnzahlGesamtSeiten - $ZeroRangCounter;
+        $HTML = '';
 
-        #We are in a site with a rank
-        if ($NumberRankedSites == 1){
-            #This site cannot be moved as it is the only one with a rank
-            return '';
-        } elseif ($NumberRankedSites > 1){
-
-            $Output = row_builder(divider_builder());
-            $Output .= row_builder('<h4>Rang verschieben</h4>');
-            $HTML = '';
-            $DownToo = false;
-
-            #Can be moved down
-            if($AktuellerRang < $NumberRankedSites){
-                $ButtonDownName = "decrease_rank_".$AktuellerName."";
-                $HTML .= "<button class='btn waves-effect waves-light col s5 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_downward</i> Rang senken</button>";
-                $DownToo = True;
-            }
-
-            #Can be moved up
-            if($AktuellerRang > 1){
-                $ButtonDownName = "increase_rank_".$AktuellerName."";
-                if($DownToo){
-                    $HTML .= "<button class='btn waves-effect waves-light col s5 offset-s1 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_upward</i> Rang erhöhen</button>";
-                } else {
-                    $HTML .= "<button class='btn waves-effect waves-light col s5 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_upward</i> Rang erhöhen</button>";
-                }
-            }
-
-            $Output .= row_builder($HTML);
-
-            return $Output;
+        #Can be moved down
+        if($AktuellerItemRang < $AnzahlGesamtItems){
+            $ButtonDownName = "#?decrease_rank_item_".$AktuellerItemID."_".$AktuellerBaustein."=true";
+            $HTML .= "<a href='".$ButtonDownName."'><i class='tiny material-icons'>arrow_downward</i></a> ";
         }
+
+        #Can be moved up
+        if($AktuellerItemRang > 1){
+            $ButtonDownName = "#?increase_rank_item_".$AktuellerItemID."_".$AktuellerBaustein."=true";
+            $HTML .= "<a href='".$ButtonDownName."'><i class='tiny material-icons'>arrow_upward</i></a> ";
+        }
+
+        return $HTML;
     }
 }
 
