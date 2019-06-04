@@ -269,7 +269,7 @@ function generate_collapsible_add_page_item(){
     $TableHTML .= table_form_swich_item('Sichtbarkeit im Hauptmenü', 'new_site_menue_visibility', 'unsichtbar', 'sichtbar', '', '');
     $ContentHTML = table_builder($TableHTML);
 
-    return collapsible_item_builder($TitleHTML, $Icon, $ContentHTML);
+    return collapsible_item_builder($TitleHTML, $ContentHTML, $Icon);
 }
 
 ?>
