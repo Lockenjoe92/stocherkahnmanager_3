@@ -268,7 +268,8 @@ function generate_collapsible_add_page_item(){
     $TableHTML .= table_form_string_item('Titel der Seite', 'new_site_title', '', false);
     $TableHTML .= table_form_swich_item('Sichtbarkeit im Hauptmenü', 'new_site_menue_visibility', 'unsichtbar', 'sichtbar', '', '');
     #$TableButtons = table_data_builder(form_button_builder('add_new_site', 'Neue Seite anlegen', 'action', 'add_box', '')) .= table_data_builder('');
-    #$TableHTML .= table_row_builder($TableButtons);
+    $TableButtons = table_data_builder('') .+ table_data_builder('');
+    $TableHTML .= table_row_builder($TableButtons);
     $ContentHTML = table_builder($TableHTML);
 
     return collapsible_item_builder($TitleHTML, $ContentHTML, $Icon);
