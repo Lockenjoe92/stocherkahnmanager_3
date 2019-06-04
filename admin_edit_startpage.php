@@ -51,9 +51,6 @@ echo site_header($Header);
 echo site_body($HTML);
 
 
-
-
-
 function generate_move_buttons_page_level($AnzahlGesamtSeiten, $ZeroRangCounter, $AktuellerRang, $AktuellerName){
 
     if ($AktuellerRang == 0){
@@ -71,6 +68,7 @@ function generate_move_buttons_page_level($AnzahlGesamtSeiten, $ZeroRangCounter,
         } elseif ($NumberRankedSites > 1){
 
             $Output = row_builder(divider_builder());
+            $Output .= row_builder('<h4>Rang verschieben</h4>');
             $HTML = '';
             $DownToo = false;
 
