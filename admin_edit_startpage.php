@@ -41,6 +41,9 @@ for($x=1;$x<=$Anzahl;$x++){
 
 }
 
+#Include Add Page functionality
+$CollapsibleItems .= generate_collapsible_add_page_item();
+
 #Wrap Collapsibles
 $CollapsibleList = collapsible_builder($CollapsibleItems);
 $HTML .= section_builder($CollapsibleList);
@@ -255,5 +258,18 @@ function generate_move_buttons_item_level($AnzahlGesamtItems, $AktuellerItemID, 
     }
 }
 
+function generate_collapsible_add_page_item(){
+
+    $TitleHTML = "Neue Seite anlegen";
+    $Icon = "add_box";
+
+    # Form Table
+    $TableHTML = table_form_string_item('Seitenname', 'new_site_name', '', false);
+    $TableHTML .= table_form_string_item('Titel der Seite', 'new_site_title', '', false);
+    $TableHTML .= table_form_swich_item('Sichtbarkeit im Hauptmenü', 'new_site_menue_visibility', 'unsichtbar', 'sichtbar', '', '');
+    $ContentHTML = table_builder($TableHTML);
+
+    return collapsible_item_builder($TitleHTML, $Icon, $ContentHTML);
+}
 
 ?>
