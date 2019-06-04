@@ -6,13 +6,12 @@
  * Time: 13:59
  */
 
-echo 'huhu';
-
-
 include_once "./ressources/ressourcen.php";
 session_manager('ist_admin');
 $link = connect_db();
 $Header = "Webseite Editieren - " . lade_db_einstellung('site_name');
+
+echo 'huhu';
 
 #Generate content
 # Page Title
