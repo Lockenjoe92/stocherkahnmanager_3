@@ -8,6 +8,7 @@
 
 echo 'huhu';
 
+
 include_once "./ressources/ressourcen.php";
 session_manager('ist_admin');
 $link = connect_db();
