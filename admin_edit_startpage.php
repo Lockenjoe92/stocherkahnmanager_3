@@ -214,8 +214,8 @@ function generate_move_buttons_baustein_level($AnzahlGesamtBausteine, $Aktueller
 
         #Can be moved down
         if($AktuellerBausteinRang < $AnzahlGesamtBausteine){
-            $ButtonDownName = "decrease_rank_baustein_".$AktuellerBausteinID."_".$AktuelleSeiteName."";
-            $HTML .= "<button class='btn waves-effect waves-light col s5 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_downward</i> Rang senken</button>";
+            $ButtonDownName = "#?decrease_rank_baustein_".$AktuellerBausteinID."_".$AktuelleSeiteName."=true";
+            $HTML .= "<a href='".$ButtonDownName."'><i class='tiny material-icons'>arrow_downward</i></a> ";
             $DownToo = True;
         }
 
