@@ -144,7 +144,8 @@ function generate_baustein_adder($SiteName){
     $TypeNewBaustein = "type_new_baustein_".$SiteName."";
     $NameAddButtonBaustein = "add_new_baustein_".$SiteName."";
 
-    $HTML = row_builder('<h6>Baustein hinzufügen</h6>');
+    $HTML = row_builder(divider_builder());
+    $HTML .= row_builder('<h4>Baustein hinzufügen</h4>');
     $HTML .= row_builder(generate_bausteine_dropdown_menue($TypeNewBaustein, 'Baustein wählen', ''));
     $HTML .= row_builder(form_string_item($NameNewBaustein, 'gib dem Element einen Namen', ''));
     $HTML .= row_builder(form_button_builder($NameAddButtonBaustein, 'Hinzufügen', 'action', 'add_box', ''));

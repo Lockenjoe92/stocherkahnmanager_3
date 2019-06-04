@@ -326,6 +326,13 @@ function error_button_creator($ButtonMessage, $Icon, $SpecialMode){
 
 }
 
+function divider_builder(){
+
+    $HTML = "<div class='divider'></div>";
+
+    return $HTML;
+}
+
 function toast($Message){
     return "<script>M.toast({html: ".$Message."})</script>";
 }
