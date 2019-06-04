@@ -113,7 +113,10 @@ function generate_bausteine_view($Seite){
         for ($x = 1; $x <= $Anzahl; $x++) {
 
             $Ergebnis = mysqli_fetch_assoc($Abfrage);
-            $Header = "" . $Ergebnis['rang'] . " - " . $Ergebnis['typ'] . " - " . $Ergebnis['name'] . "";
+            $ReferenceDelete = "./delete_website_baustein_".$Ergebnis['id']."";
+            $Operators = "<a href='".$ReferenceDelete."'><i class='small material-icons'>delete_forever</i></a> ";
+
+            $Header = "" . $Ergebnis['rang'] . " - " . $Ergebnis['typ'] . " - " . $Ergebnis['name'] . " ".$Operators."";
             $Items = generate_inhalte_views($Ergebnis['id']);
 
             $BausteineHTML .= section_builder(collection_with_header_builder($Header, $Items));
@@ -180,11 +183,12 @@ function generate_inhalte_views($BausteinID){
             $Ergebnis = mysqli_fetch_assoc($Abfrage);
             $ReferenceEdit = "./edit_website_item_".$Ergebnis['id']."";
             $ReferenceDelete = "./delete_website_item_".$Ergebnis['id']."";
-            $Operators = "<a href='".$ReferenceEdit."'><i class='tiny material-icons'>edit</i></a> <a href='".$ReferenceDelete."'><i class='tiny material-icons'>delete_forever</i></a> ";
 
             if($Baustein['typ'] == 'parallax_mit_text'){
+                $Operators = "<a href='".$ReferenceEdit."'><i class='tiny material-icons'>edit</i></a> ";
                 $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Ergebnis['zweite_ueberschrift']." - ".$Operators."";
             } elseif ($Baustein['typ'] == 'row_container'){
+                $Operators = "<a href='".$ReferenceEdit."'><i class='tiny material-icons'>edit</i></a> <a href='".$ReferenceDelete."'><i class='tiny material-icons'>delete_forever</i></a> ";
                 $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Operators."";
             }
 
