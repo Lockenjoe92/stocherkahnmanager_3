@@ -7,8 +7,8 @@
  */
 
 include_once "./ressources/ressourcen.php";
-session_manager('ist_admin');
 echo 'huhu';
+session_manager('ist_admin');
 $link = connect_db();
 $Header = "Webseite Editieren - " . lade_db_einstellung('site_name');
 
