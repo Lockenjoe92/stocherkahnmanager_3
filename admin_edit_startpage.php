@@ -6,6 +6,8 @@
  * Time: 13:59
  */
 
+echo 'huhu';
+
 include_once "./ressources/ressourcen.php";
 session_manager('ist_admin');
 $link = connect_db();
@@ -49,6 +51,9 @@ $HTML = container_builder($HTML, 'admin_edit_startpage_container', '');
 # Output site
 echo site_header($Header);
 echo site_body($HTML);
+
+
+
 
 
 function generate_move_buttons_page_level($AnzahlGesamtSeiten, $ZeroRangCounter, $AktuellerRang, $AktuellerName){
