@@ -114,7 +114,7 @@ function generate_bausteine_view($Seite){
 
             $Ergebnis = mysqli_fetch_assoc($Abfrage);
             $ReferenceDelete = "./delete_website_baustein_".$Ergebnis['id']."";
-            $Operators = "<a href='".$ReferenceDelete."'><i class='small material-icons'>delete_forever</i></a> ";
+            $Operators = "<a href='".$ReferenceDelete."'><i class='tiny material-icons'>delete_forever</i></a> ";
 
             $Header = "" . $Ergebnis['rang'] . " - " . $Ergebnis['typ'] . " - " . $Ergebnis['name'] . " ".$Operators."";
             $Items = generate_inhalte_views($Ergebnis['id']);
