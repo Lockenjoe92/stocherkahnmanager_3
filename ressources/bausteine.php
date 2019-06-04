@@ -143,7 +143,23 @@ function collapsible_item_builder($Title, $Content, $Icon){
 
 }
 
-#function generate_bausteine_dropdown_menue($SpecialMode){return '';}
+function generate_bausteine_dropdown_menue($ItemName, $Label, $SpecialMode){
+
+    $HTML = "<div class='input-field' ".$SpecialMode.">";
+    $HTML .= "<select id='".$ItemName."' name='".$ItemName."' class='browser-default'>";
+
+    $HTML .= "<option value='' disabled selected>Bitte w&auml;hlen</option>";
+
+    $HTML .= "</select>";
+
+    if ($Label!=''){
+        $HTML .= "<label>".$Label."</label>";
+    }
+
+    $HTML .= "</div>";
+
+    return $HTML;
+}
 
 function table_builder($ContentHTML){
 
