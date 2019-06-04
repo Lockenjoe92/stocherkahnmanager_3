@@ -50,6 +50,111 @@ $HTML = container_builder($HTML, 'admin_edit_startpage_container', '');
 echo site_header($Header);
 echo site_body($HTML);
 
+function generate_bausteine_view($Seite){
+
+    $link = connect_db();
+    $BausteineHTML = "";
+
+    # Load Subsites
+    $Anfrage = "SELECT * FROM homepage_bausteine WHERE storno_user = 0 AND ort = '".$Seite."' ORDER BY rang ASC";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Anzahl = mysqli_num_rows($Abfrage);
+
+    if ($Anzahl == 0){
+        $Header = "Bislang noch keine Bausteine hinzugefügt!";
+        $BausteineHTML .= section_builder(collection_with_header_builder($Header, ''));
+    } else {
+        for ($x = 1; $x <= $Anzahl; $x++) {
+
+            $Ergebnis = mysqli_fetch_assoc($Abfrage);
+            $ReferenceDelete = "./delete_website_baustein_".$Ergebnis['id']."";
+            $Operators = "<a href='".$ReferenceDelete."'><i class='tiny material-icons'>delete_forever</i></a> ";
+            $Operators .= generate_move_buttons_baustein_level($Anzahl, $Ergebnis['id'], $Ergebnis['rang'], $Seite);
+
+            $Header = "" . $Ergebnis['rang'] . " - " . $Ergebnis['typ'] . " - " . $Ergebnis['name'] . " ".$Operators."";
+            $Items = generate_inhalte_views($Ergebnis['id']);
+
+            $BausteineHTML .= section_builder(collection_with_header_builder($Header, $Items));
+
+        }
+    }
+
+    return $BausteineHTML;
+}
+
+function generate_inhalte_views($BausteinID){
+
+    $link = connect_db();
+    $InhalteHTML = "";
+    $Baustein = lade_baustein($BausteinID);
+
+    # Load Content
+    $Anfrage = "SELECT * FROM homepage_content WHERE storno_user = 0 AND id_baustein = '".$BausteinID."' ORDER BY rang ASC";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Anzahl = mysqli_num_rows($Abfrage);
+
+    if ($Anzahl == 0){
+        $Header = "Bislang noch keine Inhaltselemente hinzugefügt!";
+        $InhalteHTML .= collection_item_builder($Header);
+    } else {
+        for ($x=1;$x<=$Anzahl;$x++){
+
+            $Ergebnis = mysqli_fetch_assoc($Abfrage);
+            $ReferenceEdit = "./edit_website_item_".$Ergebnis['id']."";
+            $ReferenceDelete = "./delete_website_item_".$Ergebnis['id']."";
+
+            if($Baustein['typ'] == 'parallax_mit_text'){
+                $Operators = "<a href='".$ReferenceEdit."'><i class='tiny material-icons'>edit</i></a> ";
+                $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Ergebnis['zweite_ueberschrift']." - ".$Operators."";
+            } elseif ($Baustein['typ'] == 'row_container'){
+                $Operators = "<a href='".$ReferenceEdit."'><i class='tiny material-icons'>edit</i></a> <a href='".$ReferenceDelete."'><i class='tiny material-icons'>delete_forever</i></a> ";
+                $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Operators."";
+            }
+
+            $InhalteHTML .= collection_item_builder($Header);
+
+        }
+    }
+
+    return $InhalteHTML;
+
+}
+
+function generate_bausteine_dropdown_menue($ItemName, $Label, $SpecialMode){
+
+    $HTML = "<div class='input-field' ".$SpecialMode.">";
+    $HTML .= "<select id='".$ItemName."' name='".$ItemName."'>";
+
+    $HTML .= "<option value='' disabled selected>Bitte w&auml;hlen</option>";
+    $HTML .= "<option value='row_container'>row_container</option>";
+    $HTML .= "<option value='parallax_mit_text'>parallax_mit_text</option>";
+    $HTML .= "</select>";
+
+    if ($Label!=''){
+        $HTML .= "<label>".$Label."</label>";
+    }
+
+    $HTML .= "</div>";
+
+    return $HTML;
+}
+
+function generate_baustein_adder($SiteName){
+
+    $NameNewBaustein = "name_new_baustein_".$SiteName."";
+    $TypeNewBaustein = "type_new_baustein_".$SiteName."";
+    $NameAddButtonBaustein = "add_new_baustein_".$SiteName."";
+
+    $HTML = row_builder(divider_builder());
+    $HTML .= row_builder('<h4>Baustein hinzufügen</h4>');
+    $HTML .= row_builder(generate_bausteine_dropdown_menue($TypeNewBaustein, 'Baustein wählen', ''));
+    $HTML .= row_builder(form_string_item($NameNewBaustein, 'gib dem Element einen Namen', ''));
+    $HTML .= row_builder(form_button_builder($NameAddButtonBaustein, 'Hinzufügen', 'action', 'add_box', ''));
+
+    $HTML = section_builder($HTML);
+
+    return $HTML;
+}
 
 function generate_move_buttons_page_level($AnzahlGesamtSeiten, $ZeroRangCounter, $AktuellerRang, $AktuellerName){
 
@@ -96,109 +201,84 @@ function generate_move_buttons_page_level($AnzahlGesamtSeiten, $ZeroRangCounter,
     }
 }
 
-function generate_bausteine_view($Seite){
+function generate_move_buttons_baustein_level($AnzahlGesamtBausteine, $AktuellerBausteinID, $AktuellerBausteinRang, $AktuelleSeiteName){
 
-    $link = connect_db();
-    $BausteineHTML = "";
+    #We are in a site with a rank
+    if ($AnzahlGesamtBausteine == 1){
+        #This site cannot be moved as it is the only one with a rank
+        return '';
+    } elseif ($AnzahlGesamtBausteine > 1){
 
-    # Load Subsites
-    $Anfrage = "SELECT * FROM homepage_bausteine WHERE storno_user = 0 AND ort = '".$Seite."' ORDER BY rang ASC";
-    $Abfrage = mysqli_query($link, $Anfrage);
-    $Anzahl = mysqli_num_rows($Abfrage);
+        $HTML = '';
+        $DownToo = false;
 
-    if ($Anzahl == 0){
-        $Header = "Bislang noch keine Bausteine hinzugefügt!";
-        $BausteineHTML .= section_builder(collection_with_header_builder($Header, ''));
-    } else {
-        for ($x = 1; $x <= $Anzahl; $x++) {
-
-            $Ergebnis = mysqli_fetch_assoc($Abfrage);
-            $ReferenceDelete = "./delete_website_baustein_".$Ergebnis['id']."";
-            $Operators = "<a href='".$ReferenceDelete."'><i class='tiny material-icons'>delete_forever</i></a> ";
-
-            $Header = "" . $Ergebnis['rang'] . " - " . $Ergebnis['typ'] . " - " . $Ergebnis['name'] . " ".$Operators."";
-            $Items = generate_inhalte_views($Ergebnis['id']);
-
-            $BausteineHTML .= section_builder(collection_with_header_builder($Header, $Items));
-
+        #Can be moved down
+        if($AktuellerBausteinRang < $AnzahlGesamtBausteine){
+            $ButtonDownName = "decrease_rank_baustein_".$AktuellerBausteinID."_".$AktuelleSeiteName."";
+            $HTML .= "<button class='btn waves-effect waves-light col s5 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_downward</i> Rang senken</button>";
+            $DownToo = True;
         }
+
+        #Can be moved up
+        if($AktuellerBausteinRang > 1){
+            $ButtonDownName = "increase_rank_baustein_".$AktuellerBausteinID."_".$AktuelleSeiteName."";
+            if($DownToo){
+                $HTML .= "<button class='btn waves-effect waves-light col s5 offset-s1 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_upward</i> Rang erhöhen</button>";
+            } else {
+                $HTML .= "<button class='btn waves-effect waves-light col s5 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_upward</i> Rang erhöhen</button>";
+            }
+        }
+
+        $Output = row_builder($HTML);
+
+        return $Output;
     }
-
-    return $BausteineHTML;
 }
 
-function generate_bausteine_dropdown_menue($ItemName, $Label, $SpecialMode){
+function generate_move_buttons_item_level($AnzahlGesamtSeiten, $ZeroRangCounter, $AktuellerRang, $AktuellerName){
 
-    $HTML = "<div class='input-field' ".$SpecialMode.">";
-    $HTML .= "<select id='".$ItemName."' name='".$ItemName."'>";
-
-    $HTML .= "<option value='' disabled selected>Bitte w&auml;hlen</option>";
-    $HTML .= "<option value='row_container'>row_container</option>";
-    $HTML .= "<option value='parallax_mit_text'>parallax_mit_text</option>";
-    $HTML .= "</select>";
-
-    if ($Label!=''){
-        $HTML .= "<label>".$Label."</label>";
-    }
-
-    $HTML .= "</div>";
-
-    return $HTML;
-}
-
-function generate_baustein_adder($SiteName){
-
-    $NameNewBaustein = "name_new_baustein_".$SiteName."";
-    $TypeNewBaustein = "type_new_baustein_".$SiteName."";
-    $NameAddButtonBaustein = "add_new_baustein_".$SiteName."";
-
-    $HTML = row_builder(divider_builder());
-    $HTML .= row_builder('<h4>Baustein hinzufügen</h4>');
-    $HTML .= row_builder(generate_bausteine_dropdown_menue($TypeNewBaustein, 'Baustein wählen', ''));
-    $HTML .= row_builder(form_string_item($NameNewBaustein, 'gib dem Element einen Namen', ''));
-    $HTML .= row_builder(form_button_builder($NameAddButtonBaustein, 'Hinzufügen', 'action', 'add_box', ''));
-
-    $HTML = section_builder($HTML);
-
-    return $HTML;
-}
-
-function generate_inhalte_views($BausteinID){
-
-    $link = connect_db();
-    $InhalteHTML = "";
-    $Baustein = lade_baustein($BausteinID);
-
-    # Load Content
-    $Anfrage = "SELECT * FROM homepage_content WHERE storno_user = 0 AND id_baustein = '".$BausteinID."' ORDER BY rang ASC";
-    $Abfrage = mysqli_query($link, $Anfrage);
-    $Anzahl = mysqli_num_rows($Abfrage);
-
-    if ($Anzahl == 0){
-        $Header = "Bislang noch keine Inhaltselemente hinzugefügt!";
-        $InhalteHTML .= collection_item_builder($Header);
+    if ($AktuellerRang == 0){
+        #This is a site not to be moved in relevance
+        return '';
     } else {
-        for ($x=1;$x<=$Anzahl;$x++){
 
-            $Ergebnis = mysqli_fetch_assoc($Abfrage);
-            $ReferenceEdit = "./edit_website_item_".$Ergebnis['id']."";
-            $ReferenceDelete = "./delete_website_item_".$Ergebnis['id']."";
+        #NUmber of ranked sites
+        $NumberRankedSites = $AnzahlGesamtSeiten - $ZeroRangCounter;
 
-            if($Baustein['typ'] == 'parallax_mit_text'){
-                $Operators = "<a href='".$ReferenceEdit."'><i class='tiny material-icons'>edit</i></a> ";
-                $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Ergebnis['zweite_ueberschrift']." - ".$Operators."";
-            } elseif ($Baustein['typ'] == 'row_container'){
-                $Operators = "<a href='".$ReferenceEdit."'><i class='tiny material-icons'>edit</i></a> <a href='".$ReferenceDelete."'><i class='tiny material-icons'>delete_forever</i></a> ";
-                $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Operators."";
+        #We are in a site with a rank
+        if ($NumberRankedSites == 1){
+            #This site cannot be moved as it is the only one with a rank
+            return '';
+        } elseif ($NumberRankedSites > 1){
+
+            $Output = row_builder(divider_builder());
+            $Output .= row_builder('<h4>Rang verschieben</h4>');
+            $HTML = '';
+            $DownToo = false;
+
+            #Can be moved down
+            if($AktuellerRang < $NumberRankedSites){
+                $ButtonDownName = "decrease_rank_".$AktuellerName."";
+                $HTML .= "<button class='btn waves-effect waves-light col s5 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_downward</i> Rang senken</button>";
+                $DownToo = True;
             }
 
-            $InhalteHTML .= collection_item_builder($Header);
+            #Can be moved up
+            if($AktuellerRang > 1){
+                $ButtonDownName = "increase_rank_".$AktuellerName."";
+                if($DownToo){
+                    $HTML .= "<button class='btn waves-effect waves-light col s5 offset-s1 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_upward</i> Rang erhöhen</button>";
+                } else {
+                    $HTML .= "<button class='btn waves-effect waves-light col s5 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_upward</i> Rang erhöhen</button>";
+                }
+            }
 
+            $Output .= row_builder($HTML);
+
+            return $Output;
         }
     }
-
-    return $InhalteHTML;
-
 }
+
 
 ?>
