@@ -70,13 +70,14 @@ function generate_move_buttons_page_level($AnzahlGesamtSeiten, $ZeroRangCounter,
             return '';
         } elseif ($NumberRankedSites > 1){
 
+            $Output = row_builder(divider_builder());
             $HTML = '';
             $DownToo = false;
 
             #Can be moved down
             if($AktuellerRang < $NumberRankedSites){
                 $ButtonDownName = "decrease_rank_".$AktuellerName."";
-                $HTML .= "<button class='btn waves-effect waves-light col s5' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_downward</i> Rang senken</button>";
+                $HTML .= "<button class='btn waves-effect waves-light col s5 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_downward</i> Rang senken</button>";
                 $DownToo = True;
             }
 
@@ -84,15 +85,15 @@ function generate_move_buttons_page_level($AnzahlGesamtSeiten, $ZeroRangCounter,
             if($AktuellerRang > 1){
                 $ButtonDownName = "increase_rank_".$AktuellerName."";
                 if($DownToo){
-                    $HTML .= "<button class='btn waves-effect waves-light col s5 offset-s1' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_upward</i> Rang erhöhen</button>";
+                    $HTML .= "<button class='btn waves-effect waves-light col s5 offset-s1 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_upward</i> Rang erhöhen</button>";
                 } else {
-                    $HTML .= "<button class='btn waves-effect waves-light col s5' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_upward</i> Rang erhöhen</button>";
+                    $HTML .= "<button class='btn waves-effect waves-light col s5 ".lade_db_einstellung('site_buttons_color')."' id='".$ButtonDownName."' name='".$ButtonDownName."'><i class='material-icons'>arrow_upward</i> Rang erhöhen</button>";
                 }
             }
 
-            $HTML = row_builder($HTML);
+            $Output .= row_builder($HTML);
 
-            return $HTML;
+            return $Output;
         }
     }
 }
