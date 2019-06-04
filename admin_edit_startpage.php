@@ -16,6 +16,8 @@ $Header = "Webseite Editieren - " . lade_db_einstellung('site_name');
 $PageTitle = '<h1>Webseite Editieren</h1>';
 $HTML .= section_builder($PageTitle);
 
+echo $PageTitle;
+
 # Load Subsites
 $Anfrage = "SELECT * FROM homepage_sites WHERE delete_user = 0 ORDER BY menue_rang ASC";
 $Abfrage = mysqli_query($link, $Anfrage);
