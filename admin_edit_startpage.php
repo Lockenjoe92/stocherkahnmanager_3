@@ -267,8 +267,8 @@ function generate_collapsible_add_page_item(){
     $TableHTML = table_form_string_item('Seitenname', 'new_site_name', '', false);
     $TableHTML .= table_form_string_item('Titel der Seite', 'new_site_title', '', false);
     $TableHTML .= table_form_swich_item('Sichtbarkeit im Hauptmenü', 'new_site_menue_visibility', 'unsichtbar', 'sichtbar', '', '');
-    $TableButtons = table_header_builder(form_button_builder('add_new_site', 'Neue Seite anlegen', 'action', 'add_box', ''));
-    $TableButtons .= table_data_builder('');
+    $TableButtons = table_header_builder('');
+    $TableButtons .= table_data_builder(form_button_builder('add_new_site', 'Neue Seite anlegen', 'action', 'add_box', ''));
     $TableHTML .= table_row_builder($TableButtons);
     $ContentHTML = table_builder($TableHTML);
 
