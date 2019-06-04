@@ -35,7 +35,7 @@ for($x=1;$x<=$Anzahl;$x++){
 
     #Build Card Content
     $ContentHTML = generate_bausteine_view($Ergebnis['name']);
-    $ContentHTML .= generate_baustein_adder($Ergebnis['name']);
+    #$ContentHTML .= generate_baustein_adder($Ergebnis['name']);
     $ContentHTML .= section_builder(generate_move_buttons_page_level($Anzahl, $ZeroRangCounter, $Ergebnis['menue_rang'], $Ergebnis['menue_text']));
 
     #Build the Item
