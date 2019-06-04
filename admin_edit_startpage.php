@@ -165,13 +165,18 @@ function generate_inhalte_views($BausteinID){
     $Abfrage = mysqli_query($link, $Anfrage);
     $Anzahl = mysqli_num_rows($Abfrage);
 
-    for ($x=1;$x<=$Anzahl;$x++){
-
-        $Ergebnis = mysqli_fetch_assoc($Abfrage);
-        $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Ergebnis['zweite_ueberschrift']."";
-
+    if ($Anzahl == 0){
+        $Header = "Bislang noch keine Inhaltselemente hinzugefügt!";
         $InhalteHTML .= collection_item_builder($Header);
+    } else {
+        for ($x=1;$x<=$Anzahl;$x++){
 
+            $Ergebnis = mysqli_fetch_assoc($Abfrage);
+            $Header = "".$Ergebnis['rang']." - ".$Ergebnis['ueberschrift']." - ".$Ergebnis['zweite_ueberschrift']."";
+
+            $InhalteHTML .= collection_item_builder($Header);
+
+        }
     }
 
     return $InhalteHTML;
