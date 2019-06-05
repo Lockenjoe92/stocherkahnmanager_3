@@ -73,7 +73,7 @@ function generate_bausteine_view($Seite){
         for ($x = 1; $x <= $Anzahl; $x++) {
 
             $Ergebnis = mysqli_fetch_assoc($Abfrage);
-            $ReferenceDelete = "./delete_website_baustein_".$Ergebnis['id']."";
+            $ReferenceDelete = "./delete_website_baustein.php?baustein=".$Ergebnis['id']."";
             $Operators = "<a href='".$ReferenceDelete."'><i class='tiny material-icons'>delete_forever</i></a> ";
             $Operators .= generate_move_buttons_baustein_level($Anzahl, $Ergebnis['id'], $Ergebnis['rang'], $Seite);
 
@@ -299,7 +299,7 @@ function add_website_bausteine_parser(){
             $NewBausteinType = "type_new_baustein_".$SubsiteName."";
             $NewBausteinName = "name_new_baustein_".$SubsiteName."";
 
-            $Action = startseitenelement_anlegen($SubsiteName, $NewBausteinType, $NewBausteinName);
+            $Action = startseitenelement_anlegen($SubsiteName, $_POST[$NewBausteinType], $_POST[$NewBausteinName]);
         }
     }
 
