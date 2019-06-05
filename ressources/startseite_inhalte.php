@@ -322,11 +322,11 @@ function startseiteninhalt_loeschen($IDElement){
     }
 
     if (!$stmt->bind_param("isi",$UserID, $Timestamp, intval($IDElement))) {
-        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+        echo "Binding 3 parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
 
     if (!$stmt->execute()) {
-        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        echo "Execute 3 failed: (" . $stmt->errno . ") " . $stmt->error;
     }
 
 }
