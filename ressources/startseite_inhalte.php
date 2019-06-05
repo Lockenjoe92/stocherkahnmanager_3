@@ -274,11 +274,11 @@ function startseitenelement_loeschen($IDbaustein){
     $Timestamp = timestamp();
 
     $link = connect_db();
-    if (!($stmt = $link->prepare("UPDATE homepage_bausteine SET (storno_user = ?, storno_time = ?) WHERE id = ?"))) {
+    if (!($stmt = $link->prepare("UPDATE homepage_bausteine SET storno_user = ?, storno_time = ? WHERE id = ?"))) {
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
 
-    if (!$stmt->bind_param("isi",$UserID, $Timestamp, intval($IDbaustein))) {
+    if (!$stmt->bind_param("sss",$UserID, $Timestamp, $IDbaustein)) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
 
@@ -291,7 +291,7 @@ function startseitenelement_loeschen($IDbaustein){
             echo "Prepare failed: (" . $link->errno . ") " . $link->error;
         }
 
-        if (!$stmt->bind_param("i",intval($IDbaustein))) {
+        if (!$stmt->bind_param("s",$IDbaustein)) {
             echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
