@@ -268,6 +268,69 @@ function startseiteninhalt_einfuegen($IDbaustein, $titel, $titel2, $html, $uri_b
 
 }
 
+function startseitenelement_loeschen($IDbaustein){
+
+    $UserID = lade_user_id();
+    $Timestamp = timestamp();
+
+    $link = connect_db();
+    if (!($stmt = $link->prepare("UPDATE homepage_bausteine SET storno_user = ?, storno_time = ? WHERE id = ?"))) {
+        echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+    }
+
+    if (!$stmt->bind_param("isi",$UserID, $Timestamp, $IDbaustein)) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    } else {
+
+        #Delete all Inhalte
+        if (!($stmt = $link->prepare("SELECT * FROM homepage_inhalte WHERE id_baustein = ?"))) {
+            echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+        }
+
+        if (!$stmt->bind_param("i",$IDbaustein)) {
+            echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+
+        if (!$stmt->execute()) {
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+
+        $res = $stmt->get_result();
+        $Anzahl = mysqli_num_rows($res);
+
+        for($x=1;$x<=$Anzahl;$x++){
+            $Array = mysqli_fetch_assoc($res);
+            $IDElement = $Array['id'];
+            startseiteninhalt_loeschen($IDElement);
+        }
+    }
+
+}
+
+function startseiteninhalt_loeschen($IDElement){
+
+    $UserID = lade_user_id();
+    $Timestamp = timestamp();
+    $link = connect_db();
+
+    if (!($stmt = $link->prepare("UPDATE homepage_content SET storno_user = ?, storno_time = ? WHERE id = ?"))) {
+        echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+    }
+
+    if (!$stmt->bind_param("isi",$UserID, $Timestamp, $IDElement)) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+}
+
 function lade_seitenelement($ID){
 
     $link = connect_db();
