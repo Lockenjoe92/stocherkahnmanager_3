@@ -48,7 +48,8 @@ $CollapsibleItems .= generate_collapsible_add_page_item();
 
 #Wrap Collapsibles
 $CollapsibleList = collapsible_builder($CollapsibleItems);
-$HTML .= section_builder($CollapsibleList);
+$Form = form_builder($CollapsibleList, '#', 'post', 'admin_edit_startpage_form');
+$HTML .= section_builder($Form);
 $HTML = container_builder($HTML, 'admin_edit_startpage_container', '');
 
 # Output site
