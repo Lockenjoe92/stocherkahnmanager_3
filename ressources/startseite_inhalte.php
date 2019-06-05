@@ -273,6 +273,8 @@ function startseitenelement_loeschen($IDbaustein){
     $UserID = lade_user_id();
     $Timestamp = timestamp();
 
+    echo $UserID, $Timestamp, $IDbaustein;
+
     $link = connect_db();
     if (!($stmt = $link->prepare("UPDATE homepage_bausteine SET storno_user = ?, storno_time = ? WHERE 'id' = '?'"))) {
         echo "Prepare 1 failed: (" . $link->errno . ") " . $link->error;
