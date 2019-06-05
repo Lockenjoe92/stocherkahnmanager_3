@@ -270,11 +270,11 @@ function startseiteninhalt_einfuegen($IDbaustein, $titel, $titel2, $html, $uri_b
 
 function startseitenelement_loeschen($IDbaustein){
 
-    $UserID = intval(lade_user_id());
+    $UserID = lade_user_id();
     $Timestamp = timestamp();
 
     $link = connect_db();
-    if (!($stmt = $link->prepare("UPDATE homepage_bausteine SET storno_user = ?, storno_time = ? WHERE id = ?"))) {
+    if (!($stmt = $link->prepare("UPDATE homepage_bausteine SET (storno_user = ?, storno_time = ?) WHERE id = ?"))) {
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
 
