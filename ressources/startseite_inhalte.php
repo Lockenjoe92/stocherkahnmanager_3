@@ -274,8 +274,8 @@ function startseitenelement_loeschen($IDbaustein){
     $Timestamp = timestamp();
 
     $link = connect_db();
-    if (!($stmt = $link->prepare("UPDATE homepage_bausteine SET storno_user = ?, storno_time = ? WHERE id = ?"))) {
-        echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+    if (!($stmt = $link->prepare("UPDATE homepage_bausteine SET storno_user = ?, storno_time = ? WHERE 'id' = '?'"))) {
+        echo "Prepare 1 failed: (" . $link->errno . ") " . $link->error;
     }
 
     if (!$stmt->bind_param("sss",$UserID, $Timestamp, $IDbaustein)) {
@@ -288,7 +288,7 @@ function startseitenelement_loeschen($IDbaustein){
 
         #Delete all Inhalte
         if (!($stmt = $link->prepare("SELECT * FROM homepage_inhalte WHERE id_baustein = ?"))) {
-            echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+            echo "Prepare 2 failed: (" . $link->errno . ") " . $link->error;
         }
 
         if (!$stmt->bind_param("s",$IDbaustein)) {
@@ -318,7 +318,7 @@ function startseiteninhalt_loeschen($IDElement){
     $link = connect_db();
 
     if (!($stmt = $link->prepare("UPDATE homepage_content SET storno_user = ?, storno_time = ? WHERE id = ?"))) {
-        echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+        echo "Prepare 3 failed: (" . $link->errno . ") " . $link->error;
     }
 
     if (!$stmt->bind_param("isi",$UserID, $Timestamp, intval($IDElement))) {
