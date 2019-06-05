@@ -270,7 +270,7 @@ function startseiteninhalt_einfuegen($IDbaustein, $titel, $titel2, $html, $uri_b
 
 function startseitenelement_loeschen($IDbaustein){
 
-    $UserID = lade_user_id();
+    $UserID = intval(lade_user_id());
     $Timestamp = timestamp();
 
     $link = connect_db();
@@ -278,7 +278,7 @@ function startseitenelement_loeschen($IDbaustein){
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
 
-    if (!$stmt->bind_param("isi",$UserID, $Timestamp, $IDbaustein)) {
+    if (!$stmt->bind_param("isi",$UserID, $Timestamp, intval($IDbaustein))) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
 
@@ -291,7 +291,7 @@ function startseitenelement_loeschen($IDbaustein){
             echo "Prepare failed: (" . $link->errno . ") " . $link->error;
         }
 
-        if (!$stmt->bind_param("i",$IDbaustein)) {
+        if (!$stmt->bind_param("i",intval($IDbaustein))) {
             echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
@@ -304,7 +304,7 @@ function startseitenelement_loeschen($IDbaustein){
 
         for($x=1;$x<=$Anzahl;$x++){
             $Array = mysqli_fetch_assoc($res);
-            $IDElement = $Array['id'];
+            $IDElement = intval($Array['id']);
             startseiteninhalt_loeschen($IDElement);
         }
     }
@@ -313,7 +313,7 @@ function startseitenelement_loeschen($IDbaustein){
 
 function startseiteninhalt_loeschen($IDElement){
 
-    $UserID = lade_user_id();
+    $UserID = intval(lade_user_id());
     $Timestamp = timestamp();
     $link = connect_db();
 
@@ -321,7 +321,7 @@ function startseiteninhalt_loeschen($IDElement){
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
 
-    if (!$stmt->bind_param("isi",$UserID, $Timestamp, $IDElement)) {
+    if (!$stmt->bind_param("isi",$UserID, $Timestamp, intval($IDElement))) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
 
