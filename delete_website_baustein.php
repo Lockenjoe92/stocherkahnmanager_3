@@ -13,9 +13,9 @@ $link = connect_db();
 $Baustein = $_GET['baustein'];
 
 if(intval($Baustein)>0){
-
     startseitenelement_loeschen($Baustein);
     header("Location: ./admin_edit_startpage.php");
     die();
-
+} else {
+    echo "Error";
 }
