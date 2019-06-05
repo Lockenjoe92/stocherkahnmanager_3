@@ -280,7 +280,7 @@ function startseitenelement_loeschen($IDbaustein){
         echo "Prepare 1 failed: (" . $link->errno . ") " . $link->error;
     }
 
-    if (!$stmt->bind_param("sss",$UserID, $Timestamp, $IDbaustein)) {
+    if (!$stmt->bind_param("iss",$UserID, $Timestamp, $IDbaustein)) {
         echo "Binding 1 parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
 
