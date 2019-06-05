@@ -13,9 +13,9 @@ $Baustein = $_GET['baustein'];
 
 if(intval($Baustein)>0){
     startseitenelement_loeschen($Baustein);
-    header("Location: ./admin_edit_startpage.php");
-    die();
+    #header("Location: ./admin_edit_startpage.php");
+    #die();
 } else {
-    header("Location: ./admin_edit_startpage.php");
-    die();
+    #header("Location: ./admin_edit_startpage.php");
+    #die();
 }
