@@ -289,7 +289,7 @@ function startseitenelement_loeschen($IDbaustein){
     } else {
 
         #Delete all Inhalte
-        if (!($stmt = $link->prepare("SELECT * FROM homepage_inhalte WHERE id_baustein = ?"))) {
+        if (!($stmt = $link->prepare("SELECT * FROM homepage_content WHERE id_baustein = ?"))) {
             echo "Prepare 2 failed: (" . $link->errno . ") " . $link->error;
         }
 
