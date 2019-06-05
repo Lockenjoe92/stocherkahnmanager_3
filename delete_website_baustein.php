@@ -9,7 +9,6 @@
 
 include_once "./ressources/ressourcen.php";
 session_manager('ist_admin');
-$link = connect_db();
 $Baustein = $_GET['baustein'];
 
 if(intval($Baustein)>0){
@@ -17,5 +16,6 @@ if(intval($Baustein)>0){
     header("Location: ./admin_edit_startpage.php");
     die();
 } else {
-    echo "Error";
+    header("Location: ./admin_edit_startpage.php");
+    die();
 }
