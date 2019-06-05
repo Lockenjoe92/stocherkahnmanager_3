@@ -9,10 +9,12 @@
 include_once "./ressources/ressourcen.php";
 session_manager('ist_admin');
 $link = connect_db();
-$Header = "Webseite Editieren - " . lade_db_einstellung('site_name');
+#Parse Input
+add_website_bausteine_parser();
 
 #Generate content
 # Page Title
+$Header = "Webseite Editieren - " . lade_db_einstellung('site_name');
 $PageTitle = '<h1>Webseite Editieren</h1>';
 $HTML .= section_builder($PageTitle);
 
@@ -273,6 +275,34 @@ function generate_collapsible_add_page_item(){
     $ContentHTML = table_builder($TableHTML);
 
     return collapsible_item_builder($TitleHTML, $ContentHTML, $Icon);
+}
+
+function add_website_bausteine_parser(){
+
+    $link = connect_db();
+    $Action = null;
+
+    # Load Subsites
+    $Anfrage = "SELECT * FROM homepage_sites WHERE delete_user = 0 ORDER BY menue_rang ASC";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Anzahl = mysqli_num_rows($Abfrage);
+
+    for($x=1;$x<=$Anzahl;$x++) {
+
+        $Ergebnis = mysqli_fetch_assoc($Abfrage);
+        $SubsiteName = $Ergebnis['name'];
+        $ActionButtonName = "add_new_baustein_".$SubsiteName."";
+
+        if (isset($_POST[$ActionButtonName])){
+
+            $NewBausteinType = "type_new_baustein_".$SubsiteName."";
+            $NewBausteinName = "name_new_baustein_".$SubsiteName."";
+
+            $Action = startseitenelement_anlegen($SubsiteName, $NewBausteinType, $NewBausteinName);
+        }
+    }
+
+    return $Action;
 }
 
 ?>
