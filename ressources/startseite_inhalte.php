@@ -279,11 +279,11 @@ function startseitenelement_loeschen($IDbaustein){
     }
 
     if (!$stmt->bind_param("sss",$UserID, $Timestamp, $IDbaustein)) {
-        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+        echo "Binding 1 parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
 
     if (!$stmt->execute()) {
-        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        echo "Execute 1 failed: (" . $stmt->errno . ") " . $stmt->error;
     } else {
 
         #Delete all Inhalte
@@ -292,11 +292,11 @@ function startseitenelement_loeschen($IDbaustein){
         }
 
         if (!$stmt->bind_param("s",$IDbaustein)) {
-            echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+            echo "Binding 2 parameters failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
         if (!$stmt->execute()) {
-            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            echo "Execute 2 failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
         $res = $stmt->get_result();
