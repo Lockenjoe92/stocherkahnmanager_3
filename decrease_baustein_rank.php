@@ -21,7 +21,7 @@ if(intval($Baustein)>0){
     $NewRang = $BausteinRang - 1;
 
     #Load the other item
-    $Anfrage = "SELECT * FROM homepage_bausteine WHERE ort = ".$Site." AND rang = ".$NewRang." AND storno_user = 0";
+    $Anfrage = "SELECT * FROM homepage_bausteine WHERE ort = '".$Site."' AND rang = ".$NewRang." AND storno_user = 0";
     $Abfrage = mysqli_query($link, $Anfrage);
     $Ergebnis = mysqli_fetch_assoc($Abfrage);
 
