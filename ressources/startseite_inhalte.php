@@ -195,7 +195,7 @@ function startseitenelement_anlegen($Ort, $Typ, $Name){
             $Anfrage4 = "SELECT * FROM homepage_bausteine WHERE angelegt_am = '".$Timestamp."' AND angelegt_von = ".$LadeUserID." AND storno_user = 0";
             $Abfrage4 = mysqli_query($link, $Anfrage4);
             $Ergebnis4 = mysqli_fetch_assoc($Abfrage4);
-            startseiteninhalt_einfuegen($Ergebnis4['id'], 'Neues Element', '', 'black-text', '', '', '', '', '');
+            startseiteninhalt_einfuegen($Ergebnis4['id'], 'Neues Element', '', 'teal-text text-lighten-2', 'light', '', '', '', '');
         } else {
             $Antwort['erfolg'] = false;
             $Antwort['meldung'] = 'Fehler beim Eintragen des Bausteins:/';
