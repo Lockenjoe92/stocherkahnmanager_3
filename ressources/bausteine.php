@@ -190,30 +190,7 @@ function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $
         }
     }
 
-    var_dump($paths);
-
-
-    $HTML = "<div class='input-field' ".$SpecialMode.">";
-    $HTML .= "<select name='".$ItemName."'>";
-
-    if($StartValue == ''){
-        $HTML .= "<option value='' selected>Bitte wählen...</option>";
-    }
-
-    $files = scandir("../media/pictures/*");
-    foreach ($files as $file){
-        $HTML .= "<option value='".$file."'>".$file."</option>";
-    }
-
-    $HTML .= "</select>";
-
-    if ($Label!=''){
-        $HTML .= "<label>".$Label."</label>";
-    }
-
-    $HTML .= "</div>";
-
-    return $HTML;
+    print($paths);
 }
 
 function form_switch_item($ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='off', $Disabled=false){
