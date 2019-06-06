@@ -70,7 +70,7 @@ function generate_row_item_change_form($Item){
     $TableRows .= table_form_string_item('Überschrift Farbe', 'item_title_color', $ItemMeta['ueberschrift_farbe'], '');
     $TableRows .= table_form_html_area_item('Inhalt HTML', 'item_html', $ItemMeta['html_content'], '');
     $TableRows .= table_form_string_item('Icon', 'item_icon', $ItemMeta['icon'], '');
-    $TableRows .= table_form_string_item('Icon', 'item_icon_color', $ItemMeta['icon_farbe'], '');
+    $TableRows .= table_form_string_item('Icon Farbe', 'item_icon_color', $ItemMeta['icon_farbe'], '');
     $TableRowContent = table_data_builder(button_link_creator('Zurück', './admin_edit_startpage.php', 'arrow_back', ''));
     $TableRowContent .= table_header_builder(form_button_builder('action_edit_site_item', 'Bearbeiten', 'action', 'edit', ''));
     $TableRows .= table_row_builder($TableRowContent);
