@@ -15,7 +15,7 @@ $Name = $_GET['name'];
 if((intval($Rang)>0) and (!empty($Name))){
 
     #Calculate new Rang
-    $NewRang = $Rang - 1;
+    $NewRang = $Rang + 1;
 
     #Load the other item
     $Anfrage = "SELECT * FROM homepage_sites WHERE menue_rang = ".$NewRang." AND delete_user = 0";
