@@ -22,6 +22,7 @@ if(intval($Baustein)>0){
 
     #Load the other item
     $Anfrage = "SELECT * FROM homepage_bausteine WHERE ort = ".$Site." AND rang = ".$NewRang." AND storno_user = 0";
+    echo $Anfrage;
     $Abfrage = mysqli_query($link, $Anfrage);
     $Ergebnis = mysqli_fetch_assoc($Abfrage);
 
@@ -31,8 +32,8 @@ if(intval($Baustein)>0){
     # Update selected Item
     update_website_baustein_item($Baustein, 'rang', $NewRang);
 
-    header("Location: ./admin_edit_startpage.php");
-    die();
+    #header("Location: ./admin_edit_startpage.php");
+    #die();
 } else {
     header("Location: ./admin_edit_startpage.php");
     die();
