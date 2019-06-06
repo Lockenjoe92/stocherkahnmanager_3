@@ -78,9 +78,10 @@ function html_container_generieren($BausteinID){
 
         $HTML = $Ergebnis['html_content'];
         $Content = section_builder($HTML);
+        $Container = container_builder($Content);
     }
 
-    return $Content;
+    return $Container;
 }
 
 function parallax_mit_text_generieren($BausteinID){
