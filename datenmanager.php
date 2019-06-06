@@ -81,10 +81,12 @@ function parse_datei_upload_form(){
         }
 
         // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif" ) {
-            $Antwort = "Sorry, nur JPG, JPEG, PNG & GIF Dateien sind zulässig.";
-            $uploadOk = 0;
+        if($_POST['upload_dir'] == 'media/pictures') {
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif") {
+                $Antwort = "Sorry, nur JPG, JPEG, PNG & GIF Dateien sind zulässig.";
+                $uploadOk = 0;
+            }
         }
 
         // Check if $uploadOk is set to 0 by an error
