@@ -100,8 +100,14 @@ function generate_inhalte_views($BausteinID){
     $Anzahl = mysqli_num_rows($Abfrage);
 
     if ($Anzahl == 0){
-        $Header = "Bislang noch keine Inhaltselemente hinzugefügt!";
-        $InhalteHTML .= collection_item_builder($Header);
+        if ($Baustein['typ'] == 'row_container') {
+            $ReferenceEdit = "./add_website_item.php?baustein=" . $BausteinID . "";
+            $Header = "<a href='" . $ReferenceEdit . "'>Inhaltselement hinzufügen <i class='tiny material-icons'>edit</i></a> ";
+            $InhalteHTML .= collection_item_builder($Header);
+        } else {
+            $Header = "Bislang noch keine Inhaltselemente hinzugefügt!";
+            $InhalteHTML .= collection_item_builder($Header);
+        }
     } else {
         for ($x=1;$x<=$Anzahl;$x++){
 
