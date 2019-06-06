@@ -77,12 +77,16 @@ function container_builder($ContentHTML, $ID='', $SpecialMode=''){
 
 }
 
-function form_builder($ContentHTML, $ActionPageLink, $FormMode='post', $ID=''){
+function form_builder($ContentHTML, $ActionPageLink, $FormMode='post', $ID='', $EncMode=''){
+
+    if($EncMode!=''){
+        $Enctype = "enctype='".$EncMode."'";
+    }
 
     if ($ID == ''){
-        $HTML = "<form action='".$ActionPageLink."' method='".$FormMode."'>";
+        $HTML = "<form action='".$ActionPageLink."' method='".$FormMode."' ".$Enctype.">";
     } else {
-        $HTML = "<form action='".$ActionPageLink."' method='".$FormMode."' id='".$ID."'>";
+        $HTML = "<form action='".$ActionPageLink."' method='".$FormMode."' id='".$ID."' ".$Enctype.">";
     }
 
     $HTML .= $ContentHTML;
@@ -329,6 +333,23 @@ function form_html_area_item($ItemName, $Placeholdertext='', $Disabled=false){
     $HTML .= "</div>";
 
     return $HTML;
+
+}
+
+function table_form_file_upload_builder($ItemTitle, $ItemName){
+
+    return "<tr><th>".$ItemTitle."</th><td><input type='file' name='".$ItemName."' id='".$ItemName."'></td></tr>";
+
+}
+
+function table_form_file_upload_directory_chooser_builder($ItemTitle, $ItemName){
+
+    $Select = "<select id='".$ItemName."' name='".$ItemName."'>";
+    $Select .= "<option value='/media/documents/'>/media/documents/</option>";
+    $Select .= "<option value='/media/pictures/'>/media/pictures/</option>";
+    $Select .= "</select>";
+
+    return "<tr><th>".$ItemTitle."</th><td>".$Select."</td></tr>";
 
 }
 
