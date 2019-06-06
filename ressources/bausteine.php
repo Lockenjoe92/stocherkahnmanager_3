@@ -196,7 +196,7 @@ function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $
 
     for($i=2; $i<$c; $i++)  //Skip the dots
     {
-        $SelectDirectory = $Directory . $DataArray[$i];
+        $SelectDirectory = $Directory . "/" . $DataArray[$i];
 
         if($SelectDirectory != $StartValue){
             $HTML .= "<option value='" . $SelectDirectory . "'>" . $DataArray[$i] . "</option>";
