@@ -314,26 +314,4 @@ function add_website_bausteine_parser(){
     return $Action;
 }
 
-
-function increase_page_rank_parser($SiteName, $SiteRang){
-
-    $link = connect_db();
-
-    #Calculate new Rang
-    $NewRang = $SiteRang + 1;
-
-    #Load the other item
-    $Anfrage = "SELECT * FROM homepage_sites WHERE name = '".$SiteName."' AND menue_rang = ".$NewRang." AND delete_user = 0";
-    $Abfrage = mysqli_query($link, $Anfrage);
-    $Ergebnis = mysqli_fetch_assoc($Abfrage);
-
-    # Update selected Item
-    update_website_page_item($SiteName, 'menue_rang', $NewRang);
-
-    # Update corresponding Item
-    update_website_page_item($Ergebnis['name'], 'menue_rang', $SiteRang);
-
-}
-
-
 ?>
