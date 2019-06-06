@@ -11,6 +11,7 @@ session_manager('ist_admin');
 $link = connect_db();
 #Parse Input
 add_website_bausteine_parser();
+site_rank_changer_parser();
 
 #Generate content
 # Page Title
@@ -36,7 +37,7 @@ for($x=1;$x<=$Anzahl;$x++){
     #Build Card Content
     $ContentHTML = generate_bausteine_view($Ergebnis['name']);
     $ContentHTML .= generate_baustein_adder($Ergebnis['name']);
-    $ContentHTML .= section_builder(generate_move_buttons_page_level($Anzahl, $ZeroRangCounter, $Ergebnis['menue_rang'], $Ergebnis['menue_text']));
+    $ContentHTML .= section_builder(generate_move_buttons_page_level($Anzahl, $ZeroRangCounter, $Ergebnis['menue_rang'], $Ergebnis['name']));
 
     #Build the Item
     $CollapsibleItems .= collapsible_item_builder($TitleHTML, $ContentHTML, 'pageview');
@@ -314,4 +315,68 @@ function add_website_bausteine_parser(){
     return $Action;
 }
 
+function site_rank_changer_parser(){
+
+    $link = connect_db();
+    $Anfrage = "SELECT * FROM homepage_sites WHERE delete_user = 0 ORDER BY name ASC";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Anzahl = mysqli_num_rows($Abfrage);
+
+    for($x=1;$x<=$Anzahl;$x++){
+
+        $Ergebnis = mysqli_fetch_assoc($Abfrage);
+        $IncreaseButtonName = "increase_rank_".$Ergebnis['name']."";
+        $DecreaseButtonName = "decrease_rank_".$Ergebnis['name']."";
+
+        if(isset($_POST[$IncreaseButtonName])){
+            increase_page_rank_parser($Ergebnis['name'], $Ergebnis['rang']);
+        }
+
+        if(isset($_POST[$DecreaseButtonName])){
+            decrease_page_rank_parser($Ergebnis['name'], $Ergebnis['rang']);
+        }
+    }
+
+}
+
+function increase_page_rank_parser($SiteName, $SiteRang){
+
+    $link = connect_db();
+
+    #Calculate new Rang
+    $NewRang = $SiteRang + 1;
+
+    #Load the other item
+    $Anfrage = "SELECT * FROM homepage_sites WHERE name = '".$SiteName."' AND rang = ".$NewRang." AND delete_user = 0";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Ergebnis = mysqli_fetch_assoc($Abfrage);
+
+    # Update selected Item
+    update_website_page_item($SiteName, 'rang', $NewRang);
+
+    # Update corresponding Item
+    update_website_page_item($Ergebnis['name'], 'rang', $SiteRang);
+
+}
+
+function decrease_page_rank_parser($SiteName, $SiteRang){
+
+    $link = connect_db();
+
+    #Calculate new Rang
+    $NewRang = $SiteRang - 1;
+
+    #Load the other item
+    $Anfrage = "SELECT * FROM homepage_sites WHERE name = '".$SiteName."' AND rang = ".$NewRang." AND delete_user = 0";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Ergebnis = mysqli_fetch_assoc($Abfrage);
+
+    # Update selected Item
+    update_website_page_item($SiteName, 'rang', $NewRang);
+
+    # Update corresponding Item
+    update_website_page_item($Ergebnis['name'], 'rang', $SiteRang);
+
+
+}
 ?>
