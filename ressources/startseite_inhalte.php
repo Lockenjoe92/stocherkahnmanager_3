@@ -342,3 +342,27 @@ function lade_seitenelement($ID){
     return $Ergebnis;
 
 }
+
+function lade_seiteninhalt($ID){
+
+    $link = connect_db();
+
+    $Anfrage = "SELECT * FROM homepage_content WHERE id = '".$ID."'";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Ergebnis = mysqli_fetch_assoc($Abfrage);
+
+    return $Ergebnis;
+
+}
+
+function lade_seite($SiteName){
+
+    $link = connect_db();
+
+    $Anfrage = "SELECT * FROM homepage_sites WHERE 'name' = '".$SiteName."'";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Ergebnis = mysqli_fetch_assoc($Abfrage);
+
+    return $Ergebnis;
+
+}
