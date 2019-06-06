@@ -182,18 +182,9 @@ function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $
         $HTML .= "<option value='' selected>Bitte wählen...</option>";
     }
 
-    $s =  realpath(getcwd()."/..");
-    foreach(glob($s . '/'.$Directory.'/*') as $filename){
-        $filename = basename($filename);
-        echo $filename;
-        $FullDirectory = $Directory . $filename;
-        echo $FullDirectory;
-
-        if($FullDirectory != $StartValue){
-            $HTML .= "<option value='".$FullDirectory."'>".$filename."</option>";
-        } elseif($FullDirectory != $StartValue){
-            $HTML .= "<option value='".$FullDirectory."' selected>".$filename."</option>";
-        }
+    $files = scandir("../media/pictures/*");
+    foreach ($files as $file){
+        $HTML .= "<option value='".$file."'>".$file."</option>";
     }
 
     $HTML .= "</select>";
