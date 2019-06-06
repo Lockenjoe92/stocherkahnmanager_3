@@ -30,6 +30,8 @@ if(intval($Item)>0){
         $HTML .= generate_row_item_change_form($Item);
     } elseif ($BausteinMeta['typ'] == 'parallax_mit_text'){
         $HTML .= generate_parallax_change_form($Item);
+    } elseif ($BausteinMeta['typ'] == 'html_container'){
+        $HTML .= generate_html_change_form($Item);
     }
 
     # Output site
@@ -103,6 +105,23 @@ function generate_parallax_change_form($Item){
     return $Section;
 }
 
+function generate_html_change_form($Item){
+
+    $ItemMeta = lade_seiteninhalt($Item);
+
+    $TableRows = table_form_string_item('Überschrift', 'item_title', $ItemMeta['ueberschrift'], '');
+    $TableRows .= table_form_html_area_item('Inhalt HTML', 'item_html', $ItemMeta['html_content'], '');
+
+    $TableRowContent = table_data_builder(button_link_creator('Zurück', './admin_edit_startpage.php', 'arrow_back', ''));
+    $TableRowContent .= table_header_builder(form_button_builder('action_edit_site_item', 'Bearbeiten', 'action', 'edit', ''));
+    $TableRows .= table_row_builder($TableRowContent);
+    $Table = table_builder($TableRows);
+    $Form = form_builder($Table, '#', 'post', 'item_change_form');
+    $Section = section_builder($Form);
+
+    return $Section;
+}
+
 function parse_edit_website_item_page($Item){
 
     if (isset($_POST['action_edit_site_item'])){
@@ -113,6 +132,8 @@ function parse_edit_website_item_page($Item){
             parse_row_item_edit($Item);
         } elseif ($BausteinMeta['typ'] == 'parallax_mit_text'){
             parse_parallax_item_edit($Item);
+        } elseif ($BausteinMeta['typ'] == 'html_container'){
+            parse_html_item_edit($Item);
         }
     }
 }
@@ -151,5 +172,18 @@ function parse_parallax_item_edit($Item){
     update_website_content_item($Item, 'html_content', $HTMLValue);
     update_website_content_item($Item, 'uri_bild', $_POST['item_pic_uri']);
 
+}
+
+function parse_html_item_edit($Item){
+
+    #Remove certain HTML Tags from HTML-Textarea-Input
+    $HTMLValue = $_POST['item_html'];
+    $HTMLValue = str_replace('<pre>','',$HTMLValue);
+    $HTMLValue = str_replace('<code>','',$HTMLValue);
+    $HTMLValue = str_replace('</code>','',$HTMLValue);
+    $HTMLValue = str_replace('</pre>','',$HTMLValue);
+
+    update_website_content_item($Item, 'ueberschrift', $_POST['item_title']);
+    update_website_content_item($Item, 'html_content', $HTMLValue);
 
 }
