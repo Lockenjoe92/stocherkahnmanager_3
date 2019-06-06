@@ -74,7 +74,7 @@ function parse_datei_upload_form(){
         }
 
         // Check file size
-        if ($_FILES["file_to_upload"]["size"] > 500000) {
+        if ($_FILES["file_to_upload"]["size"] > lade_db_einstellung('max_size_file_upload')) {
             $Antwort = "Sorry, dei Datei ist zu groß!.";
             $uploadOk = 0;
         }

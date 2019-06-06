@@ -24,6 +24,7 @@
 
     <!--- GENERAL -->
     <max_items_row_container>4</max_items_row_container>
+    <max_size_file_upload>500000</max_size_file_upload>
 
     <!--- VERLEIH -->
     <earliest_begin>8</earliest_begin>

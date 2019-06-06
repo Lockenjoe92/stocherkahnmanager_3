@@ -5,7 +5,7 @@ session_manager('ist_admin');
 $Header = "Admin Einstellungen - " . lade_db_einstellung('site_name');
 $Settings = ['site_name', 'site_footer_name', 'earliest_begin', 'latest_begin', 'site_menue_color',
     'site_footer_color', 'site_buttons_color', 'site_error_buttons_color', 'display_big_footer',
-    'big_footer_left_column_html', 'big_footer_right_column_html'];
+    'big_footer_left_column_html', 'big_footer_right_column_html', 'max_size_file_upload'];
 admin_settings_parser($Settings);
 
 #Generate content
@@ -27,6 +27,7 @@ $SettingTableItems .= table_form_string_item('Website Footerfarbe', 'site_footer
 $SettingTableItems .= table_form_string_item('Farbe Link Buttons', 'site_buttons_color', lade_db_einstellung('site_buttons_color'), false);
 $SettingTableItems .= table_form_string_item('Farbe Error Buttons', 'site_error_buttons_color', lade_db_einstellung('site_error_buttons_color'), false);
 
+$SettingTableItems .= table_form_string_item('Maximale Dateigrößer', 'max_size_file_upload', lade_db_einstellung('max_size_file_upload'), false);
 
 #Complete Settings Form
 $SettingTable = table_builder($SettingTableItems);
