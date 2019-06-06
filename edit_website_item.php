@@ -109,7 +109,7 @@ function generate_html_change_form($Item){
 
     $ItemMeta = lade_seiteninhalt($Item);
 
-    $TableRows = table_form_string_item('Überschrift', 'item_title', $ItemMeta['ueberschrift'], '');
+    $TableRows = table_form_string_item('Überschrift (wird nicht angezeigt)', 'item_title', $ItemMeta['ueberschrift'], '');
     $TableRows .= table_form_html_area_item('Inhalt HTML', 'item_html', $ItemMeta['html_content'], '');
 
     $TableRowContent = table_data_builder(button_link_creator('Zurück', './admin_edit_startpage.php', 'arrow_back', ''));
