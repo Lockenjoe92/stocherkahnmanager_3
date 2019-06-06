@@ -175,6 +175,24 @@ function form_button_builder($ButtonName, $ButtonMessage, $ButtonMode, $Icon, $S
 
 function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $SpecialMode){
 
+    $root = '/etc';
+
+    $iter = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($root, RecursiveDirectoryIterator::SKIP_DOTS),
+        RecursiveIteratorIterator::SELF_FIRST,
+        RecursiveIteratorIterator::CATCH_GET_CHILD // Ignore "Permission denied"
+    );
+
+    $paths = array($root);
+    foreach ($iter as $path => $dir) {
+        if ($dir->isDir()) {
+            $paths[] = $path;
+        }
+    }
+
+    echo $paths;
+
+
     $HTML = "<div class='input-field' ".$SpecialMode.">";
     $HTML .= "<select name='".$ItemName."'>";
 
