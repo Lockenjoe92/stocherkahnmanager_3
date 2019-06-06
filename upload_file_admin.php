@@ -12,7 +12,7 @@ $Header = "Datei hochladen - " . lade_db_einstellung('site_name');
 
 #Generate content
 # Page Title
-$PageTitle = '<h1>Datei hochladen</h1>';
+$PageTitle = '<h1>Datei  hochladen</h1>';
 $HTML = section_builder($PageTitle);
 
 $HTML .= generate_datei_upload_form();
