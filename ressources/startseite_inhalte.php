@@ -193,10 +193,9 @@ function startseitenelement_anlegen($Ort, $Typ, $Name){
         if($Abfrage3){
             $Antwort['erfolg'] = true;
             $Anfrage4 = "SELECT * FROM homepage_bausteine WHERE angelegt_am = '".$Timestamp."' AND angelegt_von = ".$LadeUserID." AND storno_user = 0";
-            echo $Anfrage4;
             $Abfrage4 = mysqli_query($link, $Anfrage4);
             $Ergebnis4 = mysqli_fetch_assoc($Abfrage4);
-            startseiteninhalt_einfuegen($Ergebnis4['id'], 'Neues Element', '', '', '', '');
+            startseiteninhalt_einfuegen($Ergebnis4['id'], 'Neues Element', '', 'black-text', '', '', '', '', '');
         } else {
             $Antwort['erfolg'] = false;
             $Antwort['meldung'] = 'Fehler beim Eintragen des Bausteins:/';
@@ -206,7 +205,7 @@ function startseitenelement_anlegen($Ort, $Typ, $Name){
     return $Antwort;
 }
 
-function startseiteninhalt_einfuegen($IDbaustein, $titel, $titel2, $html, $uri_bild, $icon){
+function startseiteninhalt_einfuegen($IDbaustein, $titel, $titel2, $titelColor, $titel2Color, $html, $uri_bild, $icon, $iconColor){
 
     $link = connect_db();
     $errorcount = 0;
@@ -259,7 +258,7 @@ function startseiteninhalt_einfuegen($IDbaustein, $titel, $titel2, $html, $uri_b
     } else {
         #Eintragen
         $Rang = $Anzahl + 1;
-        $Anfrage2 = "INSERT INTO homepage_content (id_baustein, rang, ueberschrift, zweite_ueberschrift, html_content, uri_bild, icon, angelegt_am, angelegt_von, storno_user, storno_time) VALUES ('".$IDbaustein."', '".$Rang."', '".htmlentities($titel)."', '".htmlentities($titel2)."', '".htmlentities($html)."', '".$uri_bild."', '".$icon."', '".timestamp()."', '".lade_user_id()."', '0', '0000-00-00 00:00:00')";
+        $Anfrage2 = "INSERT INTO homepage_content (id_baustein, rang, ueberschrift, zweite_ueberschrift, ueberschrift_farbe, zweite_ueberschrift_farbe, html_content, uri_bild, icon, icon_farbe, angelegt_am, angelegt_von, storno_user, storno_time) VALUES ('".$IDbaustein."', '".$Rang."', '".htmlentities($titel)."', '".htmlentities($titel2)."', '".htmlentities($titelColor)."', '".htmlentities($titel2Color)."', '".htmlentities($html)."', '".$uri_bild."', '".$icon."', '".$iconColor."', '".timestamp()."', '".lade_user_id()."', '0', '0000-00-00 00:00:00')";
         $Abfrage2 = mysqli_query($link, $Anfrage2);
 
         #Überprüfen ob es geklappt hat
