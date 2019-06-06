@@ -75,11 +75,10 @@ function parallax_mit_text_generieren($BausteinID){
 
         # Daten laden
         $Ergebnis = mysqli_fetch_assoc($Abfrage);
+        var_dump($Ergebnis);
 
         # Content generieren
-        $Ueberschrift = '<br><br><h1 class="header center '.$Ergebnis['ueberschrift_farbe'].'">' . html_entity_decode($Ergebnis['ueberschrift'],ENT_QUOTES | ENT_IGNORE, "UTF-8") . '</h1>';
-
-        var_dump($Ergebnis['ueberschrift_farbe']);
+        $Ueberschrift = "<br><br><h1 class='header center ".$Ergebnis['ueberschrift_farbe']."'>" . html_entity_decode($Ergebnis['ueberschrift'],ENT_QUOTES | ENT_IGNORE, "UTF-8") . "</h1>";
 
         if ($Ergebnis['zweite_ueberschrift'] != '') {
             $Ueberschrift2 = "<div class='row center'><h5 class='header col s12 ".$Ergebnis['zweite_ueberschrift_farbe']."'>" . html_entity_decode($Ergebnis['zweite_ueberschrift'], ENT_QUOTES | ENT_IGNORE, "UTF-8") . "</h5></div>";
@@ -88,7 +87,7 @@ function parallax_mit_text_generieren($BausteinID){
         }
 
         if ($Ergebnis['html_content'] != '') {
-            $HTML = '<div class="row center">' . html_entity_decode($Ergebnis['html_content'], ENT_QUOTES | ENT_IGNORE, "UTF-8") . '</div><br><br>';
+            $HTML = "<div class='row center'>" . html_entity_decode($Ergebnis['html_content'], ENT_QUOTES | ENT_IGNORE, "UTF-8") . "</div><br><br>";
         } else {
             $HTML = '';
         }
