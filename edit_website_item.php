@@ -33,7 +33,6 @@ function website_item_info_table_generator($Item){
 
     $ItemMeta = lade_seiteninhalt($Item);
     $BausteinMeta = lade_baustein($ItemMeta['id_baustein']);
-    echo $BausteinMeta['ort'];
     $SeiteMeta = lade_seite($BausteinMeta['ort']);
 
     $TableRowContent = table_header_builder('Subseite:');

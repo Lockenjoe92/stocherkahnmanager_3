@@ -360,6 +360,7 @@ function lade_seite($SiteName){
     $link = connect_db();
 
     $Anfrage = "SELECT * FROM homepage_sites WHERE 'name' = '".$SiteName."'";
+    echo $Anfrage;
     $Abfrage = mysqli_query($link, $Anfrage);
     $Ergebnis = mysqli_fetch_assoc($Abfrage);
 
