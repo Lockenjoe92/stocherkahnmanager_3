@@ -329,10 +329,12 @@ function site_rank_changer_parser(){
         $DecreaseButtonName = "decrease_rank_".$Ergebnis['name']."";
 
         if(isset($_POST[$IncreaseButtonName])){
+            echo "Increase";
             increase_page_rank_parser($Ergebnis['name'], $Ergebnis['rang']);
         }
 
         if(isset($_POST[$DecreaseButtonName])){
+            echo "Decrease";
             decrease_page_rank_parser($Ergebnis['name'], $Ergebnis['rang']);
         }
     }
