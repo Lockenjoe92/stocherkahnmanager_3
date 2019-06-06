@@ -123,10 +123,12 @@ function generate_inhalte_views($BausteinID){
 
         }
 
-        if ($Anzahl < lade_db_einstellung('max_items_row_container')){
-            $ReferenceEdit = "./add_website_item.php?baustein=".$BausteinID."";
-            $Header = "<a href='".$ReferenceEdit."'>Inhaltselement hinzufügen <i class='tiny material-icons'>edit</i></a> ";
-            $InhalteHTML .= collection_item_builder($Header);
+        if ($Baustein['typ'] == 'row_container') {
+            if ($Anzahl < lade_db_einstellung('max_items_row_container')) {
+                $ReferenceEdit = "./add_website_item.php?baustein=" . $BausteinID . "";
+                $Header = "<a href='" . $ReferenceEdit . "'>Inhaltselement hinzufügen <i class='tiny material-icons'>edit</i></a> ";
+                $InhalteHTML .= collection_item_builder($Header);
+            }
         }
     }
 
