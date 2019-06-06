@@ -130,7 +130,7 @@ function parse_row_item_edit($Item){
     update_website_content_item($Item, 'ueberschrift_farbe', $_POST['item_title_color']);
     update_website_content_item($Item, 'html_content', $HTMLValue);
     update_website_content_item($Item, 'icon', $_POST['item_icon']);
-    update_website_content_item($Item, 'item_icon_color', $_POST['icon_farbe']);
+    update_website_content_item($Item, 'icon_farbe', $_POST['item_icon_color']);
 
 
 }
