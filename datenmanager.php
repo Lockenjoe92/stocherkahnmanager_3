@@ -50,7 +50,6 @@ function parse_datei_upload_form(){
 
         $target_dir = $_POST['upload_dir'];
         $target_file = $target_dir . basename($_FILES["file_to_upload"]["name"]);
-        echo $target_file;
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 

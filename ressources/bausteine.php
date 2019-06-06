@@ -345,8 +345,8 @@ function table_form_file_upload_builder($ItemTitle, $ItemName){
 function table_form_file_upload_directory_chooser_builder($ItemTitle, $ItemName){
 
     $Select = "<select id='".$ItemName."' name='".$ItemName."'>";
-    $Select .= "<option value='/media/documents/'>/media/documents/</option>";
-    $Select .= "<option value='/media/pictures/'>/media/pictures/</option>";
+    $Select .= "<option value='media/documents/'>/media/documents/</option>";
+    $Select .= "<option value='media/pictures/'>/media/pictures/</option>";
     $Select .= "</select>";
 
     return "<tr><th>".$ItemTitle."</th><td>".$Select."</td></tr>";
