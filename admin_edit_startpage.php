@@ -106,8 +106,8 @@ function generate_inhalte_views($BausteinID){
         for ($x=1;$x<=$Anzahl;$x++){
 
             $Ergebnis = mysqli_fetch_assoc($Abfrage);
-            $ReferenceEdit = "./edit_website_item_".$Ergebnis['id']."";
-            $ReferenceDelete = "./delete_website_item_".$Ergebnis['id']."";
+            $ReferenceEdit = "./edit_website_item.php?item=".$Ergebnis['id']."";
+            $ReferenceDelete = "./delete_website_item.php?item=".$Ergebnis['id']."";
 
             if($Baustein['typ'] == 'parallax_mit_text'){
                 $Operators = "<a href='".$ReferenceEdit."'><i class='tiny material-icons'>edit</i></a> ";
