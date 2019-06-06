@@ -178,7 +178,7 @@ function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $
    echo "<select name=\"ImageFile\">";
     echo "<option value=\"\">";
 
-    $dir = '/media/pictures/';
+    $dir = './media/pictures/';
     $dirPath = dir($dir);
     $imgArray = array();
     while (($file = $dirPath->read()) !== false)
@@ -188,7 +188,7 @@ function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $
     $dirPath->close();
     sort($imgArray);
     $c = count($imgArray);
-    for($i=0; $i<$c; $i++)
+    for($i=2; $i<$c; $i++)
     {
         echo "<option value=\"" . $imgArray[$i] . "\" >" . $imgArray[$i] . "\n";
     }
