@@ -25,7 +25,7 @@ echo site_body($Container);
 function generate_datei_upload_form(){
 
     $TableRows = table_form_file_upload_builder('Datei auswählen', 'file_to_upload');
-    $TableRows .= table_form_file_upload_directory_chooser_builder('Ort zum hochladen wählen', 'upload_dir');
+    #$TableRows .= table_form_file_upload_directory_chooser_builder('Ort zum hochladen wählen', 'upload_dir');
 
     $TableRowContent = table_data_builder(button_link_creator('Zurück', './admin_edit_startpage.php', 'arrow_back', ''));
     $TableRowContent .= table_header_builder(form_button_builder('action_edit_site_item', 'Hochladen', 'action', 'file_upload', ''));
