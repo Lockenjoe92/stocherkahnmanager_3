@@ -35,9 +35,15 @@ function website_item_info_table_generator($Item){
     $BausteinMeta = lade_baustein($ItemMeta['id_baustein']);
     $SeiteMeta = lade_seite($BausteinMeta['ort']);
 
-    $TableRows = table_row_builder(table_header_builder('Subseite:') .+ table_data_builder($SeiteMeta['menue_text']));
-    $TableRows .= table_row_builder(table_header_builder('Baustein:') .+ table_data_builder($BausteinMeta['name']));
-    $TableRows .= table_row_builder(table_header_builder('Element:') .+ table_data_builder($ItemMeta['ueberschrift']));
+    $TableRowContent = table_header_builder('Subseite:');
+    $TableRowContent .= table_data_builder($SeiteMeta['menue_text']);
+    $TableRows = table_row_builder($TableRowContent);
+    $TableRowContent = table_header_builder('Baustein:');
+    $TableRowContent .= table_data_builder($BausteinMeta['name']);
+    $TableRows .= table_row_builder($TableRowContent);
+    $TableRowContent = table_header_builder('Element:');
+    $TableRowContent .= table_data_builder($ItemMeta['ueberschrift']);
+    $TableRows .= table_row_builder($TableRowContent);
 
     $Table = table_builder($TableRows);
     return $Table;
