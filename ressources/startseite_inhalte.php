@@ -75,7 +75,6 @@ function parallax_mit_text_generieren($BausteinID){
 
         # Daten laden
         $Ergebnis = mysqli_fetch_assoc($Abfrage);
-        var_dump($Ergebnis);
 
         # Content generieren
         $Ueberschrift = "<br><br><h1 class='header center ".$Ergebnis['ueberschrift_farbe']."'>" . html_entity_decode($Ergebnis['ueberschrift'],ENT_QUOTES | ENT_IGNORE, "UTF-8") . "</h1>";
