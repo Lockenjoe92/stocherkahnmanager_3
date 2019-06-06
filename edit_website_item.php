@@ -9,8 +9,10 @@
 include_once "./ressources/ressourcen.php";
 session_manager('ist_admin');
 $Item = $_GET['item'];
-
 if(intval($Item)>0){
+
+    #Parse Input
+    parse_edit_website_item_page($Item);
 
     #Generate content
     # Page Title
@@ -73,5 +75,33 @@ function generate_row_item_change_form($Item){
     $Section = section_builder($Form);
 
     return $Section;
+
+}
+
+function parse_edit_website_item_page($Item){
+
+    if (isset($_POST['action_edit_site_item'])){
+        $ItemMeta = lade_seiteninhalt($Item);
+        $BausteinMeta = lade_baustein($ItemMeta['id_baustein']);
+
+        if ($BausteinMeta['typ'] == 'row_container'){
+            parse_row_item_edit($Item);
+        }
+    }
+}
+
+function parse_row_item_edit($Item){
+
+    #Remove certain HTML Tags from HTML-Textarea-Input
+    $HTMLValue = $_POST['item_html'];
+    $HTMLValue = str_replace('<pre>','',$HTMLValue);
+    $HTMLValue = str_replace('<code>','',$HTMLValue);
+    $HTMLValue = str_replace('</code>','',$HTMLValue);
+    $HTMLValue = str_replace('</pre>','',$HTMLValue);
+
+    update_website_content_item($Item, 'ueberschrift', $_POST['item_title']);
+    update_website_content_item($Item, 'html_content', $HTMLValue);
+    update_website_content_item($Item, 'icon', $_POST['item_icon']);
+
 
 }
