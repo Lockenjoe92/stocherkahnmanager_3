@@ -54,9 +54,33 @@ function generiere_startseite_content($Baustein){
         $HTML .= parallax_mit_text_generieren($Baustein['id']);
     } elseif($Baustein['typ'] == 'row_container'){
         $HTML .= row_container_generieren($Baustein['id']);
+    } elseif($Baustein['typ'] == 'html_container'){
+        $HTML .= html_container_generieren($Baustein['id']);
     }
 
     return $HTML;
+}
+
+function html_container_generieren($BausteinID){
+
+    $link = connect_db();
+
+    #Lade den content
+    $Anfrage = "SELECT * FROM homepage_content WHERE id_baustein = '".$BausteinID."' AND storno_user = '0'";
+    $Abfrage = mysqli_query($link, $Anfrage);
+    $Anzahl = mysqli_num_rows($Abfrage);
+
+    #Debug
+    if ($Anzahl == 0){
+        $Content = 'Kein Inhalt auffindbar!';
+    } else {
+        $Ergebnis = mysqli_fetch_assoc($Abfrage);
+
+        $HTML = $Ergebnis['html_content'];
+        $Content = section_builder($HTML);
+    }
+
+    return $Content;
 }
 
 function parallax_mit_text_generieren($BausteinID){
@@ -195,7 +219,11 @@ function startseitenelement_anlegen($Ort, $Typ, $Name){
             $Anfrage4 = "SELECT * FROM homepage_bausteine WHERE angelegt_am = '".$Timestamp."' AND angelegt_von = ".$LadeUserID." AND storno_user = 0";
             $Abfrage4 = mysqli_query($link, $Anfrage4);
             $Ergebnis4 = mysqli_fetch_assoc($Abfrage4);
-            startseiteninhalt_einfuegen($Ergebnis4['id'], 'Neues Element', '', 'teal-text text-lighten-2', 'light', '', '', '', '');
+            if($Typ == "parallax_mit_text"){
+                startseiteninhalt_einfuegen($Ergebnis4['id'], 'Neues Element', '', 'teal-text text-lighten-2', 'light', '', '', '', '');
+            }elseif($Typ == "html_container"){
+                startseiteninhalt_einfuegen($Ergebnis4['id'], 'Neues Element', '', '', '', '<h3>Hello World!</h3>', '', '', '');
+            }
         } else {
             $Antwort['erfolg'] = false;
             $Antwort['meldung'] = 'Fehler beim Eintragen des Bausteins:/';
