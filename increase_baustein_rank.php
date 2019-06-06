@@ -32,8 +32,8 @@ if(intval($Baustein)>0){
     # Update selected Item
     update_website_baustein_item($Baustein, 'rang', $NewRang);
 
-    #header("Location: ./admin_edit_startpage.php");
-    #die();
+    header("Location: ./admin_edit_startpage.php");
+    die();
 } else {
     header("Location: ./admin_edit_startpage.php");
     die();
