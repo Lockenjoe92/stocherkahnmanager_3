@@ -32,7 +32,9 @@ function generate_datei_upload_form($Parser){
     $TableRows .= table_row_builder($TableRowContent);
 
     if($Parser!=''){
-        $TableRows .= error_button_creator($Parser,'announcement', '');
+        $TableRowContent = table_header_builder(error_button_creator($Parser,'announcement', ''));
+        $TableRowContent .= table_data_builder('');
+        $TableRows .= table_row_builder($TableRowContent);
     }
 
     $Table = table_builder($TableRows);
