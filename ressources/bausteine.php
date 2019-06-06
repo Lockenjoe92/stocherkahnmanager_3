@@ -175,22 +175,24 @@ function form_button_builder($ButtonName, $ButtonMessage, $ButtonMode, $Icon, $S
 
 function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $SpecialMode){
 
-    $root = '/etc';
+   echo "<select name=\"ImageFile\">";
+    echo "<option value=\"\">";
 
-    $iter = new RecursiveIteratorIterator(
-        new RecursiveDirectoryIterator($root, RecursiveDirectoryIterator::SKIP_DOTS),
-        RecursiveIteratorIterator::SELF_FIRST,
-        RecursiveIteratorIterator::CATCH_GET_CHILD // Ignore "Permission denied"
-    );
-
-    $paths = array($root);
-    foreach ($iter as $path => $dir) {
-        if ($dir->isDir()) {
-            $paths[] = $path;
-        }
+    $dirPath = dir('/media/pictures/');
+    $imgArray = array();
+    while (($file = $dirPath->read()) !== false)
+    {
+        $imgArray[ ] = trim($file);
+    }
+    $dirPath->close();
+    sort($imgArray);
+    $c = count($imgArray);
+    for($i=0; $i<$c; $i++)
+    {
+        echo "<option value=\"" . $imgArray[$i] . "\">" . $imgArray[$i] . "\n";
     }
 
-    print($paths);
+    echo "</select>";
 }
 
 function form_switch_item($ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='off', $Disabled=false){
