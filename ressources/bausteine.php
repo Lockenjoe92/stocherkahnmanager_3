@@ -185,7 +185,7 @@ function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $
     $s =  realpath(getcwd()."/..");
     foreach(glob($s . '/'.$Directory.'/*') as $filename){
         $filename = basename($filename);
-
+        echo $filename;
         $FullDirectory = $Directory . $filename;
         echo $FullDirectory;
 
