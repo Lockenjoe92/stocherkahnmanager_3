@@ -229,13 +229,13 @@ function generate_move_buttons_baustein_level($AnzahlGesamtBausteine, $Aktueller
 
         #Can be moved down
         if($AktuellerBausteinRang < $AnzahlGesamtBausteine){
-            $ButtonDownName = "#?decrease_rank_baustein_".$AktuellerBausteinID."_".$AktuelleSeiteName."=true";
+            $ButtonDownName = "./decrease_baustein_rank.php?baustein=".$AktuellerBausteinID."&site=".$AktuelleSeiteName."";
             $HTML .= "<a href='".$ButtonDownName."'><i class='tiny material-icons'>arrow_downward</i></a> ";
         }
 
         #Can be moved up
         if($AktuellerBausteinRang > 1){
-            $ButtonDownName = "#?increase_rank_baustein_".$AktuellerBausteinID."_".$AktuelleSeiteName."=true";
+            $ButtonDownName = "./increase_baustein_rank.php?baustein=".$AktuellerBausteinID."&site".$AktuelleSeiteName."";
             $HTML .= "<a href='".$ButtonDownName."'><i class='tiny material-icons'>arrow_upward</i></a> ";
         }
 
