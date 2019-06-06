@@ -19,6 +19,13 @@ if(intval($Item)>0){
     $HTML = section_builder($PageTitle);
     $HTML .= section_builder(website_item_info_table_generator($Item));
 
+    # Form depending on type
+    $ItemMeta = lade_seiteninhalt($Item);
+    $BausteinMeta = lade_baustein($ItemMeta['id_baustein']);
+    if ($BausteinMeta['typ'] == 'row_container'){
+        $HTML .= generate_row_item_change_form($Item);
+    }
+
     # Output site
     $HTML = container_builder($HTML, 'websiteinhalt_bearbeiten_container');
     echo site_header($Header);
@@ -47,4 +54,19 @@ function website_item_info_table_generator($Item){
 
     $Table = table_builder($TableRows);
     return $Table;
+}
+
+function generate_row_item_change_form($Item){
+
+    $ItemMeta = lade_seiteninhalt($Item);
+
+    $TableRows = table_form_string_item('Überschrift', 'item_title', $ItemMeta['ueberschrift'], '');
+    $TableRows .= table_form_html_area_item('Inhalt HTML', 'item_html', $ItemMeta['html_content'], '');
+    $TableRows .= table_form_string_item('Icon', 'item_icon', $ItemMeta['icon'], '');
+    $Table = table_builder($TableRows);
+    $Form = form_builder($Table, '#', 'post', 'item_change_form');
+    $Section = section_builder($Form);
+
+    return $Section;
+
 }
