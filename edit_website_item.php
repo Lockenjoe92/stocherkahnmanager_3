@@ -17,11 +17,13 @@ if(intval($Item)>0){
     $Header = "Webseite Editieren - " . lade_db_einstellung('site_name');
     $PageTitle = '<h1>Webseiteinhalt bearbeiten</h1>';
     $HTML = section_builder($PageTitle);
+    $HTML .= section_builder('<h6>Lokalisation</h6>');
     $HTML .= section_builder(website_item_info_table_generator($Item));
 
     # Form depending on type
     $ItemMeta = lade_seiteninhalt($Item);
     $BausteinMeta = lade_baustein($ItemMeta['id_baustein']);
+    $HTML .= section_builder('<h6>Inhaltselement</h6>');
     if ($BausteinMeta['typ'] == 'row_container'){
         $HTML .= generate_row_item_change_form($Item);
     }
@@ -50,6 +52,9 @@ function website_item_info_table_generator($Item){
     $TableRows .= table_row_builder($TableRowContent);
     $TableRowContent = table_header_builder('Element:');
     $TableRowContent .= table_data_builder($ItemMeta['ueberschrift']);
+    $TableRows .= table_row_builder($TableRowContent);
+    $TableRowContent = table_header_builder(form_button_builder('action_edit_site_item', 'Bearbeiten', 'action', 'edit', ''));
+    $TableRowContent .= table_data_builder(button_link_creator('Zurück', './admin_edit_startpage.php', 'arrow_back', ''));
     $TableRows .= table_row_builder($TableRowContent);
 
     $Table = table_builder($TableRows);
