@@ -96,7 +96,7 @@ function generate_parallax_change_form($Item){
     $TableRows .= table_form_string_item('Zweite Überschrift', 'second_item_title', $ItemMeta['zweite_ueberschrift'], '');
     $TableRows .= table_form_string_item('Zweite Überschriftfarbe', 'second_item_title_color', $ItemMeta['zweite_ueberschrift_farbe'], '');
     $TableRows .= table_form_html_area_item('Inhalt HTML', 'item_html', $ItemMeta['html_content'], '');
-    $TableRows .= table_form_mediapicker_dropdown('URI Bild', 'item_pic_uri', $ItemMeta['uri_bild'], './media/pictures/', 'Wähle ein Bild aus', '');
+    $TableRows .= table_form_mediapicker_dropdown('URI Bild', 'item_pic_uri', $ItemMeta['uri_bild'], '../media/pictures/', 'Wähle ein Bild aus', '');
 
     $TableRowContent = table_data_builder(button_link_creator('Zurück', './admin_edit_startpage.php', 'arrow_back', ''));
     $TableRowContent .= table_header_builder(form_button_builder('action_edit_site_item', 'Bearbeiten', 'action', 'edit', ''));
