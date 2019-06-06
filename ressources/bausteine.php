@@ -173,6 +173,38 @@ function form_button_builder($ButtonName, $ButtonMessage, $ButtonMode, $Icon, $S
 
 }
 
+function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $SpecialMode){
+
+    $HTML = "<div class='input-field' ".$SpecialMode.">";
+    $HTML .= "<select name='".$ItemName."'>";
+
+    if($StartValue == ''){
+        $HTML .= "<option value='' selected>Bitte wählen...</option>";
+    }
+
+    $files = array_map("htmlspecialchars", scandir($Directory));
+    foreach ($files as $file){
+
+        $FullDirectory = $Directory + $file;
+
+        if($FullDirectory != $StartValue){
+            $HTML .= "<option value='$FullDirectory'>$file</option>";
+        } elseif($FullDirectory != $StartValue){
+            $HTML .= "<option value='$FullDirectory' selected>$file</option>";
+        }
+    }
+
+    $HTML .= "</select>";
+
+    if ($Label!=''){
+        $HTML .= "<label>".$Label."</label>";
+    }
+
+    $HTML .= "</div>";
+
+    return $HTML;
+}
+
 function form_switch_item($ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='off', $Disabled=false){
 
     $HTML = "<div class='switch'>";
@@ -317,6 +349,15 @@ function table_form_html_area_item($ItemTitle, $ItemName, $Placeholdertext='', $
 
     return "<tr><th>".$ItemTitle."</th><td>".form_html_area_item($ItemName, $Placeholdertext, $Disabled)."</td></tr>";
 
+}
+
+function table_form_mediapicker_dropdown($ItemTitle, $ItemName, $StartValue, $Directory, $Label, $SpecialMode){
+
+    $TableRowContents = table_header_builder($ItemTitle);
+    $TableRowContents .= table_data_builder(form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $SpecialMode));
+    $TableRow = table_row_builder($TableRowContents);
+
+    return $TableRow;
 }
 
 function button_link_creator($ButtonMessage, $ButtonLink, $Icon, $SpecialMode){
