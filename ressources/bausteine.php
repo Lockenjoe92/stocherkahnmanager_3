@@ -175,25 +175,45 @@ function form_button_builder($ButtonName, $ButtonMessage, $ButtonMode, $Icon, $S
 
 function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $SpecialMode){
 
-   echo "<select name=\"ImageFile\">";
-    echo "<option value=\"\">";
+    $HTML = "<div class='input-field' ".$SpecialMode.">";
+   $HTML .= "<select name='".$ItemName."' id='".$ItemName."'>";
 
-    $dir = './media/pictures/';
-    $dirPath = dir($dir);
-    $imgArray = array();
-    while (($file = $dirPath->read()) !== false)
-    {
-        $imgArray[ ] = trim($file);
+   $dirPath = dir($Directory);
+   $DataArray = array();
+
+   while (($file = $dirPath->read()) !== false)
+   {
+       $DataArray[ ] = trim($file);
     }
+
     $dirPath->close();
-    sort($imgArray);
-    $c = count($imgArray);
-    for($i=2; $i<$c; $i++)
-    {
-        echo "<option value=\"" . $imgArray[$i] . "\" >" . $imgArray[$i] . "\n";
+    sort($DataArray);
+    $c = count($DataArray);
+
+    if($StartValue == ''){
+        $HTML .= "<option value='' selected>Bitte wählen...</option>";
     }
 
-    echo "</select>";
+    for($i=2; $i<$c; $i++)  //Skip the dots
+    {
+        $SelectDirectory = $Directory . $DataArray[$i];
+
+        if($SelectDirectory == $StartValue){
+            $HTML .= "<option value='" . $SelectDirectory . "'>" . $DataArray[$i] . "</option>";
+        } elseif($SelectDirectory != $StartValue){
+            $HTML .= "<option value='" . $SelectDirectory . "' selected>" . $DataArray[$i] . "</option>";
+        }
+    }
+
+    $HTML .= "</select>";
+
+    if ($Label!=''){
+        $HTML .= "<label>".$Label."</label>";
+    }
+
+    $HTML .= "</div>";
+
+    return $HTML;
 }
 
 function form_switch_item($ItemName, $OptionLeft='off', $OptionRight='on', $BooleanText='off', $Disabled=false){
@@ -258,7 +278,7 @@ function form_range_item($ItemName, $Min, $Max, $StartValue, $Disabled=false){
 function form_select_item($ItemName, $Min=0, $Max=0, $StartValue='', $Einheit='', $Label='', $SpecialMode='', $Disabled=false){
 
     $HTML = "<div class='input-field' ".$SpecialMode.">";
-    $HTML .= "<select id='".$ItemName."' name='".$ItemName."' class='browser-default'>";
+    $HTML .= "<select id='".$ItemName."' name='".$ItemName."'>";
 
     if ($Disabled == false){
         $DisabledCommand = '';
