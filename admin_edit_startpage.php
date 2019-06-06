@@ -235,7 +235,7 @@ function generate_move_buttons_baustein_level($AnzahlGesamtBausteine, $Aktueller
 
         #Can be moved up
         if($AktuellerBausteinRang > 1){
-            $ButtonDownName = "./decrease_baustein_rank.php?baustein=".$AktuellerBausteinID."&site".$AktuelleSeiteName."";
+            $ButtonDownName = "./decrease_baustein_rank.php?baustein=".$AktuellerBausteinID."&site=".$AktuelleSeiteName."";
             $HTML .= "<a href='".$ButtonDownName."'><i class='tiny material-icons'>arrow_upward</i></a> ";
         }
 
