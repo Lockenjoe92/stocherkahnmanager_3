@@ -255,14 +255,14 @@ function generate_move_buttons_item_level($AnzahlGesamtItems, $AktuellerItemID, 
 
         #Can be moved down
         if($AktuellerItemRang < $AnzahlGesamtItems){
-            $ButtonDownName = "#?decrease_rank_item_".$AktuellerItemID."_".$AktuellerBaustein."=true";
+            $ButtonDownName = "#?decrease_item_rank.php?item=".$AktuellerItemID.",baustein=".$AktuellerBaustein."=true";
             $HTML .= "<a href='".$ButtonDownName."'><i class='tiny material-icons'>arrow_downward</i></a> ";
         }
 
         #Can be moved up
         if($AktuellerItemRang > 1){
-            $ButtonDownName = "#?increase_rank_item_".$AktuellerItemID."_".$AktuellerBaustein."=true";
-            $HTML .= "<a href='".$ButtonDownName."'><i class='tiny material-icons'>arrow_upward</i></a> ";
+            $ButtonUpName = "#?increase_item_rank.php?item=".$AktuellerItemID.",baustein=".$AktuellerBaustein."=true";
+            $HTML .= "<a href='".$ButtonUpName."'><i class='tiny material-icons'>arrow_upward</i></a> ";
         }
 
         return $HTML;
