@@ -190,7 +190,7 @@ function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $
         }
     }
 
-    echo $paths;
+    var_dump($paths);
 
 
     $HTML = "<div class='input-field' ".$SpecialMode.">";
