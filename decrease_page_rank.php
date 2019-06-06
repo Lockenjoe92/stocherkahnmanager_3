@@ -19,17 +19,18 @@ if((intval($Rang)>0) and (!empty($Name))){
 
     #Load the other item
     $Anfrage = "SELECT * FROM homepage_sites WHERE menue_rang = ".$NewRang." AND delete_user = 0";
+    echo $Anfrage;
     $Abfrage = mysqli_query($link, $Anfrage);
     $Ergebnis = mysqli_fetch_assoc($Abfrage);
 
     # Update selected Item
-    update_website_page_item($Name, 'menue_rang', $NewRang);
+    #update_website_page_item($Name, 'menue_rang', $NewRang);
 
     # Update corresponding Item
-    update_website_page_item($Ergebnis['name'], 'menue_rang', $Rang);
+    #update_website_page_item($Ergebnis['name'], 'menue_rang', $Rang);
 
-    header("Location: ./admin_edit_startpage.php");
-    die();
+    #header("Location: ./admin_edit_startpage.php");
+    #die();
 } else {
     header("Location: ./admin_edit_startpage.php");
     die();
