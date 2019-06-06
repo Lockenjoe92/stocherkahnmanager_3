@@ -204,9 +204,9 @@ function generate_move_buttons_page_level($AnzahlGesamtSeiten, $ZeroRangCounter,
             #Can be moved up
             if($AktuellerRang > 1){
                 if($DownToo){
-                    $HTML .= button_link_creator('Rang senken', $ButtonUpName, 'arrow_downward', "col s5 offset-s1 ".lade_db_einstellung('site_buttons_color')."");
+                    $HTML .= button_link_creator('Rang erhöhen', $ButtonUpName, 'arrow_upward', "col s5 offset-s1 ".lade_db_einstellung('site_buttons_color')."");
                     } else {
-                    $HTML .= button_link_creator('Rang senken', $ButtonUpName, 'arrow_downward', "col s5 ".lade_db_einstellung('site_buttons_color')."");
+                    $HTML .= button_link_creator('Rang erhöhen', $ButtonUpName, 'arrow_upward', "col s5 ".lade_db_einstellung('site_buttons_color')."");
                 }
             }
 
