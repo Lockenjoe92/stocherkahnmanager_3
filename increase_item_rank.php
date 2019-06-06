@@ -22,15 +22,14 @@ if((intval($Baustein)>0) and (intval($Item)>0)){
 
     #Load the other item
     $Anfrage = "SELECT * FROM homepage_content WHERE id_baustein = ".$Baustein." AND rang = ".$NewRang." AND storno_user = 0";
-    echo $Anfrage;
     $Abfrage = mysqli_query($link, $Anfrage);
     $Ergebnis = mysqli_fetch_assoc($Abfrage);
 
+    # Update corresponding Item
+    update_website_content_item($Ergebnis['id'], 'rang', $ItemRang);
+
     # Update selected Item
     update_website_content_item($Item, 'rang', $NewRang);
-
-    # Update corresponding Item
-    update_website_content_item($Ergebnis['id'], 'rang', $NewRang);
 
     #header("Location: ./admin_edit_startpage.php");
     #die();
