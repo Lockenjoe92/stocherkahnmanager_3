@@ -65,8 +65,8 @@ function generate_row_item_change_form($Item){
     $TableRows = table_form_string_item('Überschrift', 'item_title', $ItemMeta['ueberschrift'], '');
     $TableRows .= table_form_html_area_item('Inhalt HTML', 'item_html', $ItemMeta['html_content'], '');
     $TableRows .= table_form_string_item('Icon', 'item_icon', $ItemMeta['icon'], '');
-    $TableRowContent = table_header_builder(form_button_builder('action_edit_site_item', 'Bearbeiten', 'action', 'edit', ''));
-    $TableRowContent .= table_data_builder(button_link_creator('Zurück', './admin_edit_startpage.php', 'arrow_back', ''));
+    $TableRowContent = table_data_builder(button_link_creator('Zurück', './admin_edit_startpage.php', 'arrow_back', ''));
+    $TableRowContent .= table_header_builder(form_button_builder('action_edit_site_item', 'Bearbeiten', 'action', 'edit', ''));
     $TableRows .= table_row_builder($TableRowContent);
     $Table = table_builder($TableRows);
     $Form = form_builder($Table, '#', 'post', 'item_change_form');
