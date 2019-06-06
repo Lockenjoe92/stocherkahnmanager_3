@@ -421,7 +421,7 @@ function update_website_page_item($PageName, $Column, $Value){
         echo "Prepare failed: (" . $link->errno . ") " . $link->error;
     }
 
-    if (!$stmt->bind_param("si",$Value,$PageName)) {
+    if (!$stmt->bind_param("ss",$Value,$PageName)) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
 
