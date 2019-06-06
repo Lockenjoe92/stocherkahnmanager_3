@@ -184,12 +184,18 @@ function startseitenelement_anlegen($Ort, $Typ, $Name){
 
         #Eintragen
         $Rang = $AnzahlBisherigerObjekte + 1;
-        $Anfrage3 = "INSERT INTO homepage_bausteine (ort, typ, rang, name, angelegt_am, angelegt_von, storno_user, storno_time) VALUES ('".$Ort."', '".$Typ."', '".$Rang."', '".$Name."', '".timestamp()."', '".lade_user_id()."', '0', '0000-00-00 00:00:00')";
+        $Timestamp = timestamp();
+        $LadeUserID = lade_user_id();
+        $Anfrage3 = "INSERT INTO homepage_bausteine (ort, typ, rang, name, angelegt_am, angelegt_von, storno_user, storno_time) VALUES ('".$Ort."', '".$Typ."', '".$Rang."', '".$Name."', '".$Timestamp."', '".$LadeUserID."', '0', '0000-00-00 00:00:00')";
         $Abfrage3 = mysqli_query($link, $Anfrage3);
 
         #Überprüfen ob es geklappt hat
         if($Abfrage3){
             $Antwort['erfolg'] = true;
+            $Anfrage4 = "SELECT id FROM homepage_bausteine WHERE angelegt_am = ".$Timestamp." AND angelegt_von = ".$LadeUserID." AND storno_user = 0";
+            $Abfrage4 = mysqli_query($link, $Anfrage4);
+            $Ergebnis4 = mysqli_fetch_assoc($Abfrage4);
+            startseiteninhalt_einfuegen($Ergebnis4['id'], 'Neues Element', '', '', '', '');
         } else {
             $Antwort['erfolg'] = false;
             $Antwort['meldung'] = 'Fehler beim Eintragen des Bausteins:/';
