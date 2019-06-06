@@ -67,8 +67,10 @@ function generate_row_item_change_form($Item){
     $ItemMeta = lade_seiteninhalt($Item);
 
     $TableRows = table_form_string_item('Überschrift', 'item_title', $ItemMeta['ueberschrift'], '');
+    $TableRows .= table_form_string_item('Überschrift Farbe', 'item_title_color', $ItemMeta['ueberschrift_farbe'], '');
     $TableRows .= table_form_html_area_item('Inhalt HTML', 'item_html', $ItemMeta['html_content'], '');
     $TableRows .= table_form_string_item('Icon', 'item_icon', $ItemMeta['icon'], '');
+    $TableRows .= table_form_string_item('Icon', 'item_icon_color', $ItemMeta['icon_farbe'], '');
     $TableRowContent = table_data_builder(button_link_creator('Zurück', './admin_edit_startpage.php', 'arrow_back', ''));
     $TableRowContent .= table_header_builder(form_button_builder('action_edit_site_item', 'Bearbeiten', 'action', 'edit', ''));
     $TableRows .= table_row_builder($TableRowContent);
@@ -125,8 +127,10 @@ function parse_row_item_edit($Item){
     $HTMLValue = str_replace('</pre>','',$HTMLValue);
 
     update_website_content_item($Item, 'ueberschrift', $_POST['item_title']);
+    update_website_content_item($Item, 'ueberschrift_farbe', $_POST['item_title_color']);
     update_website_content_item($Item, 'html_content', $HTMLValue);
     update_website_content_item($Item, 'icon', $_POST['item_icon']);
+    update_website_content_item($Item, 'item_icon_color', $_POST['icon_farbe']);
 
 
 }
