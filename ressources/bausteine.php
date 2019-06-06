@@ -186,6 +186,7 @@ function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $
     foreach ($files as $file){
 
         $FullDirectory = $Directory + $file;
+        echo $FullDirectory;
 
         if($FullDirectory != $StartValue){
             $HTML .= "<option value='$FullDirectory'>$file</option>";
