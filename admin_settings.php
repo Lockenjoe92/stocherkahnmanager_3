@@ -27,7 +27,7 @@ $SettingTableItems .= table_form_string_item('Website Footerfarbe', 'site_footer
 $SettingTableItems .= table_form_string_item('Farbe Link Buttons', 'site_buttons_color', lade_db_einstellung('site_buttons_color'), false);
 $SettingTableItems .= table_form_string_item('Farbe Error Buttons', 'site_error_buttons_color', lade_db_einstellung('site_error_buttons_color'), false);
 
-$SettingTableItems .= table_form_string_item('Maximale Dateigrößer', 'max_size_file_upload', lade_db_einstellung('max_size_file_upload'), false);
+$SettingTableItems .= table_form_string_item('Maximale Dateigröße Uploads', 'max_size_file_upload', lade_db_einstellung('max_size_file_upload'), false);
 
 #Complete Settings Form
 $SettingTable = table_builder($SettingTableItems);
