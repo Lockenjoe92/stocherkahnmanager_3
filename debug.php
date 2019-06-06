@@ -11,7 +11,7 @@ include_once "./ressources/ressourcen.php";
 echo "debugging";
 $link = connect_db();
 
-$Einstallung = lade_db_einstellung('big_footer_right_column_html');
+$Einstallung = form_mediapicker_dropdown('test', '', '/media/pictures/', 'test', '');
 echo $Einstallung;
 
 ?>
