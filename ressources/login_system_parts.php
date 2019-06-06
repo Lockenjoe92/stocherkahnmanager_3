@@ -21,8 +21,8 @@ function login_formular($Parser, $SessionMessage){
     $HTMLform .= "</div>";
 
     $HTMLBigscreenButtons = form_button_builder('submit', 'Einloggen', 'submit', 'send', 'col s3');
-    $HTMLBigscreenButtons .= button_link_creator('Registrieren', './register.php', '', 'col s3 offset-s1');
-    $HTMLBigscreenButtons .= button_link_creator('Passwort vergessen', './iforgot.php', '', 'col s3 offset-s1');
+    $HTMLBigscreenButtons .= button_link_creator('Registrieren', './register.php', 'person_add', 'col s3 offset-s1');
+    $HTMLBigscreenButtons .= button_link_creator('Passwort vergessen', './iforgot.php', 'loop', 'col s3 offset-s1');
     $HTMLBigscreenButtons = row_builder($HTMLBigscreenButtons);
 
     $HTMLMobileButtons = row_builder(form_button_builder('submit', 'Einloggen', 'submit', 'send'));
