@@ -29,7 +29,7 @@ if((intval($Baustein)>0) and (intval($Item)>0)){
     update_website_content_item($Item, 'rang', $NewRang);
 
     # Update corresponding Item
-    update_website_content_item($Ergebnis['id'], 'rang', $NewRang);
+    update_website_content_item($Ergebnis['id'], 'rang', $ItemRang);
 
     header("Location: ./admin_edit_startpage.php");
     die();
