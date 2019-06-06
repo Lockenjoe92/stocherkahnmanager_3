@@ -178,7 +178,7 @@ function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $
    echo "<select name=\"ImageFile\">";
     echo "<option value=\"\">";
 
-    $dirPath = dir('./media/pictures/*');
+    $dirPath = dir('./media/');
     $imgArray = array();
     while (($file = $dirPath->read()) !== false)
     {
