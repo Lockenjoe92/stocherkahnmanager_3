@@ -189,7 +189,7 @@ function form_mediapicker_dropdown($ItemName, $StartValue, $Directory, $Label, $
     $c = count($imgArray);
     for($i=0; $i<$c; $i++)
     {
-        echo "<option value=\"" . $imgArray[$i] . "\">" . $imgArray[$i] . "\n";
+        echo "<option value=\"" . $imgArray[$i] . "\" >" . $imgArray[$i] . "\n";
     }
 
     echo "</select>";
