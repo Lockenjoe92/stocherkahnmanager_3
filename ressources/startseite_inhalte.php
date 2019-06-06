@@ -392,3 +392,23 @@ function update_website_content_item($Item, $Column, $Value){
         return true;
     }
 }
+
+function update_website_baustein_item($Item, $Column, $Value){
+
+    $link = connect_db();
+
+    if (!($stmt = $link->prepare("UPDATE homepage_bausteine SET ".$Column." = ? WHERE id = ?"))) {
+        echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+    }
+
+    if (!$stmt->bind_param("si",$Value,$Item)) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        return false;
+    } else {
+        return true;
+    }
+}
