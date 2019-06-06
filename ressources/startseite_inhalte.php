@@ -192,7 +192,7 @@ function startseitenelement_anlegen($Ort, $Typ, $Name){
         #Überprüfen ob es geklappt hat
         if($Abfrage3){
             $Antwort['erfolg'] = true;
-            $Anfrage4 = "SELECT id FROM homepage_bausteine WHERE angelegt_am = ".$Timestamp." AND angelegt_von = ".$LadeUserID." AND storno_user = 0";
+            $Anfrage4 = "SELECT * FROM homepage_bausteine WHERE angelegt_am = '".$Timestamp."' AND angelegt_von = ".$LadeUserID." AND storno_user = 0";
             echo $Anfrage4;
             $Abfrage4 = mysqli_query($link, $Anfrage4);
             $Ergebnis4 = mysqli_fetch_assoc($Abfrage4);
