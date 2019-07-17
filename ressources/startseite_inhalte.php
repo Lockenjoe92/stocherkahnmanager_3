@@ -65,8 +65,9 @@ function generiere_startseite_content($Baustein){
 
 function kalender_container_generieren($Seitenmodus){
 
-    $HTML = kalender_mobil($Seitenmodus);
-    $HTML .= kalender_gross($Seitenmodus);
+    $HTML = container_builder(kalender_mobil($Seitenmodus), 'kalender_mobil_container', 'hide-on-large');
+    $HTML .= container_builder(kalender_gross($Seitenmodus), 'kalender_gross_container', 'hide-on-med-and-down');
+
     return $HTML;
 
 }
