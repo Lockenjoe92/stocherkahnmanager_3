@@ -241,13 +241,13 @@ function generate_move_buttons_baustein_level($AnzahlGesamtBausteine, $Aktueller
 
         #Can be moved down
         if($AktuellerBausteinRang < $AnzahlGesamtBausteine){
-            $ButtonDownName = "./increase_baustein_rank.php?baustein=".$AktuellerBausteinID."&site=".$AktuelleSeiteName."";
+            $ButtonDownName = "./parsers/increase_baustein_rank.php?baustein=".$AktuellerBausteinID."&site=".$AktuelleSeiteName."";
             $HTML .= "<a href='".$ButtonDownName."'><i class='tiny material-icons'>arrow_downward</i></a> ";
         }
 
         #Can be moved up
         if($AktuellerBausteinRang > 1){
-            $ButtonDownName = "./decrease_baustein_rank.php?baustein=".$AktuellerBausteinID."&site=".$AktuelleSeiteName."";
+            $ButtonDownName = "./parsers/decrease_baustein_rank.php?baustein=".$AktuellerBausteinID."&site=".$AktuelleSeiteName."";
             $HTML .= "<a href='".$ButtonDownName."'><i class='tiny material-icons'>arrow_upward</i></a> ";
         }
 
@@ -267,13 +267,13 @@ function generate_move_buttons_item_level($AnzahlGesamtItems, $AktuellerItemID, 
 
         #Can be moved down
         if($AktuellerItemRang < $AnzahlGesamtItems){
-            $ButtonDownName = "./increase_item_rank.php?item=".$AktuellerItemID."&baustein=".$AktuellerBaustein."";
+            $ButtonDownName = "./parsers/increase_item_rank.php?item=".$AktuellerItemID."&baustein=".$AktuellerBaustein."";
             $HTML .= "<a href='".$ButtonDownName."'><i class='tiny material-icons'>arrow_downward</i></a> ";
         }
 
         #Can be moved up
         if($AktuellerItemRang > 1){
-            $ButtonUpName = "./decrease_item_rank.php?item=".$AktuellerItemID."&baustein=".$AktuellerBaustein."";
+            $ButtonUpName = "./parsers/decrease_item_rank.php?item=".$AktuellerItemID."&baustein=".$AktuellerBaustein."";
             $HTML .= "<a href='".$ButtonUpName."'><i class='tiny material-icons'>arrow_upward</i></a> ";
         }
 
