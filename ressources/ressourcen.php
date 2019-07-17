@@ -16,3 +16,5 @@ include_once "login_system_parts.php";
 include_once "user.php";
 include_once "datenschutz.php";
 include_once "protocol.php";
+include_once "zeit.php";
+include_once "kalender.php";

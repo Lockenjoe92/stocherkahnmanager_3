@@ -412,7 +412,9 @@ function divider_builder(){
 }
 
 function toast($Message){
-    return "<script>M.toast({html: ".$Message."})</script>";
+
+    return "<script> Materialize.toast('$Message', 6000) </script>";
+
 }
 
 function lade_baustein($BausteinID){

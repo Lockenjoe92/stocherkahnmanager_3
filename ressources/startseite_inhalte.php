@@ -56,9 +56,19 @@ function generiere_startseite_content($Baustein){
         $HTML .= row_container_generieren($Baustein['id']);
     } elseif($Baustein['typ'] == 'html_container'){
         $HTML .= html_container_generieren($Baustein['id']);
+    } elseif($Baustein['typ'] == 'kalender_container'){
+        $HTML .= kalender_container_generieren('startseite');
     }
 
     return $HTML;
+}
+
+function kalender_container_generieren($Seitenmodus){
+
+    $HTML = kalender_mobil($Seitenmodus);
+    $HTML .= kalender_gross($Seitenmodus);
+    return $HTML;
+
 }
 
 function html_container_generieren($BausteinID){

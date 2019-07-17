@@ -155,6 +155,7 @@ function generate_bausteine_dropdown_menue($ItemName, $Label, $SpecialMode){
     $HTML .= "<option value='row_container'>row_container</option>";
     $HTML .= "<option value='parallax_mit_text'>parallax_mit_text</option>";
     $HTML .= "<option value='html_container'>html_container</option>";
+    $HTML .= "<option value='kalender_container'>kalender_container</option>";
     $HTML .= "</select>";
 
     if ($Label!=''){

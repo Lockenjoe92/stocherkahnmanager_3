@@ -29,11 +29,28 @@
     <!--- VERLEIH -->
     <earliest_begin>8</earliest_begin>
     <latest_begin>22</latest_begin>
+    <von-montag>8</von-montag>
+    <von-dienstag>8</von-dienstag>
+    <von-mittwoch>8</von-mittwoch>
+    <von-donnerstag>8</von-donnerstag>
+    <von-freitag>8</von-freitag>
+    <von-samstag>8</von-samstag>
+    <von-sonntag>8</von-sonntag>
+    <bis-montag>22</bis-montag>
+    <bis-dienstag>22</bis-dienstag>
+    <bis-mittwoch>22</bis-mittwoch>
+    <bis-donnerstag>22</bis-donnerstag>
+    <bis-freitag>22</bis-freitag>
+    <bis-samstag>22</bis-samstag>
+    <bis-sonntag>22</bis-sonntag>
 
     <!--- COLORS -->
     <site_menue_color>white</site_menue_color>
     <site_footer_color>green</site_footer_color>
     <site_buttons_color>green</site_buttons_color>
-    <site_error_buttons_color>red</site_error_buttons_color>>
+    <site_error_buttons_color>red</site_error_buttons_color>
+    <farbe-button-kalender-buchbar>green</farbe-button-kalender-buchbar>
+    <farbe-button-kalender-nicht-buchbar>red</farbe-button-kalender-nicht-buchbar>
+    <farbe-button-kalender-reserviert>yellow</farbe-button-kalender-reserviert>
 
 </global_settings>
